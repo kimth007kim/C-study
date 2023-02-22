@@ -70,7 +70,7 @@ int main(int argc, char *argv[]) {
             continue;
         else
             puts("new client connected...");
-        
+
         pid = fork();
         if (pid == -1) {
             close(clnt_sock);
