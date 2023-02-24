@@ -3,6 +3,7 @@
 #include<string.h>
 #include <stdlib.h>
 #include<unistd.h>
+#include<time.h>
 
 #define BUF_SIZE 1024
 
@@ -11,6 +12,8 @@ void read_message(int sock, char *buf);
 void write_message(int sock, char *buf);
 
 void error_handling(char *message);
+
+char *generate_time();
 
 int main() {
 
@@ -41,26 +44,6 @@ int main() {
     } else {
         puts("Connected");
     }
-
-//    while (1) {
-//        fputs("Input message(Q to quit): ", stdout);
-//        fgets(message, BUF_SIZE, stdin);
-//        if (!strcmp(message, "q\n") || !strcmp(message, "Q\n"))
-//            break;
-//        str_len = write(sock, message, strlen(message));
-//
-//        recv_len = 0;
-//        while (recv_len < str_len) {
-//            recv_cnt = read(sock, &message[recv_len], BUF_SIZE - 1);
-//            if (recv_cnt == -1)
-//                error_handling("read() error!");
-//            recv_len += recv_cnt;
-//        }
-//        message[recv_len] = 0;
-//        printf("Message from server: %s ", message);
-//    }
-
-
     pid = fork();
     if (pid == 0)
         write_message(sock, buf);
@@ -87,14 +70,16 @@ void read_message(int sock, char *buf) {
 
 void write_message(int sock, char *buf) {
     char message[1000];
+    char * time_str;
     while (1) {
         fgets(buf, BUF_SIZE, stdin);
         if (!strcmp(buf, "q\n") || !strcmp(buf, "Q\n")) {
             shutdown(sock, SHUT_WR);
             return;
         }
-        sprintf(message, " %s  %s", "안녕", buf);
-        write(sock,message,strlen(message));
+        time_str = generate_time();
+        sprintf(message, " %s  %s", time_str, buf);
+        write(sock, message, strlen(message));
     }
 }
 
@@ -102,4 +87,13 @@ void error_handling(char *message) {
     fputs(message, stderr);
     fputc('\n', stderr);
     exit(1);
+}
+
+char *generate_time(){
+    time_t timer = time(NULL);
+    struct tm *t = localtime(&timer);
+    char *result = malloc(30);
+    strftime(result,BUF_SIZE,"[%Y/%m/%d %l:%M:%S]",t);
+
+    return result;
 }
