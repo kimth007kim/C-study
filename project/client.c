@@ -15,7 +15,7 @@ void error_handling(char *message);
 
 char *generate_time();
 
-int main() {
+int main(int argc,char * argv[]) {
 
     int sock;
     char opmsg[BUF_SIZE];
@@ -25,6 +25,10 @@ int main() {
     char buf[BUF_SIZE];
     struct sockaddr_in serv_adr;
 
+
+    if (argc!=2){
+        error_handling("유효 하지않은 접근 입니다.");
+    }
 
     sock = socket(PF_INET, SOCK_STREAM, 0);
     if (sock == -1) {
@@ -93,7 +97,7 @@ char *generate_time(){
     time_t timer = time(NULL);
     struct tm *t = localtime(&timer);
     char *result = malloc(30);
-    strftime(result,BUF_SIZE,"[%Y/%m/%d %l:%M:%S]",t);
+    strftime(result,BUF_SIZE,"%Y/%m/%d %l:%M:%S",t);
 
     return result;
 }
