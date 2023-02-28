@@ -17,11 +17,11 @@ int main(int argc, char *argv[]) {
     int sock;
     int pid;
     char buf[BUF_SIZE];
-    struct sockaddr_in serv_adr;
+    struct sockaddr_in server_adrress;
 
 
     if (argc != 2) {
-        error_handling("유효 하지않은 접근 입니다.");
+        error_handling("닉네임을 입력 해주세");
     }
 
     sock = socket(PF_INET, SOCK_STREAM, 0);
@@ -29,12 +29,12 @@ int main(int argc, char *argv[]) {
         error_handling("socket() error");
     }
 
-    memset(&serv_adr, 0, sizeof(serv_adr));
-    serv_adr.sin_addr.s_addr = inet_addr("127.0.0.1");
-    serv_adr.sin_port = 9190;
-    serv_adr.sin_family = AF_INET;
+    memset(&server_adrress, 0, sizeof(server_adrress));
+    server_adrress.sin_addr.s_addr = inet_addr("127.0.0.1");
+    server_adrress.sin_port = 9190;
+    server_adrress.sin_family = AF_INET;
 
-    if (connect(sock, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) == -1) {
+    if (connect(sock, (struct sockaddr *) &server_adrress, sizeof(server_adrress)) == -1) {
         printf("connect error");
         exit(1);
     } else {
