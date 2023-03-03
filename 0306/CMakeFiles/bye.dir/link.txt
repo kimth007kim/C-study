@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/bye.dir/bye.c.o CMakeFiles/bye.dir/my.c.o -o bye 

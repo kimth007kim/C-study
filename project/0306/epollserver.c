@@ -17,6 +17,11 @@ void send_greetings(int client_socket);
 
 char *generate_time();
 
+struct user {
+    char * name;
+    int sid;
+};
+
 int main() {
 
     int server_socket, client_socket;
@@ -70,7 +75,7 @@ int main() {
             break;
         }
         for (i = 0; i < event_cnt; ++i) {
-            char buf[BUF_SIZE] = {0,};
+                char buf[BUF_SIZE] = {0,};
             if (ep_events[i].data.fd == server_socket) {
                 adr_sz = sizeof(client_address);
                 client_socket = accept(server_socket, (struct sockaddr *) &client_address, &adr_sz);
@@ -94,7 +99,7 @@ int main() {
                     for (int i = 5; i < client_socket + 1; i++) {
                         write(i, buf, str_len);
                     }
-                    buf={0,};
+//                    buf={0,};
                 }
             }
 

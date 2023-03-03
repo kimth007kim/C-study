@@ -1,0 +1,1 @@
+/usr/bin/cc -rdynamic CMakeFiles/MyProject.dir/my.o -o MyProject 

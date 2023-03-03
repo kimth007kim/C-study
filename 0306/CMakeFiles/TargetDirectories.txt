@@ -1,0 +1,4 @@
+/home/kim/C-study/0306/CMakeFiles/hello.dir
+/home/kim/C-study/0306/CMakeFiles/bye.dir
+/home/kim/C-study/0306/CMakeFiles/edit_cache.dir
+/home/kim/C-study/0306/CMakeFiles/rebuild_cache.dir
