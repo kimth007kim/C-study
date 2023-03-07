@@ -3,24 +3,30 @@
 #include<string.h>
 #include<stdlib.h>
 #include<unistd.h>
-#include <sys/socket.h>
 #include <sys/epoll.h>
+
 #include<time.h>
+
+#include"include/util.h"
+#include"include/hashtable.h"
 
 #define BUF_SIZE 100
 #define EPOLL_SIZE 50
 #define MAX_NAME_SIZE 30
-
-void error_handling(char *message);
-
-void send_greetings(int client_socket);
+#define MAX_USERS 2000
 
 char *generate_time();
 
 struct user {
-    char * name;
-    int sid;
+    char *name;
+    int fd;
 };
+
+void send_greetings(int client_socket);
+
+void exit_user(int fd, struct user *user_list[], Hashtable *user_num,int *current_users);
+
+void show_users(struct user *user_list[]);
 
 int main() {
 
@@ -28,12 +34,17 @@ int main() {
     struct sockaddr_in server_address, client_address;
     int i, str_len, optlen;
     socklen_t adr_sz;
-
+    char nickname[MAX_NAME_SIZE];
+    int current_users;
 
     // epoll 설정
     int epfd, event_cnt;
     struct epoll_event *ep_events;
     struct epoll_event event;
+
+    struct user *user_list[MAX_USERS];
+
+    Hashtable user_num = {{NULL}};
 
 
     int option;
@@ -75,7 +86,7 @@ int main() {
             break;
         }
         for (i = 0; i < event_cnt; ++i) {
-                char buf[BUF_SIZE] = {0,};
+            char buf[BUF_SIZE] = {0,};
             if (ep_events[i].data.fd == server_socket) {
                 adr_sz = sizeof(client_address);
                 client_socket = accept(server_socket, (struct sockaddr *) &client_address, &adr_sz);
@@ -85,20 +96,49 @@ int main() {
                 }
                 event.events = EPOLLIN;
                 event.data.fd = client_socket;
-//                send_greetings(client_socket);
                 epoll_ctl(epfd, EPOLL_CTL_ADD, client_socket, &event);
-                printf("connected client : %d \n", client_socket);
+
+                add(&user_num, client_socket);
+
+                current_users += 1;
+
+                struct user *new_user = malloc(sizeof(struct user));
+                new_user->fd = client_socket;
+                new_user->name = malloc(MAX_NAME_SIZE);
+                str_len = read(client_socket, new_user->name, MAX_NAME_SIZE);
+                new_user->name[str_len] = '\0';
+                user_list[client_socket] = new_user;
+
+
+                show_users(user_list);
+                printf(" %s connected client : %d \n", nickname, client_socket);
             } else {
 
                 str_len = read(ep_events[i].data.fd, buf, BUF_SIZE);
                 if (str_len == 0) {
+                    // 종료 요청
+
+
                     epoll_ctl(epfd, EPOLL_CTL_DEL, ep_events[i].data.fd, NULL);
-                    close(ep_events[i].data.fd);
+                    exit_user(ep_events[i].data.fd, user_list, &user_num,&current_users);
+//                    remove_key(&user_num, ep_events[i].data.fd);
+//                    current_users -= 1;
+//                    close(ep_events[i].data.fd);
+
+
                     printf("close client : %d \n ", ep_events[i].data.fd);
+                    show_users(user_list);
+                    printf("현재 유저 수 %d ", current_users);
+
+
                 } else {
-                    for (int i = 5; i < client_socket + 1; i++) {
-                        write(i, buf, str_len);
+                    int *current = malloc(sizeof(int) * TABLE_SIZE);
+                    current = generate_set(&user_num);
+                    print_set(&user_num);
+                    for (int i = 0; i < sizeof(current); i++) {
+                        printf("%ld,", current[i]);
                     }
+                    printf("%ld\n", sizeof(current));
 //                    buf={0,};
                 }
             }
@@ -113,25 +153,42 @@ int main() {
 
 }
 
-void send_greetings(int client_socket) {
-
-    char name[MAX_NAME_SIZE + 1];
-    char greetings[] = "님이 입장하셨습니다!\n";
-    int name_len = read(client_socket, name, sizeof(MAX_NAME_SIZE));
-    name[name_len] = '\0';
-    printf("%s\n", name);
-    strcat(name, greetings);
-    printf("%s\n", name);
-    for (int i = 5; i < client_socket + 1; i++) {
-        write(i, name, strlen(greetings) + name_len);
+//void send_greetings(int client_socket) {
+//
+//    char name[MAX_NAME_SIZE + 1];
+//    char greetings[] = "님이 입장하셨습니다!\n";
+//    int name_len = read(client_socket, name, sizeof(MAX_NAME_SIZE));
+//    name[name_len] = '\0';
+//    printf("%s\n", name);
+//    strcat(name, greetings);
+//    printf("%s\n", name);
+//    for (int i = 5; i < client_socket + 1; i++) {
+//        write(i, name, strlen(greetings) + name_len);
+//    }
+//
+//}
+void exit_user(int fd, struct user *user_list[], Hashtable *user_num,int *current_users) {
+    for (int i = 0; i < MAX_USERS; i++) {
+        if (user_list[i]->fd == fd) {
+            user_list[i]->fd = 0;
+            user_list[i]->name = NULL;
+            remove_key(&user_num, fd);
+            current_users -= 1;
+            close(fd);
+            break;
+        }
     }
 
 }
 
-void error_handling(char *message) {
-    fputs(message, stderr);
-    fputc('\n', stderr);
-    exit(1);
+
+void show_users(struct user *user_list[]) {
+    for (int i = 0; i < MAX_USERS; i++) {
+        if (user_list[i] != NULL) {
+            printf(" %d번의 %s님", user_list[i]->fd, user_list[i]->name);
+        }
+    }
+
 
 }
 

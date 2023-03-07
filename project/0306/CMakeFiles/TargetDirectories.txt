@@ -1,0 +1,5 @@
+/home/kim/C-study/project/0306/CMakeFiles/client.dir
+/home/kim/C-study/project/0306/CMakeFiles/server.dir
+/home/kim/C-study/project/0306/CMakeFiles/test.dir
+/home/kim/C-study/project/0306/CMakeFiles/edit_cache.dir
+/home/kim/C-study/project/0306/CMakeFiles/rebuild_cache.dir

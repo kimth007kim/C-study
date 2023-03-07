@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/test.dir/test.c.o CMakeFiles/test.dir/src/hashtable.c.o CMakeFiles/test.dir/src/util.c.o -o test 

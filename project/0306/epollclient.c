@@ -4,14 +4,14 @@
 #include <stdlib.h>
 #include<unistd.h>
 #include <sys/epoll.h>
+#include"include/util.h"
+#define MAX_NAME_SIZE 30
 
 #define BUF_SIZE 1024
 
 void read_message(int sock, char *buf);
 
 void write_message(int sock, char *buf, char *argv);
-
-void error_handling(char *message);
 
 char *generate_time();
 
@@ -49,7 +49,10 @@ int main(int argc, char *argv[]) {
         exit(1);
     } else {
         puts("Connected");
-//        write(sock, argv[1], sizeof(30));
+        char nickname[MAX_NAME_SIZE];
+        strcpy(nickname,argv[1]);
+        write(sock, nickname, strlen(argv[1]));
+//        printf("%s\n",buf);
 // 추후에 채팅한 유저의 정보를 구조체로 저장할 예정
     }
     epfd = epoll_create(3);
@@ -63,7 +66,6 @@ int main(int argc, char *argv[]) {
     event.data.fd = STDIN_FILENO;
     epoll_ctl(epfd, EPOLL_CTL_ADD, STDIN_FILENO, &event);
 
-//    event_cnt = epoll_wait(epfd, ep_events, 1, -1);
     while (1) {
         event_cnt = epoll_wait(epfd, ep_events, 3, -1);
         if (event_cnt == -1)
@@ -91,10 +93,4 @@ int main(int argc, char *argv[]) {
         }
     }
 
-}
-
-void error_handling(char *message) {
-    fputs(message, stderr);
-    fputc('\n', stderr);
-    exit(1);
 }

@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/server.dir/epollserver.c.o CMakeFiles/server.dir/src/hashtable.c.o CMakeFiles/server.dir/src/util.c.o -o server 
