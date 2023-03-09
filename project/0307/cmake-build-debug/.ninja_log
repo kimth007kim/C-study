@@ -1,0 +1,18 @@
+# ninja log v5
+0	14	1678173038422399980	CMakeFiles/server.dir/src/util.c.o	69d3cad37c4bd040
+0	13	1678183547176710748	CMakeFiles/server.dir/src/hashtable.c.o	5c66e9a95380741b
+16	29	1678192645582492970	client	59e1021131dd0c4f
+0	10	1678173818431755784	CMakeFiles/test.dir/test.c.o	675a9ad213db7b3e
+0	11	1678250691889172200	build.ninja	b1a4b926c4a5c528
+0	14	1678173818435756011	CMakeFiles/test.dir/src/hashtable.c.o	2a78e8bfa9e35638
+14	23	1678173818443756465	test	d0bff8aea7d3fdf4
+0	14	1678172930946190842	CMakeFiles/client.dir/src/util.c.o	d7b27ca9fd9d74c8
+0	14	1678173818431755784	CMakeFiles/test.dir/src/util.c.o	bd7fdb6dbd805cb5
+1	16	1678192645570492488	CMakeFiles/client.dir/epollclient.c.o	4344d407406eca5a
+0	20	1678192737106167032	CMakeFiles/server.dir/epollserver.c.o	8077e23a1865a02c
+20	30	1678192737118167514	server	274c4cea782caea2
+0	14	1678250698509465105	CMakeFiles/server.dir/src/hashtable.c.o	6ecadbd4d7491e61
+0	14	1678250698509465105	CMakeFiles/server.dir/src/util.c.o	ae5bab733153fde3
+0	20	1678250698517465459	CMakeFiles/server.dir/epollserver.c.o	752b29d462827df7
+20	30	1678250698525465814	server	274c4cea782caea2
+0	18	1678254228885524480	CMakeFiles/server.dir/epollserver.c.o	752b29d462827df7
