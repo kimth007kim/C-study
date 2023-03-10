@@ -8,10 +8,10 @@
 		},
 		"paths" : 
 		{
-			"cmake" : "/snap/clion/222/bin/cmake/linux/x64/bin/cmake",
-			"cpack" : "/snap/clion/222/bin/cmake/linux/x64/bin/cpack",
-			"ctest" : "/snap/clion/222/bin/cmake/linux/x64/bin/ctest",
-			"root" : "/snap/clion/222/bin/cmake/linux/x64/share/cmake-3.24"
+			"cmake" : "/snap/clion/228/bin/cmake/linux/x64/bin/cmake",
+			"cpack" : "/snap/clion/228/bin/cmake/linux/x64/bin/cpack",
+			"ctest" : "/snap/clion/228/bin/cmake/linux/x64/bin/ctest",
+			"root" : "/snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24"
 		},
 		"version" : 
 		{
@@ -35,7 +35,7 @@
 			}
 		},
 		{
-			"jsonFile" : "cache-v2-de5cd9aea52beaaa9b77.json",
+			"jsonFile" : "cache-v2-b388004019749338f381.json",
 			"kind" : "cache",
 			"version" : 
 			{
@@ -44,7 +44,7 @@
 			}
 		},
 		{
-			"jsonFile" : "cmakeFiles-v1-ab791166ebde7794d472.json",
+			"jsonFile" : "cmakeFiles-v1-4e7145038aae6d04196d.json",
 			"kind" : "cmakeFiles",
 			"version" : 
 			{
@@ -66,7 +66,7 @@
 	{
 		"cache-v2" : 
 		{
-			"jsonFile" : "cache-v2-de5cd9aea52beaaa9b77.json",
+			"jsonFile" : "cache-v2-b388004019749338f381.json",
 			"kind" : "cache",
 			"version" : 
 			{
@@ -76,7 +76,7 @@
 		},
 		"cmakeFiles-v1" : 
 		{
-			"jsonFile" : "cmakeFiles-v1-ab791166ebde7794d472.json",
+			"jsonFile" : "cmakeFiles-v1-4e7145038aae6d04196d.json",
 			"kind" : "cmakeFiles",
 			"version" : 
 			{

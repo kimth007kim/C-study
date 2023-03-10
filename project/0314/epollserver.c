@@ -10,33 +10,35 @@
 #include"include/linkedlist.h"
 
 
-//#include"include/hashtable.h"
-
-#define BUF_SIZE 100
-#define EPOLL_SIZE 2000
-#define MAX_NAME_SIZE 30
-#define MAX_USERS 2000
-#define TOTAL_MESSAGE_SIZE 1000
-
 char *generate_time();
 
 struct user {
     char *name;
     int fd;
+    int target;
+    //TODO 각각의 유저별로 read_buf 와 write_buf를 따로 두는 식으로 설계
+    char *read_buf[PROTOCOL_SIZE];
+    char *write_buf[PROTOCOL_SIZE];
 };
 
 void write_greeting(int fd, int flag);
 
 //void exit_user(int fd, struct user *user_list[], int *current_users);
-void exit_user(int fd, int *current_users);
+void exit_user(int fd);
+
+void enter_user(int fd);
+
+void async_write_message(int fd, char *buf, int len);
 
 void show_users();
 
 void write_message(int fd, char *buf);
 
+
 // 유저의 fd를 관리하는 링크드리스트, 유저의 구조체를 가지는 배열 를 선언 및 초기화
 Node *user_link = NULL;
 struct user *user_list[MAX_USERS];
+int current_users = 0;
 
 int main() {
 
@@ -46,8 +48,6 @@ int main() {
 
 
     socklen_t address_size;
-    char nickname[MAX_NAME_SIZE];
-    int current_users = 0;
     int option;
 
     // epoll 설정
@@ -109,41 +109,34 @@ int main() {
                 event.events = EPOLLIN;
                 event.data.fd = client_socket;
                 epoll_ctl(epfd, EPOLL_CTL_ADD, client_socket, &event);
-                current_users += 1;
 
-                struct user *new_user = malloc(sizeof(struct user));
-
-                new_user->fd = client_socket;
-                new_user->name = malloc(MAX_NAME_SIZE);
-                str_len = read(client_socket, new_user->name, MAX_NAME_SIZE);
-                new_user->name[str_len] = '\0';
-                user_list[client_socket] = new_user;
-
-                printf("%d\n", client_socket);
-                // 링크드리스트에 클라이언트 소켓을 등록
-                user_link = add_node(user_link, client_socket);
-
-                print_users(user_link);
-                printf(" %s connected client : %d \n", nickname, client_socket);
+                enter_user(client_socket);
+//                printf("%d\n", client_socket);
+                show_users();
+//                print_users(user_link);
+                printf(" connected client : %d \n", client_socket);
                 write_greeting(client_socket, 0);
 
 
             } else {
-                memset(buf, 0, sizeof(buf));
                 str_len = read(ep_events[i].data.fd, buf, BUF_SIZE);
-                printf("문자열의 길이는 %d 입니다.\n", str_len);
 
-                if (str_len == 0 || strcmp(buf,"\n") ) { // TODO 왜 문자열이 1일까?
-                    // 종료 요청
+                printf("buf: %s  문자열의 길이는 %d 입니다.\n", buf, str_len);
+
+                if (str_len == 0) {
+                    // Ctrl + c 로 인한 종료 요청
                     write_greeting(ep_events[i].data.fd, 1);
                     epoll_ctl(epfd, EPOLL_CTL_DEL, ep_events[i].data.fd, NULL);
-                    exit_user(ep_events[i].data.fd, &current_users);
+                    exit_user(ep_events[i].data.fd);
 
                     print_users(user_link);
 
                 } else {
-                    printf("메시지 전송 요청");
-                    write_message(ep_events[i].data.fd, buf);
+                    //TODO 프로토콜을 파싱하는 함수를 만들고, 파싱한 정보를 토대로 분기 처리
+                    printf("메시지 전송 요청\n");
+//                    write_message(ep_events[i].data.fd, buf);
+                    async_write_message(ep_events[i].data.fd, buf, str_len);
+                    memset(buf, 0, sizeof(buf));
                 }
             }
         }
@@ -153,9 +146,39 @@ int main() {
 
 }
 
+void enter_user(int fd) {
+    current_users += 1;
+    struct user *new_user = malloc(sizeof(struct user));
+    new_user->fd = fd;
+    new_user->name = malloc(MAX_NAME_SIZE);
+    int str_len = read(fd, new_user->name, MAX_NAME_SIZE);
+    new_user->name[str_len] = '\0';
+//    memset(new_user->read_buf,0,BUF_SIZE*(sizeof(char *)));
+//    memset(new_user->write_buf,0,BUF_SIZE*(sizeof(char *)));
+    user_list[fd] = new_user;
+
+    user_link = add_node(user_link, fd);
+    show_users();
+}
+
+void exit_user(int fd) {
+    if (user_link == NULL) {
+        return;
+    }
+    if (user_list[fd]->fd == fd) {
+        user_list[fd] = NULL;
+        // 링크드리스트에 해당 소켓을 제거
+        user_link = remove_node(user_link, fd);
+        current_users -= 1;
+        close(fd);
+    }
+
+}
+
+
 void write_greeting(int fd, int flag) {
 
-    char message[TOTAL_MESSAGE_SIZE];
+    char message[PROTOCOL_SIZE] = {0,};
     char *time_str;
     char *hey = "입장하셨습니다";
     char *bye = "퇴장하셨습니다";
@@ -178,27 +201,13 @@ void write_greeting(int fd, int flag) {
 
 }
 
-void exit_user(int fd, int *current_users) {
-    if (user_link == NULL) {
-        return;
-    }
-    if (user_list[fd]->fd == fd) {
-        user_list[fd] = NULL;
-        // 링크드리스트에 해당 소켓을 제거
-        user_link = remove_node(user_link, fd);
-        *current_users -= 1;
-        close(fd);
-    }
-
-}
-
 
 void write_message(int fd, char *buf) {
     print_users(user_link);
     if (user_link == NULL) {
         return;
     }
-    char message[TOTAL_MESSAGE_SIZE];
+    char message[PROTOCOL_SIZE];
     char *time_str;
     time_str = generate_time();
     sprintf(message, "[%s] %s : %s", time_str, user_list[fd]->name, buf);
@@ -210,10 +219,19 @@ void write_message(int fd, char *buf) {
         }
         temp_user_link = temp_user_link->next;
     }
-
-
 }
 
+void async_write_message(int fd, char *buf, int len) {
+    Node *temp_user_link = user_link;
+    while (temp_user_link != NULL) {
+        if (user_list[temp_user_link->fd]->fd != fd) {
+            printf("%d 번님 %s 메시지입니다. ", user_list[temp_user_link->fd]->fd, buf);
+            write(user_list[temp_user_link->fd]->fd, buf, len);
+        }
+        temp_user_link = temp_user_link->next;
+    }
+    printf("\n");
+}
 
 void show_users() {
     Node *temp_user_link = user_link;
