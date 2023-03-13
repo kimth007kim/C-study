@@ -61,6 +61,12 @@ build CMakeFiles/client.dir/src/util.c.o: C_COMPILER__client_Debug /home/kim/C-s
   OBJECT_DIR = CMakeFiles/client.dir
   OBJECT_FILE_DIR = CMakeFiles/client.dir/src
 
+build CMakeFiles/client.dir/src/protocol.c.o: C_COMPILER__client_Debug /home/kim/C-study/project/0314/src/protocol.c || cmake_object_order_depends_target_client
+  DEP_FILE = CMakeFiles/client.dir/src/protocol.c.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles/client.dir
+  OBJECT_FILE_DIR = CMakeFiles/client.dir/src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target client
@@ -69,7 +75,7 @@ build CMakeFiles/client.dir/src/util.c.o: C_COMPILER__client_Debug /home/kim/C-s
 #############################################
 # Link the executable client
 
-build client: C_EXECUTABLE_LINKER__client_Debug CMakeFiles/client.dir/epollclient.c.o CMakeFiles/client.dir/src/util.c.o
+build client: C_EXECUTABLE_LINKER__client_Debug CMakeFiles/client.dir/epollclient.c.o CMakeFiles/client.dir/src/util.c.o CMakeFiles/client.dir/src/protocol.c.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/client.dir
   POST_BUILD = :
@@ -104,6 +110,12 @@ build CMakeFiles/server.dir/src/linkedlist.c.o: C_COMPILER__server_Debug /home/k
   OBJECT_DIR = CMakeFiles/server.dir
   OBJECT_FILE_DIR = CMakeFiles/server.dir/src
 
+build CMakeFiles/server.dir/src/protocol.c.o: C_COMPILER__server_Debug /home/kim/C-study/project/0314/src/protocol.c || cmake_object_order_depends_target_server
+  DEP_FILE = CMakeFiles/server.dir/src/protocol.c.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles/server.dir
+  OBJECT_FILE_DIR = CMakeFiles/server.dir/src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target server
@@ -112,7 +124,7 @@ build CMakeFiles/server.dir/src/linkedlist.c.o: C_COMPILER__server_Debug /home/k
 #############################################
 # Link the executable server
 
-build server: C_EXECUTABLE_LINKER__server_Debug CMakeFiles/server.dir/epollserver.c.o CMakeFiles/server.dir/src/util.c.o CMakeFiles/server.dir/src/linkedlist.c.o
+build server: C_EXECUTABLE_LINKER__server_Debug CMakeFiles/server.dir/epollserver.c.o CMakeFiles/server.dir/src/util.c.o CMakeFiles/server.dir/src/linkedlist.c.o CMakeFiles/server.dir/src/protocol.c.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/server.dir
   POST_BUILD = :
