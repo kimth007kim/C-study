@@ -6,17 +6,10 @@
 #include<string.h>
 #include <ctype.h>
 #include "../include/util.h"
+#include "../include/protocol.h"
 
-char *generate_protocol(char *read_buf, int target);
-struct protocol *parse_protocol(int fd, char *protocol);
-struct protocol {
-    int total;
-    int target;
-    char *message;
 
-};
-
-char *generate_protocol(char *read_buf, int target) {
+char *encode_protocol(char *read_buf, int target) {
     // TODO 프로토콜 생성해서 붙이기
     // TODO  추후에 target 을 통해서 목적지를 변경하도록 구현
     char *result = malloc(sizeof(char) * PROTOCOL_SIZE);
@@ -36,18 +29,20 @@ char *generate_protocol(char *read_buf, int target) {
     return result;
 }
 
-struct protocol *parse_protocol(int fd, char *buf) {
-    //TODO 덜들어오면 덜들어온것을 처리하는 구문을 작성하도록하자
-
-    struct protocol *new_protocol = malloc(sizeof(struct protocol));
+struct protocol *decode_protocol(int fd, char *buf) {
     int protocol_size = strlen(buf);
-    memset(new_protocol,0,sizeof(new_protocol));
+        //TODO 덜들어오면 덜들어온것을 처리하는 구문을 작성하도록하자
+    struct protocol *new_protocol = malloc(sizeof(struct protocol));
+    if(new_protocol==NULL){
+        return NULL;
+    }
+    memset(new_protocol, 0, sizeof(struct protocol));
     char *num = malloc(sizeof(char) * 4);
     char *target = malloc(sizeof(char) * 4);
     char *message = malloc(sizeof(char) * PROTOCOL_SIZE);
-    memset(num, 0, sizeof(char)*5);
-    memset(target, 0, sizeof(char)*5);
-    memset(message, 0, sizeof(char) * (PROTOCOL_SIZE+1));
+    memset(num, 0, sizeof(char) * 5);
+    memset(target, 0, sizeof(char) * 5);
+    memset(message, 0, sizeof(char) * (PROTOCOL_SIZE + 1));
     int space = 0;
     int idx = 0;
     printf("읽어온 프로토콜의 크기 : %d\n", protocol_size);
@@ -64,8 +59,11 @@ struct protocol *parse_protocol(int fd, char *buf) {
                 }
                 idx += 1;
             } else {
-                new_protocol->total=-1;
-                return new_protocol;
+                free(num);
+                free(target);
+                free(message);
+                free(new_protocol);
+                return NULL;
             }
         } else {
             message[idx] = buf[i];
@@ -74,7 +72,7 @@ struct protocol *parse_protocol(int fd, char *buf) {
     }
     new_protocol->total = atoi(num);
     new_protocol->target = atoi(target);
-    new_protocol->message=message;
+    new_protocol->message = message;
     // 여기에 덜받았을 경우에 분기 처리
 
     printf("%s %s %s 프로토콜 해독 완료\n", message, num, target);

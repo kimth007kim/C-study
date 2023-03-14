@@ -13,12 +13,12 @@ set(CMAKE_CXX_FLAGS "-m64 -Wall -O2 -fno-strict-aliasing -g -pthread")
 #        )
 
 
-add_executable(client epollclient.c src/util.c src/protocol.c)
-add_executable(server epollserver.c  src/util.c src/linkedlist.c src/protocol.c)
+add_executable(eclient epollclient.c src/util.c src/protocol.c src/epoll.c src/client.c src/server.c)
+add_executable(eserver epollserver.c  src/util.c src/linkedlist.c src/protocol.c src/epoll.c src/client.c src/server.c include/user.h)
 add_executable(test test.c src/linkedlist.c src/util.c include/linkedlist.h)
 #add_executable(${MODULE_EXECUTABLE} ${SOURCE_FILES})
 
-install(TARGETS server client test
+install(TARGETS eserver eclient test
         DESTINATION ../../bin
         )
 

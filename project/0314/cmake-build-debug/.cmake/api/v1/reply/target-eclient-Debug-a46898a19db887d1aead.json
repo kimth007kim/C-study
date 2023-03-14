@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "client"
+			"path" : "eclient"
 		}
 	],
 	"backtrace" : 1,
@@ -61,11 +61,14 @@
 			[
 				0,
 				1,
-				2
+				2,
+				3,
+				4,
+				5
 			]
 		}
 	],
-	"id" : "client::@6890427a1f51a3e7e1df",
+	"id" : "eclient::@6890427a1f51a3e7e1df",
 	"install" : 
 	{
 		"destinations" : 
@@ -95,8 +98,8 @@
 		],
 		"language" : "C"
 	},
-	"name" : "client",
-	"nameOnDisk" : "client",
+	"name" : "eclient",
+	"nameOnDisk" : "eclient",
 	"paths" : 
 	{
 		"build" : ".",
@@ -110,7 +113,10 @@
 			[
 				0,
 				1,
-				2
+				2,
+				3,
+				4,
+				5
 			]
 		}
 	],
@@ -132,6 +138,24 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/protocol.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/epoll.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/client.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/server.c",
 			"sourceGroupIndex" : 0
 		}
 	],

@@ -41,96 +41,132 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /home/kim/C-study/project/0314/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target client
+# Object build statements for EXECUTABLE target eclient
 
 
 #############################################
-# Order-only phony target for client
+# Order-only phony target for eclient
 
-build cmake_object_order_depends_target_client: phony || CMakeFiles/client.dir
+build cmake_object_order_depends_target_eclient: phony || CMakeFiles/eclient.dir
 
-build CMakeFiles/client.dir/epollclient.c.o: C_COMPILER__client_Debug /home/kim/C-study/project/0314/epollclient.c || cmake_object_order_depends_target_client
-  DEP_FILE = CMakeFiles/client.dir/epollclient.c.o.d
+build CMakeFiles/eclient.dir/epollclient.c.o: C_COMPILER__eclient_Debug /home/kim/C-study/project/0314/epollclient.c || cmake_object_order_depends_target_eclient
+  DEP_FILE = CMakeFiles/eclient.dir/epollclient.c.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu11
-  OBJECT_DIR = CMakeFiles/client.dir
-  OBJECT_FILE_DIR = CMakeFiles/client.dir
+  OBJECT_DIR = CMakeFiles/eclient.dir
+  OBJECT_FILE_DIR = CMakeFiles/eclient.dir
 
-build CMakeFiles/client.dir/src/util.c.o: C_COMPILER__client_Debug /home/kim/C-study/project/0314/src/util.c || cmake_object_order_depends_target_client
-  DEP_FILE = CMakeFiles/client.dir/src/util.c.o.d
+build CMakeFiles/eclient.dir/src/util.c.o: C_COMPILER__eclient_Debug /home/kim/C-study/project/0314/src/util.c || cmake_object_order_depends_target_eclient
+  DEP_FILE = CMakeFiles/eclient.dir/src/util.c.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu11
-  OBJECT_DIR = CMakeFiles/client.dir
-  OBJECT_FILE_DIR = CMakeFiles/client.dir/src
+  OBJECT_DIR = CMakeFiles/eclient.dir
+  OBJECT_FILE_DIR = CMakeFiles/eclient.dir/src
 
-build CMakeFiles/client.dir/src/protocol.c.o: C_COMPILER__client_Debug /home/kim/C-study/project/0314/src/protocol.c || cmake_object_order_depends_target_client
-  DEP_FILE = CMakeFiles/client.dir/src/protocol.c.o.d
+build CMakeFiles/eclient.dir/src/protocol.c.o: C_COMPILER__eclient_Debug /home/kim/C-study/project/0314/src/protocol.c || cmake_object_order_depends_target_eclient
+  DEP_FILE = CMakeFiles/eclient.dir/src/protocol.c.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu11
-  OBJECT_DIR = CMakeFiles/client.dir
-  OBJECT_FILE_DIR = CMakeFiles/client.dir/src
+  OBJECT_DIR = CMakeFiles/eclient.dir
+  OBJECT_FILE_DIR = CMakeFiles/eclient.dir/src
+
+build CMakeFiles/eclient.dir/src/epoll.c.o: C_COMPILER__eclient_Debug /home/kim/C-study/project/0314/src/epoll.c || cmake_object_order_depends_target_eclient
+  DEP_FILE = CMakeFiles/eclient.dir/src/epoll.c.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles/eclient.dir
+  OBJECT_FILE_DIR = CMakeFiles/eclient.dir/src
+
+build CMakeFiles/eclient.dir/src/client.c.o: C_COMPILER__eclient_Debug /home/kim/C-study/project/0314/src/client.c || cmake_object_order_depends_target_eclient
+  DEP_FILE = CMakeFiles/eclient.dir/src/client.c.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles/eclient.dir
+  OBJECT_FILE_DIR = CMakeFiles/eclient.dir/src
+
+build CMakeFiles/eclient.dir/src/server.c.o: C_COMPILER__eclient_Debug /home/kim/C-study/project/0314/src/server.c || cmake_object_order_depends_target_eclient
+  DEP_FILE = CMakeFiles/eclient.dir/src/server.c.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles/eclient.dir
+  OBJECT_FILE_DIR = CMakeFiles/eclient.dir/src
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target client
+# Link build statements for EXECUTABLE target eclient
 
 
 #############################################
-# Link the executable client
+# Link the executable eclient
 
-build client: C_EXECUTABLE_LINKER__client_Debug CMakeFiles/client.dir/epollclient.c.o CMakeFiles/client.dir/src/util.c.o CMakeFiles/client.dir/src/protocol.c.o
+build eclient: C_EXECUTABLE_LINKER__eclient_Debug CMakeFiles/eclient.dir/epollclient.c.o CMakeFiles/eclient.dir/src/util.c.o CMakeFiles/eclient.dir/src/protocol.c.o CMakeFiles/eclient.dir/src/epoll.c.o CMakeFiles/eclient.dir/src/client.c.o CMakeFiles/eclient.dir/src/server.c.o
   FLAGS = -g
-  OBJECT_DIR = CMakeFiles/client.dir
+  OBJECT_DIR = CMakeFiles/eclient.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = client
-  TARGET_PDB = client.dbg
+  TARGET_FILE = eclient
+  TARGET_PDB = eclient.dbg
 
 # =============================================================================
-# Object build statements for EXECUTABLE target server
+# Object build statements for EXECUTABLE target eserver
 
 
 #############################################
-# Order-only phony target for server
+# Order-only phony target for eserver
 
-build cmake_object_order_depends_target_server: phony || CMakeFiles/server.dir
+build cmake_object_order_depends_target_eserver: phony || CMakeFiles/eserver.dir
 
-build CMakeFiles/server.dir/epollserver.c.o: C_COMPILER__server_Debug /home/kim/C-study/project/0314/epollserver.c || cmake_object_order_depends_target_server
-  DEP_FILE = CMakeFiles/server.dir/epollserver.c.o.d
+build CMakeFiles/eserver.dir/epollserver.c.o: C_COMPILER__eserver_Debug /home/kim/C-study/project/0314/epollserver.c || cmake_object_order_depends_target_eserver
+  DEP_FILE = CMakeFiles/eserver.dir/epollserver.c.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu11
-  OBJECT_DIR = CMakeFiles/server.dir
-  OBJECT_FILE_DIR = CMakeFiles/server.dir
+  OBJECT_DIR = CMakeFiles/eserver.dir
+  OBJECT_FILE_DIR = CMakeFiles/eserver.dir
 
-build CMakeFiles/server.dir/src/util.c.o: C_COMPILER__server_Debug /home/kim/C-study/project/0314/src/util.c || cmake_object_order_depends_target_server
-  DEP_FILE = CMakeFiles/server.dir/src/util.c.o.d
+build CMakeFiles/eserver.dir/src/util.c.o: C_COMPILER__eserver_Debug /home/kim/C-study/project/0314/src/util.c || cmake_object_order_depends_target_eserver
+  DEP_FILE = CMakeFiles/eserver.dir/src/util.c.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu11
-  OBJECT_DIR = CMakeFiles/server.dir
-  OBJECT_FILE_DIR = CMakeFiles/server.dir/src
+  OBJECT_DIR = CMakeFiles/eserver.dir
+  OBJECT_FILE_DIR = CMakeFiles/eserver.dir/src
 
-build CMakeFiles/server.dir/src/linkedlist.c.o: C_COMPILER__server_Debug /home/kim/C-study/project/0314/src/linkedlist.c || cmake_object_order_depends_target_server
-  DEP_FILE = CMakeFiles/server.dir/src/linkedlist.c.o.d
+build CMakeFiles/eserver.dir/src/linkedlist.c.o: C_COMPILER__eserver_Debug /home/kim/C-study/project/0314/src/linkedlist.c || cmake_object_order_depends_target_eserver
+  DEP_FILE = CMakeFiles/eserver.dir/src/linkedlist.c.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu11
-  OBJECT_DIR = CMakeFiles/server.dir
-  OBJECT_FILE_DIR = CMakeFiles/server.dir/src
+  OBJECT_DIR = CMakeFiles/eserver.dir
+  OBJECT_FILE_DIR = CMakeFiles/eserver.dir/src
 
-build CMakeFiles/server.dir/src/protocol.c.o: C_COMPILER__server_Debug /home/kim/C-study/project/0314/src/protocol.c || cmake_object_order_depends_target_server
-  DEP_FILE = CMakeFiles/server.dir/src/protocol.c.o.d
+build CMakeFiles/eserver.dir/src/protocol.c.o: C_COMPILER__eserver_Debug /home/kim/C-study/project/0314/src/protocol.c || cmake_object_order_depends_target_eserver
+  DEP_FILE = CMakeFiles/eserver.dir/src/protocol.c.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu11
-  OBJECT_DIR = CMakeFiles/server.dir
-  OBJECT_FILE_DIR = CMakeFiles/server.dir/src
+  OBJECT_DIR = CMakeFiles/eserver.dir
+  OBJECT_FILE_DIR = CMakeFiles/eserver.dir/src
+
+build CMakeFiles/eserver.dir/src/epoll.c.o: C_COMPILER__eserver_Debug /home/kim/C-study/project/0314/src/epoll.c || cmake_object_order_depends_target_eserver
+  DEP_FILE = CMakeFiles/eserver.dir/src/epoll.c.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles/eserver.dir
+  OBJECT_FILE_DIR = CMakeFiles/eserver.dir/src
+
+build CMakeFiles/eserver.dir/src/client.c.o: C_COMPILER__eserver_Debug /home/kim/C-study/project/0314/src/client.c || cmake_object_order_depends_target_eserver
+  DEP_FILE = CMakeFiles/eserver.dir/src/client.c.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles/eserver.dir
+  OBJECT_FILE_DIR = CMakeFiles/eserver.dir/src
+
+build CMakeFiles/eserver.dir/src/server.c.o: C_COMPILER__eserver_Debug /home/kim/C-study/project/0314/src/server.c || cmake_object_order_depends_target_eserver
+  DEP_FILE = CMakeFiles/eserver.dir/src/server.c.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles/eserver.dir
+  OBJECT_FILE_DIR = CMakeFiles/eserver.dir/src
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target server
+# Link build statements for EXECUTABLE target eserver
 
 
 #############################################
-# Link the executable server
+# Link the executable eserver
 
-build server: C_EXECUTABLE_LINKER__server_Debug CMakeFiles/server.dir/epollserver.c.o CMakeFiles/server.dir/src/util.c.o CMakeFiles/server.dir/src/linkedlist.c.o CMakeFiles/server.dir/src/protocol.c.o
+build eserver: C_EXECUTABLE_LINKER__eserver_Debug CMakeFiles/eserver.dir/epollserver.c.o CMakeFiles/eserver.dir/src/util.c.o CMakeFiles/eserver.dir/src/linkedlist.c.o CMakeFiles/eserver.dir/src/protocol.c.o CMakeFiles/eserver.dir/src/epoll.c.o CMakeFiles/eserver.dir/src/client.c.o CMakeFiles/eserver.dir/src/server.c.o
   FLAGS = -g
-  OBJECT_DIR = CMakeFiles/server.dir
+  OBJECT_DIR = CMakeFiles/eserver.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = server
-  TARGET_PDB = server.dbg
+  TARGET_FILE = eserver
+  TARGET_PDB = eserver.dbg
 
 # =============================================================================
 # Object build statements for EXECUTABLE target test
@@ -180,7 +216,7 @@ build test: C_EXECUTABLE_LINKER__test_Debug CMakeFiles/test.dir/test.c.o CMakeFi
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/kim/C-study/project/0314/cmake-build-debug && /snap/clion/228/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/kim/C-study/project/0314/cmake-build-debug && /snap/clion/229/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -191,7 +227,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/kim/C-study/project/0314/cmake-build-debug && /snap/clion/228/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/kim/C-study/project/0314 -B/home/kim/C-study/project/0314/cmake-build-debug
+  COMMAND = cd /home/kim/C-study/project/0314/cmake-build-debug && /snap/clion/229/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/kim/C-study/project/0314 -B/home/kim/C-study/project/0314/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -209,7 +245,7 @@ build list_install_components: phony
 # Utility command for install
 
 build CMakeFiles/install.util: CUSTOM_COMMAND all
-  COMMAND = cd /home/kim/C-study/project/0314/cmake-build-debug && /snap/clion/228/bin/cmake/linux/x64/bin/cmake -P cmake_install.cmake
+  COMMAND = cd /home/kim/C-study/project/0314/cmake-build-debug && /snap/clion/229/bin/cmake/linux/x64/bin/cmake -P cmake_install.cmake
   DESC = Install the project...
   pool = console
   restat = 1
@@ -221,7 +257,7 @@ build install: phony CMakeFiles/install.util
 # Utility command for install/local
 
 build CMakeFiles/install/local.util: CUSTOM_COMMAND all
-  COMMAND = cd /home/kim/C-study/project/0314/cmake-build-debug && /snap/clion/228/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  COMMAND = cd /home/kim/C-study/project/0314/cmake-build-debug && /snap/clion/229/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -233,7 +269,7 @@ build install/local: phony CMakeFiles/install/local.util
 # Utility command for install/strip
 
 build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
-  COMMAND = cd /home/kim/C-study/project/0314/cmake-build-debug && /snap/clion/228/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  COMMAND = cd /home/kim/C-study/project/0314/cmake-build-debug && /snap/clion/229/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
   DESC = Installing the project stripped...
   pool = console
   restat = 1
@@ -251,7 +287,7 @@ build install/strip: phony CMakeFiles/install/strip.util
 #############################################
 # Folder: /home/kim/C-study/project/0314/cmake-build-debug
 
-build all: phony client server test
+build all: phony eclient eserver test
 
 # =============================================================================
 # Built-in targets
@@ -260,14 +296,14 @@ build all: phony client server test
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /home/kim/C-study/project/0314/CMakeLists.txt /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeCInformation.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/GNU-C.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/GNU.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux-GNU-C.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux-GNU.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /home/kim/C-study/project/0314/CMakeLists.txt /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeCInformation.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/GNU-C.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/GNU.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux-GNU-C.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux-GNU.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/kim/C-study/project/0314/CMakeLists.txt /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeCInformation.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/GNU-C.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/GNU.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux-GNU-C.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux-GNU.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux.cmake /snap/clion/228/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake: phony
+build /home/kim/C-study/project/0314/CMakeLists.txt /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeCInformation.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/GNU-C.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/Compiler/GNU.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux-GNU-C.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux-GNU.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/Linux.cmake /snap/clion/229/bin/cmake/linux/x64/share/cmake-3.24/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake: phony
 
 
 #############################################

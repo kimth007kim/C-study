@@ -9,18 +9,22 @@
 
 #include"include/util.h"
 #include"include/linkedlist.h"
+#include"include/protocol.h"
+#include "include/epoll.h"
+#include "include/server.h"
 
 
 char *generate_time();
 
 struct user {
+    //TODO 각각의 유저별로 read_buf 와 write_buf를 따로 두는 식으로 설계
+
     char *name;
     int fd;
-    int target;
-//    int connnected;
-    //TODO 각각의 유저별로 read_buf 와 write_buf를 따로 두는 식으로 설계
+    int total_read_length;
+    int num_end;        // 숫자가 다들어 왔는지 확인하는 변수
+    int current_read_pos;
     char *read_buf[PROTOCOL_SIZE];
-//    int currentReadPos=3;
     char *write_buf[PROTOCOL_SIZE];
 };
 
@@ -35,7 +39,6 @@ void generate_message(int fd, char *buf);
 
 void write_message(int fd, char *buf, int len);
 
-int parse_protocol(int fd, char *protocol);
 
 void show_users();
 
@@ -55,7 +58,6 @@ int main() {
     // epoll 설정
     int epfd, event_cnt;
     struct epoll_event *ep_events;
-    struct epoll_event event;
     for (int i = 0; i < MAX_USERS; i++) {
         user_list[i] = NULL;
     }
@@ -83,9 +85,8 @@ int main() {
 
     epfd = epoll_create(EPOLL_SIZE);
     ep_events = malloc(sizeof(struct epoll_event) * EPOLL_SIZE);
-    event.events = EPOLLIN;
-    event.data.fd = server_socket;
-    epoll_ctl(epfd, EPOLL_CTL_ADD, server_socket, &event);
+    create_add_event(epfd, server_socket, EPOLLIN);
+
 
     while (1) {
 
@@ -94,7 +95,7 @@ int main() {
             puts("epoll_wait() error!");
             break;
         }
-        for (int i = 0; i < event_cnt; ++i) {
+        for (int i = 0; i < event_cnt; i++) {
             char buf[BUF_SIZE] = {0,};
             if (ep_events[i].data.fd == server_socket) {
                 //accept
@@ -105,15 +106,9 @@ int main() {
                     puts("accept() error!");
                     continue;
                 }
-                event.events = EPOLLIN;
-                event.data.fd = client_socket;
-                struct user;
-
-                epoll_ctl(epfd, EPOLL_CTL_ADD, client_socket, &event);
+                create_add_event(epfd, client_socket, EPOLLIN);
 
                 enter_user(client_socket);
-                show_users();
-                printf(" connected client : %d \n", client_socket);
                 generate_greeting(client_socket, 0);
 
                 //accept!!
@@ -122,13 +117,7 @@ int main() {
 
             } else {
                 //msg
-                int targetFd= ep_events[i].data.fd;
-
-                //read!!!
-
-                //find buffer for fd
-
-                // remain.. first // network read!!!
+                int targetFd = ep_events[i].data.fd;
                 str_len = read(ep_events[i].data.fd, buf, BUF_SIZE);
                 // network
                 //=====================================
@@ -161,8 +150,7 @@ int main() {
 
                 } else {
                     //TODO 프로토콜을 파싱하는 함수를 만들고, 파싱한 정보를 토대로 분기 처리
-//                    printf("메시지 전송 요청\n");
-                    struct protocol *new_protocol= (struct protocol *) parse_protocol(ep_events[i].data.fd, buf);
+                    struct protocol *new_protocol = decode_protocol(ep_events[i].data.fd, buf);
 //                    generate_message(ep_events[i].data.fd, buf);
                     memset(buf, 0, sizeof(buf));
                 }
@@ -256,57 +244,3 @@ char *generate_time() {
 
     return result;
 }
-
-//int parse_protocol(int fd, char *protocol) {
-//    //TODO 덜들어오면 덜들어온것을 처리하는 구문을 작성하도록하자
-//    int protocol_size = strlen(protocol);
-//    char *num = malloc(sizeof(char) * 4);
-//    char *target = malloc(sizeof(char) * 4);
-//    char *message = malloc(sizeof(char) * PROTOCOL_SIZE);
-//    memset(num, 0, sizeof(num));
-//    memset(target, 0, sizeof(target));
-//    memset(message, 0, sizeof(message));
-//    int space = 0;
-//    int idx = 0;
-//    printf("읽어온 프로토콜의 크기 : %d\n", protocol_size);
-//    for (int i = 0; i < strlen(protocol); i++) {
-//        if (space < 2) {
-//            if (isspace(protocol[i])) {
-//                idx = 0;
-//                space += 1;
-//            } else if (isdigit(protocol[i])) {
-//                if (space == 0) {
-//                    num[idx] = protocol[i];
-//                } else if (space == 1) {
-//                    target[idx] = protocol[i];
-//                }
-//                idx += 1;
-//            } else {
-//                return -1;
-//            }
-//        } else {
-//            message[idx] = protocol[i];
-//            idx += 1;
-//        }
-//    }
-//    int destination = atoi(target);
-//    int total = atoi(num);
-//
-//    // 여기에 덜받았을 경우에 분기 처리
-//
-//    if(destination==0){
-//        generate_message(fd, message);
-//    }else{
-//        int a =1;
-//        //broadcast_message(fd, message
-//    }
-//
-//
-//
-//
-//    printf("%s %s %s 프로토콜 해독 완료\n", message, num, target);
-//    free(num);
-//    free(target);
-//    free(message);
-//    return 0;
-//}

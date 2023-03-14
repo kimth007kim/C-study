@@ -1,5 +1,5 @@
-/home/kim/C-study/project/0314/cmake-build-debug/CMakeFiles/client.dir
-/home/kim/C-study/project/0314/cmake-build-debug/CMakeFiles/server.dir
+/home/kim/C-study/project/0314/cmake-build-debug/CMakeFiles/eclient.dir
+/home/kim/C-study/project/0314/cmake-build-debug/CMakeFiles/eserver.dir
 /home/kim/C-study/project/0314/cmake-build-debug/CMakeFiles/test.dir
 /home/kim/C-study/project/0314/cmake-build-debug/CMakeFiles/edit_cache.dir
 /home/kim/C-study/project/0314/cmake-build-debug/CMakeFiles/rebuild_cache.dir

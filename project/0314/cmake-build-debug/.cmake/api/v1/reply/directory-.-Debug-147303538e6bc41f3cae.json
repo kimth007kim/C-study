@@ -30,9 +30,9 @@
 			"destination" : "../../bin",
 			"paths" : 
 			[
-				"server"
+				"eserver"
 			],
-			"targetId" : "server::@6890427a1f51a3e7e1df",
+			"targetId" : "eserver::@6890427a1f51a3e7e1df",
 			"targetIndex" : 1,
 			"type" : "target"
 		},
@@ -42,9 +42,9 @@
 			"destination" : "../../bin",
 			"paths" : 
 			[
-				"client"
+				"eclient"
 			],
-			"targetId" : "client::@6890427a1f51a3e7e1df",
+			"targetId" : "eclient::@6890427a1f51a3e7e1df",
 			"targetIndex" : 0,
 			"type" : "target"
 		},

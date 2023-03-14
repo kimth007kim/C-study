@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "server"
+			"path" : "eserver"
 		}
 	],
 	"backtrace" : 1,
@@ -62,11 +62,14 @@
 				0,
 				1,
 				2,
-				3
+				3,
+				4,
+				5,
+				6
 			]
 		}
 	],
-	"id" : "server::@6890427a1f51a3e7e1df",
+	"id" : "eserver::@6890427a1f51a3e7e1df",
 	"install" : 
 	{
 		"destinations" : 
@@ -96,8 +99,8 @@
 		],
 		"language" : "C"
 	},
-	"name" : "server",
-	"nameOnDisk" : "server",
+	"name" : "eserver",
+	"nameOnDisk" : "eserver",
 	"paths" : 
 	{
 		"build" : ".",
@@ -112,7 +115,17 @@
 				0,
 				1,
 				2,
-				3
+				3,
+				4,
+				5,
+				6
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				7
 			]
 		}
 	],
@@ -141,6 +154,29 @@
 			"compileGroupIndex" : 0,
 			"path" : "src/protocol.c",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/epoll.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/client.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/server.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/user.h",
+			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"
