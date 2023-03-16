@@ -118,6 +118,13 @@
 				4,
 				5
 			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				6
+			]
 		}
 	],
 	"sources" : 
@@ -157,6 +164,11 @@
 			"compileGroupIndex" : 0,
 			"path" : "src/server.c",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/\u3147\u3134\u3141\u3147.h",
+			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"

@@ -8,25 +8,26 @@
 #include <ctype.h>
 
 #include"include/util.h"
-#include"include/linkedlist.h"
+//#include"include/linkedlist.h"
 #include"include/protocol.h"
 #include "include/epoll.h"
 #include "include/server.h"
+#include "include/user.h"
 
 
 char *generate_time();
 
-struct user {
-    //TODO 각각의 유저별로 read_buf 와 write_buf를 따로 두는 식으로 설계
-
-    char *name;
-    int fd;
-    int total_read_length;
-    int num_end;        // 숫자가 다들어 왔는지 확인하는 변수
-    int current_read_pos;
-    char *read_buf[PROTOCOL_SIZE];
-    char *write_buf[PROTOCOL_SIZE];
-};
+//struct user {
+//    //TODO 각각의 유저별로 read_buf 와 write_buf를 따로 두는 식으로 설계
+//
+//    char *name;
+//    int fd;
+//    int total_read_length;
+//    int num_end;        // 숫자가 다들어 왔는지 확인하는 변수
+//    int current_read_pos;
+//    char *read_buf[PROTOCOL_SIZE];
+//    char *write_buf[PROTOCOL_SIZE];
+//};
 
 void enter_user(int fd);
 
@@ -44,9 +45,9 @@ void show_users();
 
 
 // 유저의 fd를 관리하는 링크드리스트, 유저의 구조체를 가지는 배열 를 선언 및 초기화
-Node *user_link = NULL;
-struct user *user_list[MAX_USERS];
-int current_users = 0;
+//Node *user_link = NULL;
+//struct user *user_list[MAX_USERS];
+//int current_users = 0;
 
 int main() {
 
