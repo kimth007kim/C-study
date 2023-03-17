@@ -27,4 +27,7 @@ int main(int argc, char *argv[]) {
 
 
     event_loop(client_epoll, server_socket, epfd);
+    close(server_socket);
+    return 0;
+
 }

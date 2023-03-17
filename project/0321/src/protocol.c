@@ -17,32 +17,23 @@
 /* 4byte = magic number */
 /* 10byte = header  flag */
 
-
+//    4Byte  + 4Byte + Message Length Byte
+// Body의 길이 + 타겟   +  문자열 길이
 char *encode_protocol(char *read_buf, int target) {
-    //4Byte+4Byte+Message Length Byte
-    // c띄어쓰기(2byte) +타겟(4byte)+ 문자열길이
 
-    // TODO 프로토콜 생성해서 붙이기
-    // TODO  추후에 target 을 통해서 목적지를 변경하도록 구현
+
+    printf("여기서 받은 %s \n", read_buf);
     char *total = malloc(sizeof(4));
     char *dest = malloc(sizeof(4));
     char *result = malloc(sizeof(char) * PROTOCOL_SIZE);
-
-
     int message_length = strlen(read_buf);
-    // 메세지의 총 길이가 9999를 넘어가면 어떻게 해야할지 정하도록 하자
-    printf("message_length = %d", message_length);
-    //총 문자열의 길이를 char 형으로 변경
+    // TODO 메세지의 총 길이가 9999를 넘어가면 어떻게 해야할지 정하도록 하자
+    // 총 문자열의 길이를 char 형으로 변경
     total = int_to_charzero(message_length);
-    printf("total = %s", total);
     // destination을 char형으로 변형
     dest = int_to_charzero(target);
-    printf("dest = %s", dest);
-
     // 총길이 + destination + message를 하는 sprintf()
     sprintf(result, "%s%s%s", total, dest, read_buf);
-
-    printf(result);
     return result;
 }
 

@@ -9,10 +9,11 @@
 #include "../include/linkedlist.h"
 #include "../include/client.h"
 
-void client_epoll(int flag, int server_socket, int epfd, int fd, char *read_buf, char *write_buf) {
-    int read_length = 0;
+void client_epoll(int flag, int server_socket, int epfd, int fd, char *read_buf, char *write_buf, int *read_length) {
+//    int read_length = 0;
 //    char read_buf[BUF_SIZE] = {0,};
 //    char write_buf[BUF_SIZE] = {0,};
+
     if (flag == 0) {
         memset(write_buf, 0, sizeof(write_buf));
         int str_len = read(server_socket, write_buf, sizeof(write_buf));
@@ -20,7 +21,8 @@ void client_epoll(int flag, int server_socket, int epfd, int fd, char *read_buf,
         if (str_len == 0) {
             epoll_ctl(epfd, EPOLL_CTL_DEL, server_socket, NULL);
             close(server_socket);
-            return;
+//            return;
+            exit(1);
         }
 
         write_buf[str_len] = '\n';
@@ -33,21 +35,21 @@ void client_epoll(int flag, int server_socket, int epfd, int fd, char *read_buf,
             //ctrl+c 를 입력했을때
             epoll_ctl(epfd, EPOLL_CTL_DEL, STDIN_FILENO, NULL);
             close(STDIN_FILENO);
-            return;
+            exit(1);
         } else {
-            if (temp != '\n' && read_length < BUF_SIZE - 1) {
-                read_buf[read_length] = temp;
-                read_length += 1;
+            if (temp != '\n' && *read_length < BUF_SIZE - 1) {
+                read_buf[*read_length] = temp;
+                *read_length += 1;
                 return;
             }
-            read_buf[read_length] = '\0';
+            read_buf[*read_length] = '\0';
 
             char *protocol = encode_protocol(read_buf, 0);
 
             write(server_socket, protocol, strlen(protocol));
             memset(read_buf, 0, sizeof(read_buf));
             free(protocol);
-            read_length = 0;
+            *read_length = 0;
         }
     }
 

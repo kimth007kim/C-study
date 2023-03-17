@@ -10,12 +10,12 @@
 #include "../include/epoll.h"
 #include "../include/user.h"
 
-void server_epoll(int flag, int server_socket, int epfd, int fd, char *read_buf, char *write_buf) {
+void server_epoll(int flag, int server_socket, int epfd, int fd, char *read_buf, char *write_buf, int *read_length) {
     socklen_t address_size;
     int str_len = 0;
     int client_socket;
     int client_address;
-    char * greeting;
+    char *greeting;
     if (flag == 0) {
         address_size = sizeof(client_address);
         client_socket = accept(server_socket, (struct sockaddr *) &client_address, &address_size);
@@ -25,22 +25,25 @@ void server_epoll(int flag, int server_socket, int epfd, int fd, char *read_buf,
         }
         create_add_event(epfd, client_socket, EPOLLIN);
         enter_user(client_socket);
-        greeting=generate_greeting(client_socket, 0);
+        greeting = generate_greeting(client_socket, 0);
     } else {
+        memset(read_buf,0,BUF_SIZE);
         str_len = read(fd, read_buf, BUF_SIZE);
         if (str_len == 0) {
             // Ctrl + c 로 인한 종료 요청
-            greeting =generate_greeting(fd, 1);
+            greeting = generate_greeting(fd, 1);
 
             epoll_ctl(epfd, EPOLL_CTL_DEL, fd, NULL);
             exit_user(fd);
 
 
         } else {
+            printf("읽어온 read_buf %s", read_buf);
             //TODO 프로토콜을 파싱하는 함수를 만들고, 파싱한 정보를 토대로 분기 처리
 //            struct protocol *new_protocol = decode_protocol(fd, read_buf);
-            generate_message(fd, read_buf);
-            memset(read_buf, 0, sizeof(read_buf));
+//            generate_message(fd, read_buf);
+//            memset(read_buf, 0, sizeof(read_buf));
+            write_message(fd, read_buf, BUF_SIZE);
         }
 
     }
@@ -48,9 +51,8 @@ void server_epoll(int flag, int server_socket, int epfd, int fd, char *read_buf,
 
 void server_network(struct sockaddr_in server_address, int server_socket, char *name) {
     int option = 1;
-    int option_len= sizeof(option);
+    int option_len = sizeof(option);
     setsockopt(server_socket, SOL_SOCKET, SO_REUSEADDR, (void *) &option, option_len);
-
 
 
     server_address.sin_addr.s_addr = htonl(INADDR_ANY);
