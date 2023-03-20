@@ -28,17 +28,15 @@ char *generate_greeting(int fd, int flag) {
         sprintf(message, "[%s] %s 님이 %s.\n", time_str, user_list[fd]->name, bye);
     }
     int message_length = strlen(message);
-//    write_message(fd, message, message_length);
     return message;
 }
 
 void write_message(int fd, char *buf, int len) {
     Node *temp_user_link = user_link;
     while (temp_user_link != NULL) {
-        if (user_list[temp_user_link->fd]->fd != fd) {
-            printf("%d 번님 %s 메시지입니다. ", user_list[temp_user_link->fd]->fd, buf);
+//        if (user_list[temp_user_link->fd]->fd != fd) {
             write(user_list[temp_user_link->fd]->fd, buf, len);
-        }
+//        }
         temp_user_link = temp_user_link->next;
     }
     printf("\n");

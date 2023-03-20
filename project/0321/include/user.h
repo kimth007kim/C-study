@@ -13,11 +13,11 @@ struct user {
 
     char *name;
     int fd;
-    int total_read_length;
     int num_end;        // 숫자가 다들어 왔는지 확인하는 변수
     int current_read_pos;
-    char *read_buf[PROTOCOL_SIZE];
-    char *write_buf[PROTOCOL_SIZE];
+    int total_read_length;
+    char read_buf[PROTOCOL_SIZE];
+    char write_buf[PROTOCOL_SIZE];
 };
 
 

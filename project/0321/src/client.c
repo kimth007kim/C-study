@@ -9,15 +9,14 @@
 #include "../include/linkedlist.h"
 #include "../include/client.h"
 
-void client_epoll(int flag, int server_socket, int epfd, int fd, char *read_buf, char *write_buf, int *read_length) {
-//    int read_length = 0;
-//    char read_buf[BUF_SIZE] = {0,};
-//    char write_buf[BUF_SIZE] = {0,};
 
-    if (flag == 0) {
+// TODO 분기처리를 여기서 해주도록하자
+
+void client_epoll(int server_socket, int epfd, int fd, char *read_buf, char *write_buf, int *read_length) {
+    char *protocol = malloc(PROTOCOL_SIZE);
+    if (server_socket == fd) {
         memset(write_buf, 0, sizeof(write_buf));
-        int str_len = read(server_socket, write_buf, sizeof(write_buf));
-//                printf("버퍼에서 읽어온 값 : %d  %s", str_len, buf);
+        int str_len = read(server_socket, write_buf, BUF_SIZE);
         if (str_len == 0) {
             epoll_ctl(epfd, EPOLL_CTL_DEL, server_socket, NULL);
             close(server_socket);
@@ -44,11 +43,9 @@ void client_epoll(int flag, int server_socket, int epfd, int fd, char *read_buf,
             }
             read_buf[*read_length] = '\0';
 
-            char *protocol = encode_protocol(read_buf, 0);
-
+            protocol = encode_protocol(read_buf, 0);
             write(server_socket, protocol, strlen(protocol));
             memset(read_buf, 0, sizeof(read_buf));
-            free(protocol);
             *read_length = 0;
         }
     }

@@ -76,6 +76,9 @@ CMakeFiles/eserver.dir/src/server.c.o: \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
  /usr/include/strings.h /usr/include/arpa/inet.h \
  /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/bits/in.h \
+ /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+ /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /home/kim/C-study/project/0321/src/../include/util.h \
  /home/kim/C-study/project/0321/src/../include/protocol.h \
  /home/kim/C-study/project/0321/src/../include/server.h \

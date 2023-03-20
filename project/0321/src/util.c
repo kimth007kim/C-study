@@ -20,7 +20,7 @@ int int_to_strlength(int num) {
 }
 
 char *int_to_charzero(int num) {
-    char *result = malloc(sizeof(5));
+    char *result = malloc(5);
     sprintf(result, "%04d", num);
 //    result[4]='\n';
     return result;

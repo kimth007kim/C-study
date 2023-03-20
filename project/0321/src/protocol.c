@@ -22,10 +22,10 @@
 char *encode_protocol(char *read_buf, int target) {
 
 
-    printf("여기서 받은 %s \n", read_buf);
+//    printf("여기서 받은 %s \n", read_buf);
     char *total = malloc(sizeof(4));
     char *dest = malloc(sizeof(4));
-    char *result = malloc(sizeof(char) * PROTOCOL_SIZE);
+    char *result = malloc(PROTOCOL_SIZE);
     int message_length = strlen(read_buf);
     // TODO 메세지의 총 길이가 9999를 넘어가면 어떻게 해야할지 정하도록 하자
     // 총 문자열의 길이를 char 형으로 변경
@@ -34,6 +34,11 @@ char *encode_protocol(char *read_buf, int target) {
     dest = int_to_charzero(target);
     // 총길이 + destination + message를 하는 sprintf()
     sprintf(result, "%s%s%s", total, dest, read_buf);
+    result[strlen(result)] = '\0';
+    printf(" 완성된 프로토콜 %s\n", result);
+    memset(total, 0, sizeof(total));
+    memset(dest, 0, sizeof(dest));
+//    memset(result,0,sizeof(result));
     return result;
 }
 

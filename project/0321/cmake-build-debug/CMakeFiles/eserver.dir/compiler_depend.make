@@ -540,6 +540,11 @@ CMakeFiles/eserver.dir/src/server.c.o: /home/kim/C-study/project/0321/src/server
   /usr/include/arpa/inet.h \
   /usr/include/netinet/in.h \
   /usr/include/x86_64-linux-gnu/bits/in.h \
+  /usr/include/stdlib.h \
+  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
+  /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   /home/kim/C-study/project/0321/include/util.h \
   /home/kim/C-study/project/0321/include/protocol.h \
   /home/kim/C-study/project/0321/include/server.h \
