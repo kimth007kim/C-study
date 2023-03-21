@@ -10,8 +10,15 @@
 #include "../include/client.h"
 
 
-// TODO 분기처리를 여기서 해주도록하자
-
+/**
+ *
+ * @param server_socket server_socket은 서버의 경우 자기 자신을 의미합니다. 이것을 토대로 stdin인지 , 아니면 서버와의 통신인지 구별합니다.
+ * @param epfd          epfd는 epollevent를 감지하는 fd입니다.
+ * @param fd            fd 는 이벤트가 발생한 fd를 가리킵니다.
+ * @param read_buf      epoll_event가 발생할때 read_buf도 받습니다.
+ * @param write_buf     epoll_event가 발생할때 write_buf도 받습니다.
+ * @param read_length   epoll_event가 발생할때 read_length 받습니다. read_buf에서 어디까지 읽었는지 기록하기위한 변수입니다.
+ */
 void client_epoll(int server_socket, int epfd, int fd, char *read_buf, char *write_buf, int *read_length) {
     char *protocol = malloc(PROTOCOL_SIZE);
     if (server_socket == fd) {

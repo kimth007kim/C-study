@@ -85,6 +85,14 @@ CMakeFiles/eserver.dir/epollserver.c.o: /home/kim/C-study/project/0321/epollserv
   /home/kim/C-study/project/0321/include/linkedlist.h \
   /home/kim/C-study/project/0321/include/network.h
 
+CMakeFiles/eserver.dir/src/chat.c.o: /home/kim/C-study/project/0321/src/chat.c \
+  /usr/include/stdc-predef.h \
+  /home/kim/C-study/project/0321/include/chat.h \
+  /home/kim/C-study/project/0321/include/protocol.h \
+  /home/kim/C-study/project/0321/include/user.h \
+  /home/kim/C-study/project/0321/include/util.h \
+  /home/kim/C-study/project/0321/include/linkedlist.h
+
 CMakeFiles/eserver.dir/src/client.c.o: /home/kim/C-study/project/0321/src/client.c \
   /usr/include/stdc-predef.h \
   /usr/include/x86_64-linux-gnu/sys/epoll.h \
@@ -720,6 +728,8 @@ CMakeFiles/eserver.dir/src/util.c.o: /home/kim/C-study/project/0321/src/util.c \
 
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
+/home/kim/C-study/project/0321/src/chat.c:
+
 /home/kim/C-study/project/0321/include/linkedlist.h:
 
 /home/kim/C-study/project/0321/src/client.c:
@@ -839,6 +849,8 @@ CMakeFiles/eserver.dir/src/util.c.o: /home/kim/C-study/project/0321/src/util.c \
 /home/kim/C-study/project/0321/include/util.h:
 
 /usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/home/kim/C-study/project/0321/include/chat.h:
 
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 

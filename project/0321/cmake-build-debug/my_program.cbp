@@ -216,11 +216,17 @@
 		<Unit filename="/home/kim/C-study/project/0321/epollserver.c">
 			<Option target="eserver"/>
 		</Unit>
+		<Unit filename="/home/kim/C-study/project/0321/include/chat.h">
+			<Option target="eserver"/>
+		</Unit>
 		<Unit filename="/home/kim/C-study/project/0321/include/linkedlist.h">
 			<Option target="test"/>
 		</Unit>
 		<Unit filename="/home/kim/C-study/project/0321/include/network.h">
 			<Option target="eclient"/>
+		</Unit>
+		<Unit filename="/home/kim/C-study/project/0321/src/chat.c">
+			<Option target="eserver"/>
 		</Unit>
 		<Unit filename="/home/kim/C-study/project/0321/src/client.c">
 			<Option target="eclient"/>

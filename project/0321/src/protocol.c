@@ -42,55 +42,55 @@ char *encode_protocol(char *read_buf, int target) {
     return result;
 }
 
-struct protocol *decode_protocol(int fd, char *buf) {
-    int protocol_size = strlen(buf);
-    //TODO 덜들어오면 덜들어온것을 처리하는 구문을 작성하도록하자
-    struct protocol *new_protocol = malloc(sizeof(struct protocol));
-    if (new_protocol == NULL) {
-        return NULL;
-    }
-    memset(new_protocol, 0, sizeof(struct protocol));
-    char *num = malloc(sizeof(char) * 4);
-    char *target = malloc(sizeof(char) * 4);
-    char *message = malloc(sizeof(char) * PROTOCOL_SIZE);
-    memset(num, 0, sizeof(char) * 5);
-    memset(target, 0, sizeof(char) * 5);
-    memset(message, 0, sizeof(char) * (PROTOCOL_SIZE + 1));
-    int space = 0;
-    int idx = 0;
-    printf("읽어온 프로토콜의 크기 : %d\n", protocol_size);
-    for (int i = 0; i < strlen(buf); i++) {
-        if (space < 2) {
-            if (isspace(buf[i])) {
-                idx = 0;
-                space += 1;
-            } else if (isdigit(buf[i])) {
-                if (space == 0) {
-                    num[idx] = buf[i];
-                } else if (space == 1) {
-                    target[idx] = buf[i];
-                }
-                idx += 1;
-            } else {
-                free(num);
-                free(target);
-                free(message);
-                free(new_protocol);
-                return NULL;
-            }
-        } else {
-            message[idx] = buf[i];
-            idx += 1;
-        }
-    }
-//    new_protocol->total = atoi(num);
-//    new_protocol->target = atoi(target);
-//    new_protocol->message = message;
-    // 여기에 덜받았을 경우에 분기 처리
-
-    printf("%s %s %s 프로토콜 해독 완료\n", message, num, target);
-    free(num);
-    free(target);
-    free(message);
-    return new_protocol;
-}
+//struct protocol *decode_protocol(int fd, char *buf) {
+//    int protocol_size = strlen(buf);
+//    //TODO 덜들어오면 덜들어온것을 처리하는 구문을 작성하도록하자
+//    struct protocol *new_protocol = malloc(sizeof(struct protocol));
+//    if (new_protocol == NULL) {
+//        return NULL;
+//    }
+//    memset(new_protocol, 0, sizeof(struct protocol));
+//    char *num = malloc(sizeof(char) * 4);
+//    char *target = malloc(sizeof(char) * 4);
+//    char *message = malloc(sizeof(char) * PROTOCOL_SIZE);
+//    memset(num, 0, sizeof(char) * 5);
+//    memset(target, 0, sizeof(char) * 5);
+//    memset(message, 0, sizeof(char) * (PROTOCOL_SIZE + 1));
+//    int space = 0;
+//    int idx = 0;
+//    printf("읽어온 프로토콜의 크기 : %d\n", protocol_size);
+//    for (int i = 0; i < strlen(buf); i++) {
+//        if (space < 2) {
+//            if (isspace(buf[i])) {
+//                idx = 0;
+//                space += 1;
+//            } else if (isdigit(buf[i])) {
+//                if (space == 0) {
+//                    num[idx] = buf[i];
+//                } else if (space == 1) {
+//                    target[idx] = buf[i];
+//                }
+//                idx += 1;
+//            } else {
+//                free(num);
+//                free(target);
+//                free(message);
+//                free(new_protocol);
+//                return NULL;
+//            }
+//        } else {
+//            message[idx] = buf[i];
+//            idx += 1;
+//        }
+//    }
+////    new_protocol->total = atoi(num);
+////    new_protocol->target = atoi(target);
+////    new_protocol->message = message;
+//    // 여기에 덜받았을 경우에 분기 처리
+//
+//    printf("%s %s %s 프로토콜 해독 완료\n", message, num, target);
+//    free(num);
+//    free(target);
+//    free(message);
+//    return new_protocol;
+//}

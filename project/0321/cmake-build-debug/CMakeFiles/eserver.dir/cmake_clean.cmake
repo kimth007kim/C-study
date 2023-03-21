@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/eserver.dir/epollserver.c.o"
   "CMakeFiles/eserver.dir/epollserver.c.o.d"
+  "CMakeFiles/eserver.dir/src/chat.c.o"
+  "CMakeFiles/eserver.dir/src/chat.c.o.d"
   "CMakeFiles/eserver.dir/src/client.c.o"
   "CMakeFiles/eserver.dir/src/client.c.o.d"
   "CMakeFiles/eserver.dir/src/epoll.c.o"

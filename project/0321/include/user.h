@@ -3,6 +3,7 @@
 
 #include "util.h"
 #include "linkedlist.h"
+//#include "protocol.h"
 
 extern Node *user_link;
 extern struct user *user_list[MAX_USERS];
@@ -14,10 +15,12 @@ struct user {
     char *name;
     int fd;
     int num_end;        // 숫자가 다들어 왔는지 확인하는 변수
-    int current_read_pos;
-    int total_read_length;
+    int start_offset;
+    int end_offset;
     char read_buf[PROTOCOL_SIZE];
     char write_buf[PROTOCOL_SIZE];
+//    struct protocol user_protocol;
+
 };
 
 
@@ -34,5 +37,7 @@ char *generate_message(int fd, char *buf);
 void enter_user(int fd);
 
 void exit_user(int fd);
+
+void switch_buffer(struct user *user);
 
 #endif //MY_PROGRAM_USER_H

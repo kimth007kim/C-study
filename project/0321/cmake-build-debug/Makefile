@@ -248,6 +248,30 @@ epollserver.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/epollserver.c.s
 .PHONY : epollserver.c.s
 
+src/chat.o: src/chat.c.o
+.PHONY : src/chat.o
+
+# target to build an object file
+src/chat.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/chat.c.o
+.PHONY : src/chat.c.o
+
+src/chat.i: src/chat.c.i
+.PHONY : src/chat.i
+
+# target to preprocess a source file
+src/chat.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/chat.c.i
+.PHONY : src/chat.c.i
+
+src/chat.s: src/chat.c.s
+.PHONY : src/chat.s
+
+# target to generate assembly for a file
+src/chat.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/chat.c.s
+.PHONY : src/chat.c.s
+
 src/client.o: src/client.c.o
 .PHONY : src/client.o
 
@@ -506,6 +530,9 @@ help:
 	@echo "... epollserver.o"
 	@echo "... epollserver.i"
 	@echo "... epollserver.s"
+	@echo "... src/chat.o"
+	@echo "... src/chat.i"
+	@echo "... src/chat.s"
 	@echo "... src/client.o"
 	@echo "... src/client.i"
 	@echo "... src/client.s"
