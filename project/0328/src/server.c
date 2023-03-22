@@ -10,10 +10,10 @@
 #include "../include/server.h"
 #include "../include/epoll.h"
 #include "../include/user.h"
+#include "../include/chat.h"
 
-#define NEED_LENGTH 0
-#define NEED_DESTINATION 1
-#define NEED_MESSAGE 2
+#define REQUIRE_HEADER 0
+#define REQUIRE_BODY 1
 
 
 /**
@@ -46,78 +46,83 @@ void server_epoll(int server_socket, int epfd, int fd, char *read_buf, char *wri
         enter_user(client_socket);
     } else {
         // 클라이언트 소켓으로 부터 수신된 데이터가 존재한다는것.
-
+        //TODO 프로토콜을 변경해보자
+        // 프로토콜을 bit 단위로 나누는것을 생각을 해보자
 
 
         str_len = read(fd, user_list[fd]->read_buf + user_list[fd]->end_offset, BUF_SIZE);
         if (str_len == 0) {
             epoll_ctl(epfd, EPOLL_CTL_DEL, fd, NULL);
             exit_user(fd);
+            return;
         }
         struct user *user_ptr = user_list[fd];
         int total_read = str_len + user_ptr->end_offset - user_ptr->start_offset;
         user_ptr->end_offset += total_read;
         while (total_read > 0) {
-            if (user_ptr->num_end == 0) {
-                if (total_read < 4) {
-                    // 4보다 적게 읽어 왔을때 총 길이를 모를때
+            if (user_ptr->read_status == REQUIRE_HEADER) {
+                if (total_read < 8) {
                     return;
-                    //return 으로 빠져 나간다.
                 } else {
-
                     memset(new_protocol, 0, sizeof(struct protocol));
-                    char temp[5];
-                    strncpy(temp, user_ptr->read_buf + user_ptr->start_offset, 4);
-                    temp[4] = '\n';
-//                            printf(" 읽어온 프로토콜은 %s\n", temp);
-                    int total_length = atoi(temp);
-//                            printf(" int 형으로 변환 읽어온 프로토콜은 %d\n", total_length);
-                    user_ptr->start_offset += 4;
-                    new_protocol->total = total_length;
-                    total_read -= 4; //프로토콜의 총 길이를 읽어오는 작업 완료
-                    user_ptr->num_end = NEED_DESTINATION;
-                    memset(temp, 0, 5);
+                    char temp_length[5], temp_dest[5];
 
-                }
-                // 4보다 많이 읽어 왔을때(총 길이를 알때)
-            } else if (user_ptr->num_end == 1) {
-                if (total_read < 4) {
-                    return;
-                } else {
-                    char temp[5];
-                    strncpy(temp, user_ptr->read_buf + user_ptr->start_offset, 4);
-                    temp[4] = '\n';
-                    int dest = atoi(temp);
-//                            printf(" int 형으로 변환 읽어온 프로토콜은 %d\n", dest);
+                    strncpy(temp_length, user_ptr->read_buf + user_ptr->start_offset, 4);
+                    temp_length[4] = '\n';
+                    int total_length = atoi(temp_length);
                     user_ptr->start_offset += 4;
-                    new_protocol->dest = dest;
-                    total_read -= 4;
-                    user_ptr->num_end = NEED_MESSAGE;
-                    memset(temp, 0, 5);
+                    new_protocol->message_length = total_length;
+
+
+                    new_protocol->destination = user_ptr->read_buf + user_ptr->start_offset;
+                    user_ptr->start_offset += 4;
+
+
+//                    strncpy(temp_dest, user_ptr->read_buf + user_ptr->start_offset, 4);
+//                    temp_dest[4] = '\n';
+//                    int dest = atoi(temp_dest);
+//                    user_ptr->start_offset += 4;
+//                    new_protocol->destination = dest;
+
+                    user_ptr->read_status = REQUIRE_BODY;
+
+                    memset(temp_length, 0, 5);
+                    memset(temp_dest, 0, 5);
+
+                    total_read -= 8;
                 }
             } else {
-                if (total_read < new_protocol->total) {
-//                    user_ptr->end_offset += str_len + 1;
+                if (total_read < new_protocol->message_length) {
                     return;
                 } else {
-                    char tmp[BUF_SIZE];
-                    strncpy(tmp, user_ptr->read_buf + user_ptr->start_offset, new_protocol->total);
-//                    temp[strlen(temp)] = '\n';
+                    char temp_message[BUF_SIZE];
+                    strncpy(temp_message, user_ptr->read_buf + user_ptr->start_offset, new_protocol->message_length);
 
-                    user_ptr->start_offset += new_protocol->total;
-                    total_read -= new_protocol->total;
-                    user_ptr->num_end = NEED_LENGTH;
-                    new_protocol->message = tmp;
+                    new_protocol->message = user_ptr->read_buf + user_ptr->start_offset;
+                    user_ptr->start_offset += new_protocol->message_length;
+                    total_read -= new_protocol->message_length;
+                    user_ptr->read_status = REQUIRE_HEADER;
 
-
-//                    user_ptr->end_offset += str_len + 1;
-                    // 함수를 호출해서 마무리 하는 과정
-                    printf("message = %s , total = %d , dest = %d\n", new_protocol->message, new_protocol->total,
-                           new_protocol->dest);
-                    memset(tmp, 0, BUF_SIZE);
-
-                    // 버퍼를 교체하는 작업을 해야한다.
+                    chat(fd, new_protocol, user_ptr);
                     switch_buffer(user_ptr);
+
+
+//                    strncpy(temp_message, user_ptr->read_buf + user_ptr->start_offset, new_protocol->message_length);
+//
+//                    user_ptr->start_offset += new_protocol->message_length;
+//                    total_read -= new_protocol->message_length;
+//                    user_ptr->read_status = REQUIRE_HEADER;
+//                    new_protocol->message = temp_message;
+//
+//
+//                    // 함수를 호출해서 마무리 하는 과정
+//                    printf("message = %s , total = %d , dest = %d\n", new_protocol->message,
+//                           new_protocol->message_length,
+//                           new_protocol->destination);
+//                    memset(temp_message, 0, BUF_SIZE);
+//
+//                    // 버퍼를 교체하는 작업을 해야한다.
+//                    switch_buffer(user_ptr);
 
                 }
 
@@ -193,7 +198,7 @@ void server_network(struct sockaddr_in server_address, int server_socket, char *
 
 void switch_buffer(struct user *user) {
     char *new_buf = malloc(BUF_SIZE);
-    memset(new_buf, 0, BUF_SIZE);
+//    memset(new_buf, 0, BUF_SIZE);
     int idx = 0;
     for (int i = user->start_offset; i < user->end_offset; i++) {
         new_buf[idx] = user->read_buf[i];
@@ -202,6 +207,7 @@ void switch_buffer(struct user *user) {
 
     user->start_offset = 0;
     user->end_offset = idx;
-
-    strcmp(user->read_buf, new_buf);
+//    memcpy( new_buf,user->read_buf+user->start_offset, user->end_offset-user->start_offset);
+    memcpy(user->read_buf + user->start_offset, new_buf, user->end_offset - user->start_offset);
+    free(new_buf);
 }

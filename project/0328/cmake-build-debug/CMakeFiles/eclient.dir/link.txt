@@ -1,0 +1,1 @@
+/usr/bin/gcc -g CMakeFiles/eclient.dir/epollclient.c.o CMakeFiles/eclient.dir/src/util.c.o CMakeFiles/eclient.dir/src/protocol.c.o CMakeFiles/eclient.dir/src/epoll.c.o CMakeFiles/eclient.dir/src/client.c.o CMakeFiles/eclient.dir/src/network.c.o -o eclient 
