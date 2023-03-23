@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/eclient.dir/src/epoll.c.o.d"
   "CMakeFiles/eclient.dir/src/network.c.o"
   "CMakeFiles/eclient.dir/src/network.c.o.d"
+  "CMakeFiles/eclient.dir/src/nonblocking_io.c.o"
+  "CMakeFiles/eclient.dir/src/nonblocking_io.c.o.d"
   "CMakeFiles/eclient.dir/src/protocol.c.o"
   "CMakeFiles/eclient.dir/src/protocol.c.o.d"
   "CMakeFiles/eclient.dir/src/util.c.o"

@@ -51,6 +51,9 @@ void client_epoll(int server_socket, int epfd, int fd, char *read_buf, char *wri
             read_buf[*read_length] = '\0';
 
             protocol = encode_protocol(read_buf, 0);
+            char *output=malloc(1000);
+//            encode_kd_protocol(read_buf, 0,output);
+            printf("%s\n",output);
             write(server_socket, protocol, strlen(protocol));
             memset(read_buf, 0, sizeof(read_buf));
             *read_length = 0;

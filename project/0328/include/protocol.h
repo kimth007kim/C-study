@@ -12,10 +12,17 @@ struct protocol{
     char *message;
 };
 
+struct kd_protocol{
+    unsigned int message_length:10; //1024
+    unsigned int destination:11; //2048
+    char *message;
+};
+
 
 
 char *encode_protocol(char *read_buf, int target);
-
+void encode_kd_protocol(char *read_buf, int target,char * output_str);
+void check_combined_str(char* combined_str, int target, char* read_buf);
 //struct protocol *decode_protocol(int fd, char *protocol);
 
 

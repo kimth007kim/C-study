@@ -244,6 +244,10 @@
 			<Option target="eclient"/>
 			<Option target="eserver"/>
 		</Unit>
+		<Unit filename="/home/kim/C-study/project/0328/src/nonblocking_io.c">
+			<Option target="eclient"/>
+			<Option target="eserver"/>
+		</Unit>
 		<Unit filename="/home/kim/C-study/project/0328/src/protocol.c">
 			<Option target="eclient"/>
 			<Option target="eserver"/>

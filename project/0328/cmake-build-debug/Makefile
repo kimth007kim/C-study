@@ -380,6 +380,33 @@ src/network.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/network.c.s
 .PHONY : src/network.c.s
 
+src/nonblocking_io.o: src/nonblocking_io.c.o
+.PHONY : src/nonblocking_io.o
+
+# target to build an object file
+src/nonblocking_io.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eclient.dir/build.make CMakeFiles/eclient.dir/src/nonblocking_io.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/nonblocking_io.c.o
+.PHONY : src/nonblocking_io.c.o
+
+src/nonblocking_io.i: src/nonblocking_io.c.i
+.PHONY : src/nonblocking_io.i
+
+# target to preprocess a source file
+src/nonblocking_io.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eclient.dir/build.make CMakeFiles/eclient.dir/src/nonblocking_io.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/nonblocking_io.c.i
+.PHONY : src/nonblocking_io.c.i
+
+src/nonblocking_io.s: src/nonblocking_io.c.s
+.PHONY : src/nonblocking_io.s
+
+# target to generate assembly for a file
+src/nonblocking_io.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eclient.dir/build.make CMakeFiles/eclient.dir/src/nonblocking_io.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/nonblocking_io.c.s
+.PHONY : src/nonblocking_io.c.s
+
 src/protocol.o: src/protocol.c.o
 .PHONY : src/protocol.o
 
@@ -545,6 +572,9 @@ help:
 	@echo "... src/network.o"
 	@echo "... src/network.i"
 	@echo "... src/network.s"
+	@echo "... src/nonblocking_io.o"
+	@echo "... src/nonblocking_io.i"
+	@echo "... src/nonblocking_io.s"
 	@echo "... src/protocol.o"
 	@echo "... src/protocol.i"
 	@echo "... src/protocol.s"

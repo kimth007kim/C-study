@@ -11,6 +11,7 @@
 #include "../include/epoll.h"
 #include "../include/user.h"
 #include "../include/chat.h"
+//#include "../include/network.h"
 
 #define REQUIRE_HEADER 0
 #define REQUIRE_BODY 1
@@ -38,6 +39,7 @@ void server_epoll(int server_socket, int epfd, int fd, char *read_buf, char *wri
         printf("flag=0\n");
         address_size = sizeof(client_address);
         client_socket = accept(server_socket, (struct sockaddr *) &client_address, &address_size);
+        set_nonblocking_fd(client_socket);
         if (client_socket == -1) {
             puts("accept() error!");
             exit(1);
@@ -65,7 +67,7 @@ void server_epoll(int server_socket, int epfd, int fd, char *read_buf, char *wri
                     return;
                 } else {
                     memset(new_protocol, 0, sizeof(struct protocol));
-                    char temp_length[5], temp_dest[5];
+                    char temp_length[5];
 
                     strncpy(temp_length, user_ptr->read_buf + user_ptr->start_offset, 4);
                     temp_length[4] = '\n';
@@ -76,18 +78,25 @@ void server_epoll(int server_socket, int epfd, int fd, char *read_buf, char *wri
 
                     new_protocol->destination = user_ptr->read_buf + user_ptr->start_offset;
                     user_ptr->start_offset += 4;
+/*
+                    struct kd_protocol *new_kd_protocol = malloc(sizeof(struct kd_protocol));
+                    memset(new_kd_protocol, 0, sizeof(struct kd_protocol));
 
+                    // Read the first 2 bytes (10 bits) into message_length
+                    new_kd_protocol->message_length = (read_buf[0] << 2) | (read_buf[1] >> 6);
 
-//                    strncpy(temp_dest, user_ptr->read_buf + user_ptr->start_offset, 4);
-//                    temp_dest[4] = '\n';
-//                    int dest = atoi(temp_dest);
-//                    user_ptr->start_offset += 4;
-//                    new_protocol->destination = dest;
+                    // Read the next 2 bytes (11 bits) into destination
+                    new_kd_protocol->destination = ((read_buf[1] & 0x3F) << 5) | (read_buf[2] >> 3);
+
+                    // Read the remaining bytes into message
+                    new_kd_protocol->message = malloc(new_kd_protocol->message_length + 1);
+                    memcpy(new_kd_protocol->message, read_buf + 3, new_kd_protocol->message_length);
+                    new_kd_protocol->message[new_kd_protocol->message_length] = '\0';
+*/
 
                     user_ptr->read_status = REQUIRE_BODY;
 
                     memset(temp_length, 0, 5);
-                    memset(temp_dest, 0, 5);
 
                     total_read -= 8;
                 }
@@ -198,16 +207,25 @@ void server_network(struct sockaddr_in server_address, int server_socket, char *
 
 void switch_buffer(struct user *user) {
     char *new_buf = malloc(BUF_SIZE);
-//    memset(new_buf, 0, BUF_SIZE);
+    memset(new_buf, 0, BUF_SIZE);
     int idx = 0;
     for (int i = user->start_offset; i < user->end_offset; i++) {
         new_buf[idx] = user->read_buf[i];
         idx++;
     }
 
+
+//    new_buf[0] = user->start_offset;
+    memcpy(user->read_buf + user->start_offset, new_buf, user->end_offset - user->start_offset);
     user->start_offset = 0;
     user->end_offset = idx;
 //    memcpy( new_buf,user->read_buf+user->start_offset, user->end_offset-user->start_offset);
-    memcpy(user->read_buf + user->start_offset, new_buf, user->end_offset - user->start_offset);
     free(new_buf);
+
+//    char *new_buf = user->read_buf + user->start_offset;
+//    user->start_offset = 0;
+//    user->end_offset = user->end_offset - user->start_offset;
+//    free(user->read_buf);
+//    user->read_buf = new_buf;
+
 }

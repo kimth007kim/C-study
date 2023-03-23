@@ -5,6 +5,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include <ctype.h>
+#include <netinet/in.h>
 #include "../include/util.h"
 #include "../include/protocol.h"
 
@@ -42,55 +43,67 @@ char *encode_protocol(char *read_buf, int target) {
     return result;
 }
 
-//struct protocol *decode_protocol(int fd, char *buf) {
-//    int protocol_size = strlen(buf);
-//    //TODO 덜들어오면 덜들어온것을 처리하는 구문을 작성하도록하자
-//    struct protocol *new_protocol = malloc(sizeof(struct protocol));
-//    if (new_protocol == NULL) {
-//        return NULL;
-//    }
-//    memset(new_protocol, 0, sizeof(struct protocol));
-//    char *num = malloc(sizeof(char) * 4);
-//    char *target = malloc(sizeof(char) * 4);
-//    char *message = malloc(sizeof(char) * PROTOCOL_SIZE);
-//    memset(num, 0, sizeof(char) * 5);
-//    memset(target, 0, sizeof(char) * 5);
-//    memset(message, 0, sizeof(char) * (PROTOCOL_SIZE + 1));
-//    int space = 0;
-//    int idx = 0;
-//    printf("읽어온 프로토콜의 크기 : %d\n", protocol_size);
-//    for (int i = 0; i < strlen(buf); i++) {
-//        if (space < 2) {
-//            if (isspace(buf[i])) {
-//                idx = 0;
-//                space += 1;
-//            } else if (isdigit(buf[i])) {
-//                if (space == 0) {
-//                    num[idx] = buf[i];
-//                } else if (space == 1) {
-//                    target[idx] = buf[i];
-//                }
-//                idx += 1;
-//            } else {
-//                free(num);
-//                free(target);
-//                free(message);
-//                free(new_protocol);
-//                return NULL;
-//            }
-//        } else {
-//            message[idx] = buf[i];
-//            idx += 1;
-//        }
-//    }
-////    new_protocol->total = atoi(num);
-////    new_protocol->target = atoi(target);
-////    new_protocol->message = message;
-//    // 여기에 덜받았을 경우에 분기 처리
-//
-//    printf("%s %s %s 프로토콜 해독 완료\n", message, num, target);
-//    free(num);
-//    free(target);
-//    free(message);
-//    return new_protocol;
-//}
+void encode_kd_protocol(char *read_buf, int target,char * output_str) {
+    struct kd_protocol protocol;
+    protocol.message_length = strlen(read_buf);
+    protocol.destination = target;
+    protocol.message = malloc(strlen(read_buf) + 1);
+    strcpy(protocol.message, read_buf);
+
+    int length_bits = 10;
+    int length_bytes = length_bits / 8 + ((length_bits % 8) ? 1 : 0);
+    int destination_bits = 11;
+    int destination_bytes = destination_bits / 8 + ((destination_bits % 8) ? 1 : 0);
+
+    int total_size = (length_bytes + destination_bytes) + strlen(protocol.message);
+    char *combined_str = (char *) malloc(total_size);
+
+    // Copy message_length as binary data into combined_str
+    unsigned int message_length = protocol.message_length & 0x3FF;
+    message_length = htons(message_length);
+    memcpy(combined_str, &message_length, length_bytes);
+
+    // Copy destination as binary data into combined_str
+    unsigned int destination = protocol.destination & 0x7FF;
+    destination = htons(destination);
+    memcpy(combined_str + length_bytes, &destination, destination_bytes);
+
+    // Copy message into combined_str
+    memcpy(combined_str + length_bytes + destination_bytes, protocol.message, strlen(protocol.message) + 1);
+
+    // Copy combined_str into output_str as a string
+    int i;
+    for (i = 0; i < total_size; i++) {
+        sprintf(output_str + 2 * i, "%02X", (unsigned char) combined_str[i]);
+    }
+    output_str[2 * i] = '\0';
+
+    // Free the allocated memory
+    free(combined_str);
+}
+
+void check_combined_str(char *combined_str, int target, char *read_buf) {
+    // Extract message_length from combined_str
+    unsigned int message_length;
+    memcpy(&message_length, combined_str, sizeof(unsigned int));
+    message_length = ntohs(message_length) & 0x3FF; // Mask out upper bits
+
+    // Extract destination from combined_str
+    unsigned int destination;
+    memcpy(&destination, combined_str + sizeof(unsigned int), sizeof(unsigned int));
+    destination = ntohs(destination) & 0x7FF; // Mask out upper bits
+
+    // Extract message from combined_str
+    char *message = combined_str + 2 * sizeof(unsigned int);
+
+    // Check values
+    if (message_length != strlen(read_buf)) {
+        printf("Error: message_length is not properly entered.\n");
+    }
+    if (destination != target) {
+        printf("Error: destination is not properly entered.\n");
+    }
+    if (strcmp(message, read_buf) != 0) {
+        printf("Error: message is not properly entered.\n");
+    }
+}
