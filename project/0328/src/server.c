@@ -5,6 +5,7 @@
 #include <string.h>
 #include <arpa/inet.h>
 #include <stdlib.h>
+#include <errno.h>
 #include "../include/util.h"
 #include "../include/protocol.h"
 #include "../include/server.h"
@@ -28,7 +29,7 @@
  */
 void server_epoll(int server_socket, int epfd, int fd, char *read_buf, char *write_buf, int *read_length) {
     socklen_t address_size;
-    int str_len;
+    int read_cnt;
     int client_socket;
     struct sockaddr_in client_address;
     struct protocol *new_protocol = malloc(sizeof(struct protocol));
@@ -52,14 +53,23 @@ void server_epoll(int server_socket, int epfd, int fd, char *read_buf, char *wri
         // 프로토콜을 bit 단위로 나누는것을 생각을 해보자
 
 
-        str_len = read(fd, user_list[fd]->read_buf + user_list[fd]->end_offset, BUF_SIZE);
-        if (str_len == 0) {
+        read_cnt = read(fd, user_list[fd]->read_buf + user_list[fd]->end_offset, BUF_SIZE);
+
+
+        if (read_cnt < 0) {
+            if (errno == EAGAIN || errno == EWOULDBLOCK) {
+                return;
+            } else {
+                error_handling("read()시 에러 발생");
+            }
+
+        } else if (read_cnt == 0) {
             epoll_ctl(epfd, EPOLL_CTL_DEL, fd, NULL);
             exit_user(fd);
             return;
         }
         struct user *user_ptr = user_list[fd];
-        int total_read = str_len + user_ptr->end_offset - user_ptr->start_offset;
+        int total_read = read_cnt + user_ptr->end_offset - user_ptr->start_offset;
         user_ptr->end_offset += total_read;
         while (total_read > 0) {
             if (user_ptr->read_status == REQUIRE_HEADER) {
@@ -78,22 +88,6 @@ void server_epoll(int server_socket, int epfd, int fd, char *read_buf, char *wri
 
                     new_protocol->destination = user_ptr->read_buf + user_ptr->start_offset;
                     user_ptr->start_offset += 4;
-/*
-                    struct kd_protocol *new_kd_protocol = malloc(sizeof(struct kd_protocol));
-                    memset(new_kd_protocol, 0, sizeof(struct kd_protocol));
-
-                    // Read the first 2 bytes (10 bits) into message_length
-                    new_kd_protocol->message_length = (read_buf[0] << 2) | (read_buf[1] >> 6);
-
-                    // Read the next 2 bytes (11 bits) into destination
-                    new_kd_protocol->destination = ((read_buf[1] & 0x3F) << 5) | (read_buf[2] >> 3);
-
-                    // Read the remaining bytes into message
-                    new_kd_protocol->message = malloc(new_kd_protocol->message_length + 1);
-                    memcpy(new_kd_protocol->message, read_buf + 3, new_kd_protocol->message_length);
-                    new_kd_protocol->message[new_kd_protocol->message_length] = '\0';
-*/
-
                     user_ptr->read_status = REQUIRE_BODY;
 
                     memset(temp_length, 0, 5);
@@ -157,8 +151,8 @@ void server_epoll(int server_socket, int epfd, int fd, char *read_buf, char *wri
 //            memset(read_buf, 0, sizeof(read_buf));
 //        }
 //
-//        str_len = read(fd, read_buf, BUF_SIZE);
-//        if (str_len == 0) {
+//        read_cnt = read(fd, read_buf, BUF_SIZE);
+//        if (read_cnt == 0) {
 //            // Ctrl + c 로 인한 종료 요청
 ////            greeting = generate_greeting(fd, 1);
 //            epoll_ctl(epfd, EPOLL_CTL_DEL, fd, NULL);
@@ -169,7 +163,7 @@ void server_epoll(int server_socket, int epfd, int fd, char *read_buf, char *wri
 //            //TODO 프로토콜 read할때 처리
 //            // if 문으로 분기처리
 //
-//            // str_len 이 4 보다 작을때 (프로토콜의 총길이를 모를때 처리)
+//            // read_cnt 이 4 보다 작을때 (프로토콜의 총길이를 모를때 처리)
 ////            struct protocol *new_protocol = decode_protocol(fd, read_buf);
 //            // 프로토콜의 총길이를 처음알았을때 user 구조체에 저장하는 코드
 //

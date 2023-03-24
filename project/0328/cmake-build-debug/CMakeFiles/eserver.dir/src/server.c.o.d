@@ -78,7 +78,10 @@ CMakeFiles/eserver.dir/src/server.c.o: \
  /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/bits/in.h \
  /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
- /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/errno.h \
+ /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
+ /usr/include/x86_64-linux-gnu/asm/errno.h \
+ /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /home/kim/C-study/project/0328/src/../include/util.h \
  /home/kim/C-study/project/0328/src/../include/protocol.h \
  /home/kim/C-study/project/0328/src/../include/server.h \

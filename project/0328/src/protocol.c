@@ -43,7 +43,7 @@ char *encode_protocol(char *read_buf, int target) {
     return result;
 }
 
-void encode_kd_protocol(char *read_buf, int target,char * output_str) {
+void encode_kd_protocol(char *read_buf, int target, char *output_str) {
     struct kd_protocol protocol;
     protocol.message_length = strlen(read_buf);
     protocol.destination = target;
@@ -80,6 +80,24 @@ void encode_kd_protocol(char *read_buf, int target,char * output_str) {
 
     // Free the allocated memory
     free(combined_str);
+
+
+/*
+    struct kd_protocol *new_kd_protocol = malloc(sizeof(struct kd_protocol));
+    memset(new_kd_protocol, 0, sizeof(struct kd_protocol));
+
+    // Read the first 2 bytes (10 bits) into message_length
+    new_kd_protocol->message_length = (read_buf[0] << 2) | (read_buf[1] >> 6);
+
+    // Read the next 2 bytes (11 bits) into destination
+    new_kd_protocol->destination = ((read_buf[1] & 0x3F) << 5) | (read_buf[2] >> 3);
+
+    // Read the remaining bytes into message
+    new_kd_protocol->message = malloc(new_kd_protocol->message_length + 1);
+    memcpy(new_kd_protocol->message, read_buf + 3, new_kd_protocol->message_length);
+    new_kd_protocol->message[new_kd_protocol->message_length] = '\0';
+*/
+
 }
 
 void check_combined_str(char *combined_str, int target, char *read_buf) {
