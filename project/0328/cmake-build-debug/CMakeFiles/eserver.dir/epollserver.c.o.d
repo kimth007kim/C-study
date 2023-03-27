@@ -50,7 +50,6 @@ CMakeFiles/eserver.dir/epollserver.c.o: \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
  /usr/include/x86_64-linux-gnu/bits/epoll.h \
  /home/kim/C-study/project/0328/include/util.h \
- /home/kim/C-study/project/0328/include/protocol.h \
  /home/kim/C-study/project/0328/include/epoll.h \
  /home/kim/C-study/project/0328/include/server.h \
  /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/sys/socket.h \

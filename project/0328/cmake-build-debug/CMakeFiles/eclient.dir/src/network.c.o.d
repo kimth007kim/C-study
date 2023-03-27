@@ -56,5 +56,10 @@ CMakeFiles/eclient.dir/src/network.c.o: \
  /usr/include/x86_64-linux-gnu/asm/sockios.h \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
- /usr/include/x86_64-linux-gnu/bits/in.h \
- /home/kim/C-study/project/0328/src/../include/util.h
+ /usr/include/x86_64-linux-gnu/bits/in.h /usr/include/fcntl.h \
+ /usr/include/x86_64-linux-gnu/bits/fcntl.h \
+ /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
+ /usr/include/x86_64-linux-gnu/bits/stat.h \
+ /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
+ /home/kim/C-study/project/0328/src/../include/util.h \
+ /home/kim/C-study/project/0328/src/../include/network.h

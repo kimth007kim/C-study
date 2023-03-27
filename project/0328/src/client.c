@@ -4,10 +4,12 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <arpa/inet.h>
+#include <errno.h>
 #include "../include/util.h"
 #include "../include/protocol.h"
 #include "../include/linkedlist.h"
 #include "../include/client.h"
+#include "../include/epoll.h"
 
 
 /**
@@ -19,46 +21,129 @@
  * @param write_buf     epoll_event가 발생할때 write_buf도 받습니다.
  * @param read_length   epoll_event가 발생할때 read_length 받습니다. read_buf에서 어디까지 읽었는지 기록하기위한 변수입니다.
  */
-void client_epoll(int server_socket, int epfd, int fd, char *read_buf, char *write_buf, int *read_length) {
-    char *protocol = malloc(PROTOCOL_SIZE);
-    if (server_socket == fd) {
-        memset(write_buf, 0, sizeof(write_buf));
-        int str_len = read(server_socket, write_buf, BUF_SIZE);
-        if (str_len == 0) {
-            epoll_ctl(epfd, EPOLL_CTL_DEL, server_socket, NULL);
-            close(server_socket);
-//            return;
-            exit(1);
-        }
 
-        write_buf[str_len] = '\n';
-        fputs(write_buf, stdout);
-        memset(write_buf, 0, sizeof(write_buf));
-    } else {
-        char temp;
-        int str_len = read(STDIN_FILENO, &temp, 1);
-        if (str_len == 0) {
-            //ctrl+c 를 입력했을때
-            epoll_ctl(epfd, EPOLL_CTL_DEL, STDIN_FILENO, NULL);
-            close(STDIN_FILENO);
-            exit(1);
-        } else {
-            if (temp != '\n' && *read_length < BUF_SIZE - 1) {
-                read_buf[*read_length] = temp;
-                *read_length += 1;
+int number = 0;
+int start_offset = 0;
+int end_offset = 0;
+int target_length;
+int write_cnt;
+int read_cnt;
+
+char *protocol;
+//void client_epoll(int server_socket, int epfd, int fd, char *read_buf, char *write_buf, int *read_length) {
+void
+client_epoll(int server_socket, int epfd, struct epoll_event event, char *read_buf, char *write_buf, int *read_length) {
+    errno = 0;
+    int fd = event.data.fd;
+
+
+    printf("전역변수 number = %d \n", number);
+
+    if (event.events == EPOLLOUT) {
+        write_cnt = write(server_socket, protocol, target_length);
+        if (write_cnt < 0) {
+            if (errno == EAGAIN || errno == EWOULDBLOCK) {
                 return;
+            } else {
+                error_handling("write() error");
             }
-            read_buf[*read_length] = '\0';
+        } else if (write_cnt < target_length) {
+            target_length -= write_cnt;
 
-            protocol = encode_protocol(read_buf, 0);
-            char *output=malloc(1000);
-//            encode_kd_protocol(read_buf, 0,output);
-            printf("%s\n",output);
-            write(server_socket, protocol, strlen(protocol));
+        } else if (write_cnt == target_length){
             memset(read_buf, 0, sizeof(read_buf));
             *read_length = 0;
+            number += 1;
+            printf("올라간 전역변수 number = %d \n", number);
+            struct epoll_event ev;
+            ev.events = EPOLLOUT;
+            epoll_ctl(epfd, EPOLL_CTL_DEL, server_socket, &ev);
         }
+
+    } else {
+        if (server_socket == fd) {
+            memset(write_buf, 0, sizeof(write_buf));
+            read_cnt = read(server_socket, write_buf, BUF_SIZE);
+
+
+            printf("read 후에 errno 호출 = %d   EAGAIN의 값 = %d\n", errno, EAGAIN);
+
+            if (read_cnt < 0) {
+                if (errno == EAGAIN || errno == EWOULDBLOCK) {
+                    return;
+                } else {
+                    error_handling("read()시 에러 발생");
+                }
+            } else if (read_cnt == 0) {
+                epoll_ctl(epfd, EPOLL_CTL_DEL, server_socket, NULL);
+                close(server_socket);
+                exit(1);
+            }
+
+            //read 덜읽어왔을때 처
+            write_buf[read_cnt] = '\n';
+            fputs(write_buf, stdout);
+            memset(write_buf, 0, sizeof(write_buf));
+        } else {
+            char temp;
+            read_cnt = read(STDIN_FILENO, &temp, 1);
+
+
+            if (read_cnt < 0) {
+                if (errno == EAGAIN || errno == EWOULDBLOCK) {
+                    return;
+                } else {
+                    error_handling("read()시 에러 발생");
+                }
+            } else if (read_cnt == 0) {
+                epoll_ctl(epfd, EPOLL_CTL_DEL, STDIN_FILENO, NULL);
+                close(STDIN_FILENO);
+                exit(1);
+            } else {
+                if (temp != '\n' && *read_length < BUF_SIZE - 1) {
+                    read_buf[*read_length] = temp;
+                    *read_length += 1;
+                    return;
+                }
+                read_buf[*read_length] = '\n';
+                protocol = encode_protocol(read_buf, 0);
+                char *output = malloc(1000);
+//            encode_kd_protocol(read_buf, 0,output);
+                printf("%s\n", output);
+
+                //여기서 일단 write 를 합니다.
+                target_length = strlen(protocol);
+
+                write_cnt = write(server_socket, protocol, strlen(protocol));
+
+                if (write_cnt < 0) {
+                    if (errno == EAGAIN || errno == EWOULDBLOCK) {
+                        // 이미 이벤트가 확인하는 작업
+//                        if (check_event(epfd, server_socket, EPOLLOUT) == 0) {
+                            struct epoll_event ev;
+                            ev.events = EPOLLOUT;
+                            epoll_ctl(epfd, EPOLL_CTL_ADD, server_socket, &ev);
+//                        }
+                        return;
+                    } else {
+                        error_handling("write() error");
+                    }
+                } else if (write_cnt < target_length) {
+                    target_length -= write_cnt;
+
+                } else {
+                    memset(read_buf, 0, sizeof(read_buf));
+                    *read_length = 0;
+                    number += 1;
+                    printf("올라간 전역변수 number = %d \n", number);
+
+                }
+
+            }
+        }
+
     }
+
 
 }
 

@@ -77,8 +77,12 @@ CMakeFiles/eclient.dir/src/client.c.o: \
  /usr/include/x86_64-linux-gnu/asm/sockios.h \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
- /usr/include/x86_64-linux-gnu/bits/in.h \
+ /usr/include/x86_64-linux-gnu/bits/in.h /usr/include/errno.h \
+ /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
+ /usr/include/x86_64-linux-gnu/asm/errno.h \
+ /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /home/kim/C-study/project/0328/src/../include/util.h \
  /home/kim/C-study/project/0328/src/../include/protocol.h \
  /home/kim/C-study/project/0328/src/../include/linkedlist.h \
- /home/kim/C-study/project/0328/src/../include/client.h
+ /home/kim/C-study/project/0328/src/../include/client.h \
+ /home/kim/C-study/project/0328/src/../include/epoll.h

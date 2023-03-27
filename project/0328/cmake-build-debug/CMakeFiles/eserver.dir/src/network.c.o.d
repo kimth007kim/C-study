@@ -61,4 +61,5 @@ CMakeFiles/eserver.dir/src/network.c.o: \
  /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
  /usr/include/x86_64-linux-gnu/bits/stat.h \
  /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
- /home/kim/C-study/project/0328/src/../include/util.h
+ /home/kim/C-study/project/0328/src/../include/util.h \
+ /home/kim/C-study/project/0328/src/../include/network.h

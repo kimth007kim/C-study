@@ -2,13 +2,15 @@
 #include<stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <errno.h>
 #include "../include/util.h"
 #include "../include/protocol.h"
 #include "../include/linkedlist.h"
 #include "../include/server.h"
 #include "../include/client.h"
 
-void event_loop(void(*func)( int, int, int, char *, char *, int *), int server_socket, int epfd) {
+//void event_loop(void(*func)(int, int, int, char *, char *, int *), int server_socket, int epfd) {
+void event_loop(void(*func)(int, int, struct epoll_event, char *, char *, int *), int server_socket, int epfd) {
 
     int event_cnt;
     struct epoll_event *ep_events;
@@ -22,7 +24,9 @@ void event_loop(void(*func)( int, int, int, char *, char *, int *), int server_s
         if (event_cnt == -1)
             return;
         for (int i = 0; i < event_cnt; i++) {
-            func(server_socket, epfd, ep_events[i].data.fd, read_buf, write_buf, &read_length);
+//            func(server_socket, epfd, ep_events[i].data.fd, read_buf, write_buf, &read_length);
+
+            func(server_socket, epfd, ep_events[i], read_buf, write_buf, &read_length);
         }
     }
 }
@@ -43,4 +47,18 @@ void create_add_event(int epfd, int fd, int event) {
 
 }
 
+int check_event(int epfd, int fd_to_check, int event) {
+    struct epoll_event temp_event;
+    temp_event.events = 0; // or any events you want to check
+    temp_event.data.fd = event;
 
+// Check if the event is registered for the FD
+    int result = epoll_ctl(epfd, EPOLL_CTL_MOD, fd_to_check, &temp_event);
+    if (result == 0) {
+        return 1;
+    } else if (errno == ENOENT) {
+        return 0;
+    } else {
+        error_handling("epoll check error");
+    }
+}

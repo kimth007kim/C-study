@@ -91,4 +91,5 @@ CMakeFiles/eserver.dir/src/server.c.o: \
  /home/kim/C-study/project/0328/src/../include/linkedlist.h \
  /home/kim/C-study/project/0328/src/../include/chat.h \
  /home/kim/C-study/project/0328/src/../include/../include/protocol.h \
- /home/kim/C-study/project/0328/src/../include/../include/user.h
+ /home/kim/C-study/project/0328/src/../include/../include/user.h \
+ /home/kim/C-study/project/0328/src/../include/network.h

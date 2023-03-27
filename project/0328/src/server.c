@@ -12,7 +12,7 @@
 #include "../include/epoll.h"
 #include "../include/user.h"
 #include "../include/chat.h"
-//#include "../include/network.h"
+#include "../include/network.h"
 
 #define REQUIRE_HEADER 0
 #define REQUIRE_BODY 1
@@ -27,12 +27,14 @@
  * @param write_buf     epoll_event가 발생할때 write_buf도 받습니다. 서버에서는 write_buf가 사용되지않습니다.
  * @param read_length   epoll_event가 발생할때 read_length 받습니다. 서버에서는 read_length 가 사용되지않습니다.
  */
-void server_epoll(int server_socket, int epfd, int fd, char *read_buf, char *write_buf, int *read_length) {
+void
+server_epoll(int server_socket, int epfd, struct epoll_event event, char *read_buf, char *write_buf, int *read_length) {
     socklen_t address_size;
     int read_cnt;
     int client_socket;
     struct sockaddr_in client_address;
     struct protocol *new_protocol = malloc(sizeof(struct protocol));
+    int fd = event.data.fd;
 
 
     if (server_socket == fd) {
@@ -109,79 +111,13 @@ void server_epoll(int server_socket, int epfd, int fd, char *read_buf, char *wri
                     chat(fd, new_protocol, user_ptr);
                     switch_buffer(user_ptr);
 
-
-//                    strncpy(temp_message, user_ptr->read_buf + user_ptr->start_offset, new_protocol->message_length);
-//
-//                    user_ptr->start_offset += new_protocol->message_length;
-//                    total_read -= new_protocol->message_length;
-//                    user_ptr->read_status = REQUIRE_HEADER;
-//                    new_protocol->message = temp_message;
-//
-//
-//                    // 함수를 호출해서 마무리 하는 과정
-//                    printf("message = %s , total = %d , dest = %d\n", new_protocol->message,
-//                           new_protocol->message_length,
-//                           new_protocol->destination);
-//                    memset(temp_message, 0, BUF_SIZE);
-//
-//                    // 버퍼를 교체하는 작업을 해야한다.
-//                    switch_buffer(user_ptr);
-
                 }
 
             }
         }
 
     }
-    // 4보다 많이 읽어왔을때(총길이를 알때)
-
-
-    // 앞에서 4부터 짤라서 본다.
-
-
 }
-
-//        else {
-//            printf("읽어온 read_buf %s", read_buf);
-//
-//            printf("\n");
-//            write_message(fd, read_buf, strlen(read_buf));
-//
-//
-//            memset(read_buf, 0, sizeof(read_buf));
-//        }
-//
-//        read_cnt = read(fd, read_buf, BUF_SIZE);
-//        if (read_cnt == 0) {
-//            // Ctrl + c 로 인한 종료 요청
-////            greeting = generate_greeting(fd, 1);
-//            epoll_ctl(epfd, EPOLL_CTL_DEL, fd, NULL);
-//            exit_user(fd);
-//        } else {
-//            printf("읽어온 read_buf %s", read_buf);
-//
-//            //TODO 프로토콜 read할때 처리
-//            // if 문으로 분기처리
-//
-//            // read_cnt 이 4 보다 작을때 (프로토콜의 총길이를 모를때 처리)
-////            struct protocol *new_protocol = decode_protocol(fd, read_buf);
-//            // 프로토콜의 총길이를 처음알았을때 user 구조체에 저장하는 코드
-//
-//            // 현재 offset을 저장하는 함수
-//
-//            // 모든 길이를 다 읽었다면 write 하는 함수
-//
-//            //TODO 프로토콜을 파싱하는 함수를 만들고, 파싱한 정보를 토대로 분기 처리
-//
-//            printf("\n");
-//            write_message(fd, read_buf, strlen(read_buf));
-//
-//
-//            memset(read_buf, 0, sizeof(read_buf));
-//        }
-
-//    }
-
 
 void server_network(struct sockaddr_in server_address, int server_socket, char *name) {
     int option = 1;

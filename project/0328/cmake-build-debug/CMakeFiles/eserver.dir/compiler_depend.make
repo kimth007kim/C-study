@@ -57,7 +57,6 @@ CMakeFiles/eserver.dir/epollserver.c.o: /home/kim/C-study/project/0328/epollserv
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/x86_64-linux-gnu/bits/epoll.h \
   /home/kim/C-study/project/0328/include/util.h \
-  /home/kim/C-study/project/0328/include/protocol.h \
   /home/kim/C-study/project/0328/include/epoll.h \
   /home/kim/C-study/project/0328/include/server.h \
   /usr/include/netinet/in.h \
@@ -219,10 +218,17 @@ CMakeFiles/eserver.dir/src/client.c.o: /home/kim/C-study/project/0328/src/client
   /usr/include/asm-generic/sockios.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
   /usr/include/x86_64-linux-gnu/bits/in.h \
+  /usr/include/errno.h \
+  /usr/include/x86_64-linux-gnu/bits/errno.h \
+  /usr/include/linux/errno.h \
+  /usr/include/x86_64-linux-gnu/asm/errno.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/errno-base.h \
   /home/kim/C-study/project/0328/include/util.h \
   /home/kim/C-study/project/0328/include/protocol.h \
   /home/kim/C-study/project/0328/include/linkedlist.h \
-  /home/kim/C-study/project/0328/include/client.h
+  /home/kim/C-study/project/0328/include/client.h \
+  /home/kim/C-study/project/0328/include/epoll.h
 
 CMakeFiles/eserver.dir/src/epoll.c.o: /home/kim/C-study/project/0328/src/epoll.c \
   /usr/include/stdc-predef.h \
@@ -288,6 +294,12 @@ CMakeFiles/eserver.dir/src/epoll.c.o: /home/kim/C-study/project/0328/src/epoll.c
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/errno.h \
+  /usr/include/x86_64-linux-gnu/bits/errno.h \
+  /usr/include/linux/errno.h \
+  /usr/include/x86_64-linux-gnu/asm/errno.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/errno-base.h \
   /home/kim/C-study/project/0328/include/util.h \
   /home/kim/C-study/project/0328/include/protocol.h \
   /home/kim/C-study/project/0328/include/linkedlist.h \
@@ -438,7 +450,8 @@ CMakeFiles/eserver.dir/src/network.c.o: /home/kim/C-study/project/0328/src/netwo
   /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
   /usr/include/x86_64-linux-gnu/bits/stat.h \
   /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
-  /home/kim/C-study/project/0328/include/util.h
+  /home/kim/C-study/project/0328/include/util.h \
+  /home/kim/C-study/project/0328/include/network.h
 
 CMakeFiles/eserver.dir/src/nonblocking_io.c.o: /home/kim/C-study/project/0328/src/nonblocking_io.c \
   /usr/include/stdc-predef.h \
@@ -456,7 +469,30 @@ CMakeFiles/eserver.dir/src/nonblocking_io.c.o: /home/kim/C-study/project/0328/sr
   /usr/include/x86_64-linux-gnu/asm/errno.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/asm-generic/errno-base.h \
-  /home/kim/C-study/project/0328/include/util.h
+  /home/kim/C-study/project/0328/include/util.h \
+  /usr/include/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
+  /usr/include/x86_64-linux-gnu/bits/types.h \
+  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
+  /usr/include/x86_64-linux-gnu/bits/time64.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/floatn.h \
+  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
+  /usr/include/unistd.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h
 
 CMakeFiles/eserver.dir/src/protocol.c.o: /home/kim/C-study/project/0328/src/protocol.c \
   /usr/include/stdc-predef.h \
@@ -646,7 +682,8 @@ CMakeFiles/eserver.dir/src/server.c.o: /home/kim/C-study/project/0328/src/server
   /home/kim/C-study/project/0328/include/linkedlist.h \
   /home/kim/C-study/project/0328/include/chat.h \
   /home/kim/C-study/project/0328/include/protocol.h \
-  /home/kim/C-study/project/0328/include/user.h
+  /home/kim/C-study/project/0328/include/user.h \
+  /home/kim/C-study/project/0328/include/network.h
 
 CMakeFiles/eserver.dir/src/user.c.o: /home/kim/C-study/project/0328/src/user.c \
   /usr/include/stdc-predef.h \
@@ -791,14 +828,6 @@ CMakeFiles/eserver.dir/src/util.c.o: /home/kim/C-study/project/0328/src/util.c \
 
 /usr/include/ctype.h:
 
-/usr/include/asm-generic/errno-base.h:
-
-/usr/include/asm-generic/errno.h:
-
-/usr/include/x86_64-linux-gnu/asm/errno.h:
-
-/usr/include/linux/errno.h:
-
 /usr/include/x86_64-linux-gnu/bits/struct_stat.h:
 
 /usr/include/x86_64-linux-gnu/bits/stat.h:
@@ -810,6 +839,14 @@ CMakeFiles/eserver.dir/src/util.c.o: /home/kim/C-study/project/0328/src/util.c \
 /home/kim/C-study/project/0328/src/protocol.c:
 
 /home/kim/C-study/project/0328/src/epoll.c:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/include/asm-generic/errno.h:
+
+/usr/include/x86_64-linux-gnu/asm/errno.h:
+
+/usr/include/linux/errno.h:
 
 /usr/include/x86_64-linux-gnu/bits/time.h:
 
@@ -925,16 +962,6 @@ CMakeFiles/eserver.dir/src/util.c.o: /home/kim/C-study/project/0328/src/util.c \
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
-
-/usr/include/arpa/inet.h:
-
-/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
-
-/usr/include/linux/stddef.h:
-
-/usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
-
 /usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
 
 /usr/include/unistd.h:
@@ -1032,3 +1059,13 @@ CMakeFiles/eserver.dir/src/util.c.o: /home/kim/C-study/project/0328/src/util.c \
 /usr/include/x86_64-linux-gnu/asm/sockios.h:
 
 /usr/include/x86_64-linux-gnu/bits/in.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+
+/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
+
+/usr/include/linux/stddef.h:
+
+/usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
+
+/usr/include/arpa/inet.h:

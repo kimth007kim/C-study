@@ -2,7 +2,6 @@
 #include<unistd.h>
 #include <sys/epoll.h>
 #include"include/util.h"
-#include"include/protocol.h"
 #include "include/epoll.h"
 #include "include/server.h"
 #include "include/user.h"
