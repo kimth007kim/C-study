@@ -10,7 +10,8 @@
 #include "../include/client.h"
 
 //void event_loop(void(*func)(int, int, int, char *, char *, int *), int server_socket, int epfd) {
-void event_loop(void(*func)(int, int, struct epoll_event, char *, char *, int *), int server_socket, int epfd) {
+void event_loop(void(*func)(int, int, struct epoll_event, char *, char *, int *, int *, int *), int server_socket,
+                int epfd) {
 
     int event_cnt;
     struct epoll_event *ep_events;
@@ -19,14 +20,14 @@ void event_loop(void(*func)(int, int, struct epoll_event, char *, char *, int *)
     char *read_buf = malloc(BUF_SIZE);
     char *write_buf = malloc(BUF_SIZE);
     int read_length = 0;
+    int protocol_read = 0;
+    int read_status = 0;
     while (1) {
         event_cnt = epoll_wait(epfd, ep_events, EPOLL_SIZE, -1);
         if (event_cnt == -1)
             return;
         for (int i = 0; i < event_cnt; i++) {
-//            func(server_socket, epfd, ep_events[i].data.fd, read_buf, write_buf, &read_length);
-
-            func(server_socket, epfd, ep_events[i], read_buf, write_buf, &read_length);
+            func(server_socket, epfd, ep_events[i], read_buf, write_buf, &read_length, &protocol_read, &read_status);
         }
     }
 }

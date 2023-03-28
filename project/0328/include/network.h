@@ -4,4 +4,4 @@ void node_network(struct sockaddr_in server_address, int server_socket, char *na
 
 int network_setup(void(*node_network)(struct sockaddr_in, int, char *), char *name);
 
-void set_nonblocking_fd_fd(int fd);
+void set_nonblocking_fd(int fd);

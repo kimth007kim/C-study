@@ -344,8 +344,7 @@ CMakeFiles/eclient.dir/src/network.c.o: /home/kim/C-study/project/0328/src/netwo
   /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
   /usr/include/x86_64-linux-gnu/bits/stat.h \
   /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
-  /home/kim/C-study/project/0328/include/util.h \
-  /home/kim/C-study/project/0328/include/network.h
+  /home/kim/C-study/project/0328/include/util.h
 
 CMakeFiles/eclient.dir/src/nonblocking_io.c.o: /home/kim/C-study/project/0328/src/nonblocking_io.c \
   /usr/include/stdc-predef.h \

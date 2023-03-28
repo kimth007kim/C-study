@@ -7,7 +7,6 @@
 #include <arpa/inet.h>
 #include <fcntl.h>
 #include "../include/util.h"
-#include "../include/network.h"
 
 
 void set_nonblocking_fd(int fd) {

@@ -3,8 +3,13 @@
 
 #include "util.h"
 #include "linkedlist.h"
-//#include "protocol.h"
 
+#define LISTEN_NONE 0
+#define LISTEN_BROADCAST 1
+
+
+
+//#include "protocol.h"
 extern Node *user_link;
 extern struct user *user_list[MAX_USERS];
 extern int current_users;
@@ -19,6 +24,8 @@ struct user {
     int end_offset;
     char read_buf[PROTOCOL_SIZE];
     char write_buf[PROTOCOL_SIZE];
+    int write_offset;
+    int remain;
 //    struct protocol user_protocol;
 
 };
