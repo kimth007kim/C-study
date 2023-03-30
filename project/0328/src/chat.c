@@ -39,6 +39,12 @@ void switch_write_buf(struct user *user) {
     free(new_buf);
 }
 
+void set_write_buf(){
+
+
+
+}
+
 void broadcast_mode(int fd, int epfd, struct protocol *protocol_ptr, struct user *user_ptr, int read_again) {
 
     char *time_str = generate_time();

@@ -68,27 +68,6 @@ client_epoll(int server_socket, int epfd, struct epoll_event event, char *read_b
     } else {
 
         if (server_socket == fd) {
-//            memset(write_buf, 0, sizeof(write_buf));
-//            read_cnt = read(server_socket, write_buf, BUF_SIZE);
-//
-//
-//            printf("read 후에 errno 호출 = %d   EAGAIN의 값 = %d\n", errno, EAGAIN);
-//
-//            if (read_cnt < 0) {
-//                if (errno == EAGAIN || errno == EWOULDBLOCK) {
-//                    return;
-//                } else {
-//                    error_handling("read()시 에러 발생");
-//                }
-//            } else if (read_cnt == 0) {
-//                epoll_ctl(epfd, EPOLL_CTL_DEL, server_socket, NULL);
-//                close(server_socket);
-//                exit(1);
-//            }
-//
-//            write_buf[read_cnt] = '\n';
-//            fputs(write_buf, stdout);
-//            memset(write_buf, 0, sizeof(write_buf));
             read_cnt = read(server_socket, write_buf, BUF_SIZE);
 
             if (read_cnt < 0) {
@@ -118,11 +97,7 @@ client_epoll(int server_socket, int epfd, struct epoll_event event, char *read_b
                         int total_length = atoi(temp_length);
                         new_protocol->message_length = total_length;
 
-
-//                new_protocol->destination = user_ptr->read_buf + user_ptr->start_offset;
-//                user_ptr->start_offset += 4;
-//                user_ptr->read_status = REQUIRE_BODY;
-
+                        *read_status= REQUIRE_BODY;
                         memset(temp_length, 0, 5);
 
                         *protocol_read -= 8;
@@ -134,7 +109,6 @@ client_epoll(int server_socket, int epfd, struct epoll_event event, char *read_b
                         char temp_message[BUF_SIZE];
 
                         new_protocol->message = write_buf + 8;
-//                        user_ptr->start_offset += new_protocol->message_length;
                         *protocol_read -= new_protocol->message_length;
                         *read_status = REQUIRE_HEADER;
 
@@ -142,6 +116,7 @@ client_epoll(int server_socket, int epfd, struct epoll_event event, char *read_b
                         fputs(write_buf, stdout);
                         printf("write_buf: %s\n",write_buf);
                         memset(write_buf, 0, sizeof(write_buf));
+                        *protocol_read=0;
 
                     }
 
