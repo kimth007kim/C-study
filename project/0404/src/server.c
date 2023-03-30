@@ -111,7 +111,8 @@ void server_epoll(int server_socket, int epfd, struct epoll_event event) {
                         total_read -= new_protocol->message_length;
                         user_ptr->read_status = REQUIRE_HEADER;
 
-
+                        printf("%d 님이 보내는 메시지  %.*s\n ", user_ptr->fd, new_protocol->message_length,
+                               new_protocol->message);
                         set_write_buf(fd, epfd, new_protocol);
 
                     }
