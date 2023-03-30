@@ -36,7 +36,7 @@ char *encode_protocol(char *read_buf, int target) {
     // 총길이 + destination + message를 하는 sprintf()
     sprintf(result, "%s%s%s", total, dest, read_buf);
     result[strlen(result)] = '\0';
-    printf(" 완성된 프로토콜 %s\n", result);
+//    printf(" 완성된 프로토콜 %s\n", result);
     memset(total, 0, sizeof(total));
     memset(dest, 0, sizeof(dest));
 //    memset(result,0,sizeof(result));

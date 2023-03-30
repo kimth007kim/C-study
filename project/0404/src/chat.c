@@ -32,15 +32,15 @@ void chat(int fd, int epfd, struct protocol *protocol_ptr, struct user *user_ptr
 void switch_write_buf(struct user *user) {
     int new_length = strlen(user->write_buf) - user->write_offset;
     char *new_buf = malloc(BUF_SIZE);
-
-    printf("new_length = %d \n", new_length);
-    printf("교체 전\n");
-    printf("new_buf = {%s} user->write_buf[%d]  = {%s}\n", new_buf, user->fd, user->write_buf);
+//
+//    printf("new_length = %d \n", new_length);
+//    printf("교체 전\n");
+//    printf("new_buf = {%s} user->write_buf[%d]  = {%s}\n", new_buf, user->fd, user->write_buf);
     strncpy(new_buf, user->write_buf + user->write_offset, new_length);
     memset(user->write_buf, 0, BUF_SIZE);
     strncpy(user->write_buf, new_buf, new_length);
-    printf("교체 후\n");
-    printf("new_buf = {%s} user->write_buf[%d] = {%s}\n", new_buf, user->fd, user->write_buf);
+//    printf("교체 후\n");
+//    printf("new_buf = {%s} user->write_buf[%d] = {%s}\n", new_buf, user->fd, user->write_buf);
     user->write_offset = 0;
 //    free(new_buf);
 }
@@ -154,7 +154,7 @@ void broadcast_mode(int fd, int epfd, struct protocol *protocol_ptr, struct user
 
             }
             temp_user_link = temp_user_link->next;
-            printf("\n");
+//            printf("\n");
         }
 
     } else {
@@ -188,7 +188,7 @@ void broadcast_mode(int fd, int epfd, struct protocol *protocol_ptr, struct user
 
                 temp_user_link = temp_user_link->next;
             }
-            printf("\n");
+//            printf("\n");
         }
 
     }

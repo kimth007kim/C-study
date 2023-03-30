@@ -36,10 +36,6 @@ void server_epoll(int server_socket, int epfd, struct epoll_event event) {
     int fd = event.data.fd;
     struct user *user_ptr = user_list[fd];
 
-
-    printf("event.events = %d\n", event.events);
-    printf("event.data.fd = %d\n", event.data.fd);
-
 //    if (event.events == EPOLLOUT) {
     if (event.events & EPOLLOUT) {
         //epoll 에서 감시하는 이벤트중에서 EPOLLOUT의 이벤트가 발생 했을경우

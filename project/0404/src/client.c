@@ -22,19 +22,16 @@
  * @param server_socket server_socket은 서버의 경우 자기 자신을 의미합니다. 이것을 토대로 stdin인지 , 아니면 서버와의 통신인지 구별합니다.
  * @param epfd          epfd는 epollevent를 감지하는 fd입니다.
  * @param fd            fd 는 이벤트가 발생한 fd를 가리킵니다.
- * @param read_buf      epoll_event가 발생할때 read_buf도 받습니다.
- * @param write_buf     epoll_event가 발생할때 write_buf도 받습니다.
- * @param write_length   epoll_event가 발생할때 write_length 받습니다. read_buf에서 어디까지 읽었는지 기록하기위한 변수입니다.
+ *
  */
 
 int init_flag = REQUIRE_INIT;
-
-int target_length;
-int write_cnt;
-int read_cnt;
-int read_status = 0;
+int read_status = REQUIRE_HEADER;
+int target_length = 0;
+int write_cnt = 0;
+int read_cnt = 0;
+int protocol_read = 0;
 int read_offset = 0;
-int protocol_read;
 int write_length = 0;
 char *protocol;
 
@@ -160,7 +157,8 @@ client_epoll(int server_socket, int epfd, struct epoll_event event) {
                 if (write_cnt < 0) {
                     if (errno == EAGAIN || errno == EWOULDBLOCK) {
                         struct epoll_event ev;
-                        ev.events = EPOLLOUT;
+                        ev.events |= EPOLLOUT;
+                        ev.data.fd = server_socket;
                         epoll_ctl(epfd, EPOLL_CTL_ADD, server_socket, &ev);
 //                        }
                         return;
@@ -170,8 +168,10 @@ client_epoll(int server_socket, int epfd, struct epoll_event event) {
                 } else if (write_cnt < target_length) {
                     target_length -= write_cnt;
                     struct epoll_event ev;
-                    ev.events = EPOLLOUT;
+                    ev.events |= EPOLLOUT;
+                    ev.data.fd = server_socket;
                     epoll_ctl(epfd, EPOLL_CTL_ADD, server_socket, &ev);
+
 
                 } else {
                     memset(write_buf, 0, sizeof(write_buf));
