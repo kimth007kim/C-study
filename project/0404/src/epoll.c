@@ -50,6 +50,10 @@ void create_add_event(int epfd, int fd, int event) {
     epoll_ctl(epfd, EPOLL_CTL_ADD, fd, new_event);
 
 }
+//void create_modify_event(int epfd, int fd, int event){
+//    struct epoll_event *new_event = generate_event(fd, event);
+//    epoll_ctl(epfd, EPOLL_CTL_MOD, fd, new_event);
+//}
 
 int check_event(int epfd, int fd_to_check, int event) {
     struct epoll_event temp_event;

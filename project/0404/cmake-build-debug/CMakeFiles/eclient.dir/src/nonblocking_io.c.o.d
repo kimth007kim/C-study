@@ -1,5 +1,5 @@
 CMakeFiles/eclient.dir/src/nonblocking_io.c.o: \
- /home/kim/C-study/project/0404/src/nonblocking_io.c \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/nonblocking_io.c \
  /usr/include/stdc-predef.h /usr/include/errno.h /usr/include/features.h \
  /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -11,7 +11,7 @@ CMakeFiles/eclient.dir/src/nonblocking_io.c.o: \
  /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
  /usr/include/x86_64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /home/kim/C-study/project/0404/src/../include/util.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/util.h \
  /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \

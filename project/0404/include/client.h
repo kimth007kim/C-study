@@ -7,3 +7,5 @@ client_epoll(int server_socket, int epfd, struct epoll_event event);
 void client_network(struct sockaddr_in server_address, int server_socket, char *name);
 
 void switch_read_buf(char *read_buf, int *read_offset);
+
+void clear_buf(char *buf, int start);

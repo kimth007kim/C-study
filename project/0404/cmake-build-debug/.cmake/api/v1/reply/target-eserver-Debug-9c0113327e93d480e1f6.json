@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "eclient"
+			"path" : "eserver"
 		}
 	],
 	"backtrace" : 1,
@@ -25,7 +25,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 16,
+				"line" : 17,
 				"parent" : 0
 			},
 			{
@@ -42,7 +42,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -fdiagnostics-color=always"
+					"fragment" : "-g"
 				},
 				{
 					"fragment" : "-std=gnu11"
@@ -65,11 +65,15 @@
 				3,
 				4,
 				5,
-				7
+				6,
+				7,
+				8,
+				9,
+				10
 			]
 		}
 	],
-	"id" : "eclient::@6890427a1f51a3e7e1df",
+	"id" : "eserver::@6890427a1f51a3e7e1df",
 	"install" : 
 	{
 		"destinations" : 
@@ -99,8 +103,8 @@
 		],
 		"language" : "C"
 	},
-	"name" : "eclient",
-	"nameOnDisk" : "eclient",
+	"name" : "eserver",
+	"nameOnDisk" : "eserver",
 	"paths" : 
 	{
 		"build" : ".",
@@ -118,14 +122,11 @@
 				3,
 				4,
 				5,
-				7
-			]
-		},
-		{
-			"name" : "Header Files",
-			"sourceIndexes" : 
-			[
-				6
+				6,
+				7,
+				8,
+				9,
+				10
 			]
 		}
 	],
@@ -134,13 +135,19 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "epollclient.c",
+			"path" : "epollserver.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/util.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/linkedlist.c",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -164,13 +171,26 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "src/server.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/user.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "src/network.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "include/network.h",
-			"sourceGroupIndex" : 1
+			"compileGroupIndex" : 0,
+			"path" : "src/chat.c",
+			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,

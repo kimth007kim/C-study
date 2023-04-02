@@ -1,6 +1,6 @@
 CMakeFiles/eserver.dir/src/chat.c.o: \
- /home/kim/C-study/project/0404/src/chat.c /usr/include/stdc-predef.h \
- /usr/include/stdio.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/chat.c \
+ /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -65,9 +65,9 @@ CMakeFiles/eserver.dir/src/chat.c.o: \
  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /home/kim/C-study/project/0404/src/../include/chat.h \
- /home/kim/C-study/project/0404/src/../include/../include/protocol.h \
- /home/kim/C-study/project/0404/src/../include/../include/user.h \
- /home/kim/C-study/project/0404/src/../include/../include/util.h \
- /home/kim/C-study/project/0404/src/../include/../include/linkedlist.h \
- /home/kim/C-study/project/0404/src/../include/epoll.h
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/chat.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/../include/protocol.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/../include/user.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/../include/util.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/../include/linkedlist.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/epoll.h

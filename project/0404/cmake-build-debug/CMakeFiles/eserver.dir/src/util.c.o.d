@@ -1,6 +1,6 @@
 CMakeFiles/eserver.dir/src/util.c.o: \
- /home/kim/C-study/project/0404/src/util.c /usr/include/stdc-predef.h \
- /usr/include/stdio.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/util.c \
+ /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \

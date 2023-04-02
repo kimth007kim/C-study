@@ -35,12 +35,8 @@ void server_epoll(int server_socket, int epfd, struct epoll_event event) {
     struct protocol *new_protocol = malloc(sizeof(struct protocol));
     int fd = event.data.fd;
     struct user *user_ptr = user_list[fd];
-
-//    if (event.events == EPOLLOUT) {
     if (event.events & EPOLLOUT) {
         //epoll 에서 감시하는 이벤트중에서 EPOLLOUT의 이벤트가 발생 했을경우
-//        chat(fd, epfd, NULL, user_ptr, 0);
-
         write_nonblocking(fd, epfd, event);
 
     } else {

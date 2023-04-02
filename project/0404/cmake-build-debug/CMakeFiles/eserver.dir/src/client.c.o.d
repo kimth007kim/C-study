@@ -1,6 +1,6 @@
 CMakeFiles/eserver.dir/src/client.c.o: \
- /home/kim/C-study/project/0404/src/client.c /usr/include/stdc-predef.h \
- /usr/include/x86_64-linux-gnu/sys/epoll.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/client.c \
+ /usr/include/stdc-predef.h /usr/include/x86_64-linux-gnu/sys/epoll.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -81,8 +81,8 @@ CMakeFiles/eserver.dir/src/client.c.o: \
  /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
  /usr/include/x86_64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /home/kim/C-study/project/0404/src/../include/util.h \
- /home/kim/C-study/project/0404/src/../include/protocol.h \
- /home/kim/C-study/project/0404/src/../include/linkedlist.h \
- /home/kim/C-study/project/0404/src/../include/client.h \
- /home/kim/C-study/project/0404/src/../include/epoll.h
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/util.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/protocol.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/linkedlist.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/client.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/epoll.h

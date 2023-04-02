@@ -28,15 +28,11 @@
 int init_flag = REQUIRE_INIT;
 int read_status = REQUIRE_HEADER;
 int target_length = 0;
-
 int write_cnt = 0;
 int read_cnt = 0;
 int protocol_read = 0;
-
 int read_offset = 0;
-
 int write_length = 0;
-int write_offset = 0;
 char *protocol;
 
 struct protocol *new_protocol;
@@ -61,13 +57,10 @@ client_epoll(int server_socket, int epfd, struct epoll_event event) {
     int fd = event.data.fd;
 
     if (event.events & EPOLLOUT) {
-//        target_length = strlen(protocol);
-//        write_cnt = write(server_socket, protocol, target_length);
-
-
-        target_length = strlen(write_buf);
-        write_cnt = write(server_socket, write_buf, target_length);
-
+        target_length = strlen(protocol);
+        printf("target_length =  %d\n", target_length);
+        write_cnt = write(server_socket, protocol, target_length);
+        printf("write_cnt = %d\n", write_cnt);
         if (write_cnt < 0) {
             if (errno == EAGAIN || errno == EWOULDBLOCK) {
                 return;
@@ -75,19 +68,14 @@ client_epoll(int server_socket, int epfd, struct epoll_event event) {
                 error_handling("write() error");
             }
         } else if (write_cnt < target_length) {
-//            target_length -= write_cnt;
-            int start = target_length - write_cnt;
-            write_offset -= target_length - write_cnt;
-            clear_buf(write_buf, start);
+            target_length -= write_cnt;
 
         } else if (write_cnt == target_length) {
-            clear_buf(write_buf, target_length);
-            write_offset -= target_length;
-//            memset(write_buf, 0, sizeof(write_buf));
-//            write_length = 0;
+            target_length -= write_cnt;
+            memset(write_buf, 0, sizeof(write_buf));
+            write_length = 0;
             struct epoll_event ev;
             ev.events = EPOLLIN;
-            ev.data.fd = server_socket;
             epoll_ctl(epfd, EPOLL_CTL_MOD, server_socket, &ev);
         }
 
@@ -113,16 +101,11 @@ client_epoll(int server_socket, int epfd, struct epoll_event event) {
                     } else {
                         memset(new_protocol, 0, sizeof(struct protocol));
                         char temp_length[5];
-                        char temp_dest[5];
+
                         strncpy(temp_length, read_buf, 4);
                         temp_length[4] = '\n';
                         int total_length = atoi(temp_length);
                         new_protocol->message_length = total_length;
-
-                        strncpy(temp_dest, read_buf + 4, 4);
-                        temp_dest[4] = '\n';
-//                        int dest = atoi(temp_dest);
-                        new_protocol->destination = temp_dest;
 
                         read_status = REQUIRE_BODY;
                         memset(temp_length, 0, 5);
@@ -140,8 +123,6 @@ client_epoll(int server_socket, int epfd, struct epoll_event event) {
 
                         sprintf(output_message, "%.*s", new_protocol->message_length, new_protocol->message);
                         fputs(output_message, stdout);
-
-
                         protocol_read -= new_protocol->message_length;
                         read_offset += new_protocol->message_length;
                         switch_read_buf(read_buf, &read_offset);
@@ -171,30 +152,15 @@ client_epoll(int server_socket, int epfd, struct epoll_event event) {
                 exit(1);
             } else {
                 if (temp != '\n' && write_length < BUF_SIZE - 1) {
-//                    write_buf[write_length] = temp;
-                    client_buf[write_length] = temp;
+                    write_buf[write_length] = temp;
                     write_length += 1;
                     return;
                 }
-//                write_buf[write_length] = '\n';
-//                protocol = encode_protocol(write_buf, 0);
-
-
-                // client_buf 다 적었고 write_buf 로 옮겨감
-                client_buf[write_length] = '\n';
-                protocol = encode_protocol(client_buf, 0);
+                write_buf[write_length] = '\n';
+                protocol = encode_protocol(write_buf, 0);
                 target_length = strlen(protocol);
 
-
-                // 새로 추가된 부분
-//                strncpy(write_buf + write_offset, client_buf, target_length);
-                strncpy(write_buf + write_offset, protocol, target_length);
-                memset(client_buf, 0, BUF_SIZE);
-                write_length = 0;
-                write_offset += target_length;
-
-
-                // TODO client_buf 에 복사 하기.
+                // TODO client_buf 에 복사하기.
 
                 struct epoll_event ev;
                 ev.events = EPOLLIN | EPOLLOUT;
@@ -227,6 +193,7 @@ void client_network(struct sockaddr_in server_address, int server_socket, char *
     }
 }
 
+//
 void switch_read_buf(char *read_buf, int *read_offset) {
 
     char *new_buf = malloc(BUF_SIZE);
@@ -235,13 +202,4 @@ void switch_read_buf(char *read_buf, int *read_offset) {
     memset(read_buf, 0, BUF_SIZE);
     strncpy(read_buf, new_buf, new_length);
     *read_offset = new_length;
-}
-
-void clear_buf(char *buf, int start) {
-
-    char *new_buf = malloc(BUF_SIZE);
-    int new_length = strlen(buf) - start;
-    strncpy(new_buf, buf + start, new_length);
-    memset(buf, 0, BUF_SIZE);
-    strncpy(buf, new_buf, new_length);
 }

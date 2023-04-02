@@ -1,6 +1,6 @@
 CMakeFiles/eclient.dir/src/network.c.o: \
- /home/kim/C-study/project/0404/src/network.c /usr/include/stdc-predef.h \
- /usr/include/string.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/network.c \
+ /usr/include/stdc-predef.h /usr/include/string.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -61,4 +61,4 @@ CMakeFiles/eclient.dir/src/network.c.o: \
  /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
  /usr/include/x86_64-linux-gnu/bits/stat.h \
  /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
- /home/kim/C-study/project/0404/src/../include/util.h
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/util.h

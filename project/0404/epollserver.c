@@ -14,6 +14,9 @@ int main() {
 
     for (int i = 0; i < MAX_USERS; i++) {
         user_list[i] = NULL;
+//        memset(user_list[i]->read_buf,0,BUF_SIZE);
+//        memset(user_list[i]->write_buf,0,BUF_SIZE);
+
     }
 
     //네트워크 연결

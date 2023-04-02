@@ -1,6 +1,6 @@
 CMakeFiles/eclient.dir/src/protocol.c.o: \
- /home/kim/C-study/project/0404/src/protocol.c /usr/include/stdc-predef.h \
- /usr/include/stdio.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/protocol.c \
+ /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -69,5 +69,5 @@ CMakeFiles/eclient.dir/src/protocol.c.o: \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
  /usr/include/x86_64-linux-gnu/bits/in.h \
- /home/kim/C-study/project/0404/src/../include/util.h \
- /home/kim/C-study/project/0404/src/../include/protocol.h
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/util.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/protocol.h

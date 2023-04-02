@@ -1,1 +1,1 @@
-/usr/bin/gcc -g CMakeFiles/test.dir/test.c.o CMakeFiles/test.dir/src/linkedlist.c.o CMakeFiles/test.dir/src/util.c.o -o test 
+/usr/bin/cc -g CMakeFiles/test.dir/test.c.o CMakeFiles/test.dir/src/linkedlist.c.o CMakeFiles/test.dir/src/util.c.o -o test 
