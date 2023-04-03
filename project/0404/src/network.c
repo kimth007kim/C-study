@@ -6,7 +6,12 @@
 #include <string.h>
 #include <arpa/inet.h>
 #include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/epoll.h>
 #include "../include/util.h"
+#include "../include/epoll.h"
+#include "../include/user.h"
 
 
 void set_nonblocking_fd(int fd) {
@@ -31,3 +36,20 @@ int network_setup(void(*node_network)(struct sockaddr_in, int, char *), char *na
     return server_socket;
 }
 
+void accept_socket(int epfd, int server_socket) {
+    socklen_t address_size;
+    int client_socket;
+    struct sockaddr_in client_address;
+
+    address_size = sizeof(client_address);
+    client_socket = accept(server_socket, (struct sockaddr *) &client_address, &address_size);
+    set_nonblocking_fd(client_socket);
+    if (client_socket == -1) {
+        puts("accept() error!");
+        exit(1);
+    }
+    create_add_event(epfd, client_socket, EPOLLIN);
+    enter_user(client_socket);
+
+
+}

@@ -6,25 +6,29 @@
  * message : 클라이언트가 보낸 메시지
  */
 
-struct protocol{
+struct protocol {
     int message_length;
     char *destination;
     char *message;
 };
 
-struct kd_protocol{
-    unsigned int message_length:10; //1024
-    unsigned int destination:11; //2048
+struct kd_protocol {
+    unsigned int message_length: 10; //1024
+    unsigned int destination: 11; //2048
     char *message;
 };
 
 
-
 char *encode_protocol(char *read_buf, int target);
-void encode_kd_protocol(char *read_buf, int target,char * output_str);
+
+void encode_kd_protocol(char *read_buf, int target, char *output_str);
+
 char *decode_protocol(struct protocol *protocol_ptr);
-//struct protocol *decode_protocol(int fd, char *protocol);
 
+char *generate_time();
 
+char *generate_message(int fd, char *buf);
+
+char *generate_greeting(int fd, int flag);
 
 #endif /* PROTOCOL_H */

@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-147303538e6bc41f3cae.json",
+					"jsonFile" : "directory-.-Debug-b1d67a281624a79dcb74.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.10"
@@ -44,21 +44,21 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "eclient::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-eclient-Debug-cd63e4bc5b21a3e4efbc.json",
+					"jsonFile" : "target-eclient-Debug-508df154446705ea2299.json",
 					"name" : "eclient",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "eserver::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-eserver-Debug-9c0113327e93d480e1f6.json",
+					"jsonFile" : "target-eserver-Debug-cab163df91a257cbd129.json",
 					"name" : "eserver",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "test::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-test-Debug-2e92537db5e56b74fbc5.json",
+					"jsonFile" : "target-test-Debug-16d4a01ee7848c2899fd.json",
 					"name" : "test",
 					"projectIndex" : 0
 				}
@@ -68,12 +68,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug",
-		"source" : "/mnt/c/Users/Kyungdong/Documents/C-study/project/0404"
+		"build" : "/home/kim/C-study/project/0404/cmake-build-debug",
+		"source" : "/home/kim/C-study/project/0404"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 3
+		"minor" : 4
 	}
 }

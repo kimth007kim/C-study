@@ -1,6 +1,6 @@
 CMakeFiles/eserver.dir/src/server.c.o: \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/server.c \
- /usr/include/stdc-predef.h /usr/include/x86_64-linux-gnu/sys/epoll.h \
+ /home/kim/C-study/project/0404/src/server.c /usr/include/stdc-predef.h \
+ /usr/include/x86_64-linux-gnu/sys/epoll.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -71,25 +71,19 @@ CMakeFiles/eserver.dir/src/server.c.o: \
  /usr/include/x86_64-linux-gnu/asm/sockios.h \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
- /usr/include/string.h \
- /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
- /usr/include/strings.h /usr/include/arpa/inet.h \
- /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/bits/in.h \
- /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+ /usr/include/arpa/inet.h /usr/include/netinet/in.h \
+ /usr/include/x86_64-linux-gnu/bits/in.h /usr/include/stdlib.h \
+ /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
- /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/errno.h \
- /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
- /usr/include/x86_64-linux-gnu/asm/errno.h \
- /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/util.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/protocol.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/server.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/epoll.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/user.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/util.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/linkedlist.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/chat.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/../include/protocol.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/../include/user.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/network.h
+ /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+ /home/kim/C-study/project/0404/src/../include/util.h \
+ /home/kim/C-study/project/0404/src/../include/server.h \
+ /home/kim/C-study/project/0404/src/../include/epoll.h \
+ /home/kim/C-study/project/0404/src/../include/user.h \
+ /home/kim/C-study/project/0404/src/../include/util.h \
+ /home/kim/C-study/project/0404/src/../include/linkedlist.h \
+ /home/kim/C-study/project/0404/src/../include/chat.h \
+ /home/kim/C-study/project/0404/src/../include/../include/protocol.h \
+ /home/kim/C-study/project/0404/src/../include/../include/user.h \
+ /home/kim/C-study/project/0404/src/../include/network.h \
+ /home/kim/C-study/project/0404/src/../include/nonblocking_io.h

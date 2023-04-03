@@ -8,18 +8,18 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug"/>
+				<Option working_dir="/home/kim/C-study/project/0404/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="eclient">
-				<Option output="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/eclient" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug"/>
+				<Option output="/home/kim/C-study/project/0404/cmake-build-debug/eclient" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/kim/C-study/project/0404/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -33,15 +33,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 eclient"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 eclient"/>
+					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="eclient/fast">
-				<Option output="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/eclient" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug"/>
+				<Option output="/home/kim/C-study/project/0404/cmake-build-debug/eclient" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/kim/C-study/project/0404/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -55,15 +55,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 eclient/fast"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 eclient/fast"/>
+					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="eserver">
-				<Option output="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/eserver" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug"/>
+				<Option output="/home/kim/C-study/project/0404/cmake-build-debug/eserver" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/kim/C-study/project/0404/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -77,15 +77,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 eserver"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 eserver"/>
+					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="eserver/fast">
-				<Option output="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/eserver" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug"/>
+				<Option output="/home/kim/C-study/project/0404/cmake-build-debug/eserver" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/kim/C-study/project/0404/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -99,15 +99,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 eserver/fast"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 eserver/fast"/>
+					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="test">
-				<Option output="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/test" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug"/>
+				<Option output="/home/kim/C-study/project/0404/cmake-build-debug/test" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/kim/C-study/project/0404/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -121,15 +121,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 test"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 test"/>
+					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="test/fast">
-				<Option output="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/test" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug"/>
+				<Option output="/home/kim/C-study/project/0404/cmake-build-debug/test" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/kim/C-study/project/0404/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -143,127 +143,128 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 test/fast"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 test/fast"/>
+					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug"/>
+				<Option working_dir="/home/kim/C-study/project/0404/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug"/>
+				<Option working_dir="/home/kim/C-study/project/0404/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="list_install_components">
-				<Option working_dir="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug"/>
+				<Option working_dir="/home/kim/C-study/project/0404/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="install">
-				<Option working_dir="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug"/>
+				<Option working_dir="/home/kim/C-study/project/0404/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="install/local">
-				<Option working_dir="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug"/>
+				<Option working_dir="/home/kim/C-study/project/0404/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="install/strip">
-				<Option working_dir="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug"/>
+				<Option working_dir="/home/kim/C-study/project/0404/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j20 -f &quot;/home/kim/C-study/project/0404/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/epollclient.c">
+		<Unit filename="/home/kim/C-study/project/0404/epollclient.c">
 			<Option target="eclient"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/epollserver.c">
+		<Unit filename="/home/kim/C-study/project/0404/epollserver.c">
 			<Option target="eserver"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/include/linkedlist.h">
+		<Unit filename="/home/kim/C-study/project/0404/include/linkedlist.h">
 			<Option target="test"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/include/network.h">
-			<Option target="eclient"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/chat.c">
-			<Option target="eserver"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/client.c">
+		<Unit filename="/home/kim/C-study/project/0404/src/chat.c">
 			<Option target="eclient"/>
 			<Option target="eserver"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/epoll.c">
+		<Unit filename="/home/kim/C-study/project/0404/src/client.c">
 			<Option target="eclient"/>
 			<Option target="eserver"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/linkedlist.c">
-			<Option target="eserver"/>
-			<Option target="test"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/network.c">
+		<Unit filename="/home/kim/C-study/project/0404/src/epoll.c">
 			<Option target="eclient"/>
 			<Option target="eserver"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/nonblocking_io.c">
-			<Option target="eclient"/>
-			<Option target="eserver"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/protocol.c">
-			<Option target="eclient"/>
-			<Option target="eserver"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/server.c">
-			<Option target="eserver"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/user.c">
-			<Option target="eserver"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/util.c">
+		<Unit filename="/home/kim/C-study/project/0404/src/linkedlist.c">
 			<Option target="eclient"/>
 			<Option target="eserver"/>
 			<Option target="test"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/test.c">
+		<Unit filename="/home/kim/C-study/project/0404/src/network.c">
+			<Option target="eclient"/>
+			<Option target="eserver"/>
+		</Unit>
+		<Unit filename="/home/kim/C-study/project/0404/src/nonblocking_io.c">
+			<Option target="eclient"/>
+			<Option target="eserver"/>
+		</Unit>
+		<Unit filename="/home/kim/C-study/project/0404/src/protocol.c">
+			<Option target="eclient"/>
+			<Option target="eserver"/>
+		</Unit>
+		<Unit filename="/home/kim/C-study/project/0404/src/server.c">
+			<Option target="eclient"/>
+			<Option target="eserver"/>
+		</Unit>
+		<Unit filename="/home/kim/C-study/project/0404/src/user.c">
+			<Option target="eclient"/>
+			<Option target="eserver"/>
+		</Unit>
+		<Unit filename="/home/kim/C-study/project/0404/src/util.c">
+			<Option target="eclient"/>
+			<Option target="eserver"/>
 			<Option target="test"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Kyungdong/Documents/C-study/project/0404/CMakeLists.txt">
+		<Unit filename="/home/kim/C-study/project/0404/test.c">
+			<Option target="test"/>
+		</Unit>
+		<Unit filename="/home/kim/C-study/project/0404/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

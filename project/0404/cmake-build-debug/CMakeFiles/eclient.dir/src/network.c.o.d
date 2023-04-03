@@ -1,6 +1,6 @@
 CMakeFiles/eclient.dir/src/network.c.o: \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/network.c \
- /usr/include/stdc-predef.h /usr/include/string.h \
+ /home/kim/C-study/project/0404/src/network.c /usr/include/stdc-predef.h \
+ /usr/include/string.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -60,5 +60,26 @@ CMakeFiles/eclient.dir/src/network.c.o: \
  /usr/include/x86_64-linux-gnu/bits/fcntl.h \
  /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
  /usr/include/x86_64-linux-gnu/bits/stat.h \
- /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/util.h
+ /usr/include/x86_64-linux-gnu/bits/struct_stat.h /usr/include/stdio.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
+ /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
+ /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/floatn.h \
+ /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/stdlib.h \
+ /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+ /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+ /usr/include/x86_64-linux-gnu/sys/epoll.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar.h \
+ /usr/include/x86_64-linux-gnu/bits/epoll.h \
+ /home/kim/C-study/project/0404/src/../include/util.h \
+ /home/kim/C-study/project/0404/src/../include/epoll.h \
+ /home/kim/C-study/project/0404/src/../include/user.h \
+ /home/kim/C-study/project/0404/src/../include/util.h \
+ /home/kim/C-study/project/0404/src/../include/linkedlist.h

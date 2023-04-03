@@ -1,6 +1,5 @@
 
-
-void node_network(struct sockaddr_in server_address, int server_socket, char *name);
+void accept_socket(int epfd, int server_socket);
 
 int network_setup(void(*node_network)(struct sockaddr_in, int, char *), char *name);
 

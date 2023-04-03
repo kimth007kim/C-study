@@ -1,6 +1,6 @@
 CMakeFiles/eserver.dir/src/chat.c.o: \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/chat.c \
- /usr/include/stdc-predef.h /usr/include/stdio.h \
+ /home/kim/C-study/project/0404/src/chat.c /usr/include/stdc-predef.h \
+ /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -22,20 +22,10 @@ CMakeFiles/eserver.dir/src/chat.c.o: \
  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
- /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/unistd.h \
- /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
- /usr/include/x86_64-linux-gnu/bits/environments.h \
- /usr/include/x86_64-linux-gnu/bits/confname.h \
- /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
- /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
- /usr/include/x86_64-linux-gnu/bits/unistd_ext.h /usr/include/string.h \
+ /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/string.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
- /usr/include/strings.h /usr/include/errno.h \
- /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
- /usr/include/x86_64-linux-gnu/asm/errno.h \
- /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /usr/include/x86_64-linux-gnu/sys/epoll.h \
+ /usr/include/strings.h /usr/include/x86_64-linux-gnu/sys/epoll.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
@@ -61,13 +51,10 @@ CMakeFiles/eserver.dir/src/chat.c.o: \
  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
- /usr/include/x86_64-linux-gnu/bits/epoll.h /usr/include/stdlib.h \
- /usr/include/x86_64-linux-gnu/bits/waitflags.h \
- /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
- /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/chat.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/../include/protocol.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/../include/user.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/../include/util.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/../include/linkedlist.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/epoll.h
+ /usr/include/x86_64-linux-gnu/bits/epoll.h \
+ /home/kim/C-study/project/0404/src/../include/chat.h \
+ /home/kim/C-study/project/0404/src/../include/../include/protocol.h \
+ /home/kim/C-study/project/0404/src/../include/../include/user.h \
+ /home/kim/C-study/project/0404/src/../include/../include/util.h \
+ /home/kim/C-study/project/0404/src/../include/../include/linkedlist.h \
+ /home/kim/C-study/project/0404/src/../include/epoll.h

@@ -1,4 +1,4 @@
-CMakeFiles/eserver.dir/src/user.c.o: \
+CMakeFiles/eclient.dir/src/user.c.o: \
  /home/kim/C-study/project/0404/src/user.c /usr/include/stdc-predef.h \
  /usr/include/string.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \

@@ -15,21 +15,7 @@ struct user *user_list[MAX_USERS];
 int current_users = 0;
 
 
-char *generate_greeting(int fd, int flag) {
-    char *message = malloc(sizeof(char) * PROTOCOL_SIZE);
-    char *time_str;
-    char *hey = "입장하셨습니다";
-    char *bye = "퇴장하셨습니다";
 
-    time_str = generate_time();
-    if (flag == 0) {
-        sprintf(message, "[%s] %s 님이 %s.\n", time_str, user_list[fd]->name, hey);
-    } else {
-        sprintf(message, "[%s] %s 님이 %s.\n", time_str, user_list[fd]->name, bye);
-    }
-    int message_length = strlen(message);
-    return message;
-}
 
 void write_message(int fd, char *buf, int len) {
     Node *temp_user_link = user_link;
@@ -51,26 +37,6 @@ void show_users() {
     }
     printf("\n");
 
-}
-
-char *generate_time() {
-    time_t timer = time(NULL);
-    struct tm *t = localtime(&timer);
-    char *result = malloc(30);
-    strftime(result, BUF_SIZE, "%Y/%m/%d %H:%M:%S", t);
-
-    return result;
-}
-
-char *generate_message(int fd, char *buf) {
-    char *message = malloc(sizeof(char) * PROTOCOL_SIZE);
-    char *time_str;
-    time_str = generate_time();
-    sprintf(message, "[%s] %s : %s", time_str, user_list[fd]->name, buf);
-    int message_length = strlen(message);
-//    write_message(fd, message, message_length);
-
-    return message;
 }
 
 void enter_user(int fd) {

@@ -6,8 +6,10 @@
 #include<string.h>
 #include <ctype.h>
 #include <netinet/in.h>
+#include <time.h>
 #include "../include/util.h"
 #include "../include/protocol.h"
+#include "../include/user.h"
 
 //HTTP
 /* HEADER + BODY */
@@ -100,7 +102,36 @@ void encode_kd_protocol(char *read_buf, int target, char *output_str) {
 
 }
 
-char *decode_protocol(struct protocol *protocol_ptr){
+char *generate_time() {
+    time_t timer = time(NULL);
+    struct tm *t = localtime(&timer);
+    char *result = malloc(30);
+    strftime(result, BUF_SIZE, "%Y/%m/%d %H:%M:%S", t);
 
+    return result;
+}
 
+char *generate_message(int fd, char *buf) {
+    char *message = malloc(sizeof(char) * PROTOCOL_SIZE);
+    char *time_str;
+    time_str = generate_time();
+    sprintf(message, "[%s] %s : %s", time_str, user_list[fd]->name, buf);
+
+    return message;
+}
+
+char *generate_greeting(int fd, int flag) {
+    char *message = malloc(sizeof(char) * PROTOCOL_SIZE);
+    char *time_str;
+    char *hey = "입장하셨습니다";
+    char *bye = "퇴장하셨습니다";
+
+    time_str = generate_time();
+    if (flag == 0) {
+        sprintf(message, "[%s] %s 님이 %s.\n", time_str, user_list[fd]->name, hey);
+    } else {
+        sprintf(message, "[%s] %s 님이 %s.\n", time_str, user_list[fd]->name, bye);
+    }
+    int message_length = strlen(message);
+    return message;
 }

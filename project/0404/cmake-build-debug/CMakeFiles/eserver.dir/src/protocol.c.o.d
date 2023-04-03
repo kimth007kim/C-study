@@ -1,6 +1,6 @@
 CMakeFiles/eserver.dir/src/protocol.c.o: \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/protocol.c \
- /usr/include/stdc-predef.h /usr/include/stdio.h \
+ /home/kim/C-study/project/0404/src/protocol.c /usr/include/stdc-predef.h \
+ /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -68,6 +68,12 @@ CMakeFiles/eserver.dir/src/protocol.c.o: \
  /usr/include/x86_64-linux-gnu/asm/sockios.h \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
- /usr/include/x86_64-linux-gnu/bits/in.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/util.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0404/src/../include/protocol.h
+ /usr/include/x86_64-linux-gnu/bits/in.h /usr/include/time.h \
+ /usr/include/x86_64-linux-gnu/bits/time.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
+ /home/kim/C-study/project/0404/src/../include/util.h \
+ /home/kim/C-study/project/0404/src/../include/protocol.h \
+ /home/kim/C-study/project/0404/src/../include/user.h \
+ /home/kim/C-study/project/0404/src/../include/util.h \
+ /home/kim/C-study/project/0404/src/../include/linkedlist.h

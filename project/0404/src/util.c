@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <string.h>
+#include "../include/util.h"
 
 
 void error_handling(char *message) {
@@ -24,4 +25,14 @@ char *int_to_charzero(int num) {
     sprintf(result, "%04d", num);
 //    result[4]='\n';
     return result;
+}
+
+void switch_buffer(char *buffer, int *offset) {
+
+    int new_length = strlen(buffer) - *offset;
+    char *new_buf = malloc(BUF_SIZE);
+    strncpy(new_buf, buffer + *offset, new_length);
+    memset(buffer, 0, BUF_SIZE);
+    strncpy(buffer, new_buf, new_length);
+    *offset = new_length;
 }
