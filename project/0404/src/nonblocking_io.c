@@ -63,9 +63,8 @@ void nio_read(int host_type, int epfd, int fd, char *read_buf, int *read_offset,
 
                 if (host_type == SERVER) {
                     // TODO 추후에는 프로토콜 을 파싱하는 과정을 거치는것으로 수정해야한다.
-                    // 만약에 호출 대상이  서버라면 read() 해온 protocl 을 write_buf 에 복사해주는 역할을 하는 과정을 가진다.
-                    set_broadcast_write_buf(fd, epfd, new_protocol);
-
+                    // 만약에 호출 대상이  서버라면 read() 해온 protocol 을 write_buf 에 복사해주는 역할을 하는 과정을 가진다.
+                    destination_handler(fd, epfd, new_protocol);
 
                 } else if (host_type == CLIENT) {
                     // 만약에 호출 대상이 클라이언트 라면 read() 해온 protocl 을 write_buf 에 복사해주는 역할을 하는 과정을 가진다.
@@ -75,6 +74,7 @@ void nio_read(int host_type, int epfd, int fd, char *read_buf, int *read_offset,
                 }
                 switch_buffer(read_buf, read_offset);
                 *read_status = REQUIRE_HEADER;
+                *read_offset = 0;
 
             }
         }
@@ -95,11 +95,6 @@ void nio_write(int host_type, int epfd, int fd, char *write_buf, int *write_offs
         switch_buffer(write_buf, write_offset);
     } else {
         switch_buffer(write_buf, write_offset);
-
-//        struct epoll_event ev;
-//        ev.events = EPOLLIN;
-//        ev.data.fd = fd;
-//        epoll_ctl(epfd, EPOLL_CTL_MOD, fd, &ev);
         create_modify_event(epfd, fd, EPOLLIN);
     }
 }
@@ -130,7 +125,7 @@ void nio_stdin_read(int epfd, int fd, char *client_buf, char *write_buf, int *wr
         }
         client_buf[*write_length] = '\n';
         // client 버퍼에서 읽어온것을 토대로 new_protocol 생성완료
-        new_protocol = encode_protocol(client_buf, 0);
+        new_protocol = encode_protocol(client_buf, 9999);
         int target_length = strlen(new_protocol);
 
         //new_protocol write_buf에 write_offset이후에 copy 하기
@@ -144,3 +139,4 @@ void nio_stdin_read(int epfd, int fd, char *client_buf, char *write_buf, int *wr
         create_modify_event(epfd, fd, EPOLLIN | EPOLLOUT);
     }
 }
+

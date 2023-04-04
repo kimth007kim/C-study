@@ -13,7 +13,8 @@
 #define CLIENT 1
 
 
-
+#define TRUE 1
+#define FALSE 0
 
 void error_handling(char *message);
 

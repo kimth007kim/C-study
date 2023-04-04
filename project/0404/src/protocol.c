@@ -37,7 +37,7 @@ char *encode_protocol(char *read_buf, int target) {
     dest = int_to_charzero(target);
     // 총길이 + destination + message를 하는 sprintf()
     sprintf(result, "%s%s%s", total, dest, read_buf);
-    result[strlen(result)] = '\0';
+//    result[strlen(result)] = '0';
 //    printf(" 완성된 프로토콜 %s\n", result);
     memset(total, 0, sizeof(total));
     memset(dest, 0, sizeof(dest));
@@ -111,11 +111,11 @@ char *generate_time() {
     return result;
 }
 
-char *generate_message(int fd, char *buf) {
+char *generate_message(int fd, char *buf, int message_length) {
     char *message = malloc(sizeof(char) * PROTOCOL_SIZE);
     char *time_str;
     time_str = generate_time();
-    sprintf(message, "[%s] %s : %s", time_str, user_list[fd]->name, buf);
+    sprintf(message, "[%s] %s : %.*s", time_str, user_list[fd]->name, message_length, buf);
 
     return message;
 }

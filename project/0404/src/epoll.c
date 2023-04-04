@@ -11,26 +11,19 @@
 
 //void event_loop(void(*func)(int, int, int, char *, char *, int *), int server_socket, int epfd) {
 void
-event_loop(void(*func)(int, int, struct epoll_event, char *, char *, int *, int *, int *), int server_socket,
-           int epfd) {
+event_loop(void(*func)(int, int, struct epoll_event, char *), int server_socket,
+           int epfd, char *name) {
 
     int event_cnt;
     struct epoll_event *ep_events;
 
     ep_events = malloc(sizeof(struct epoll_event) * EPOLL_SIZE);
-    char *read_buf = malloc(BUF_SIZE);
-    char *write_buf = malloc(BUF_SIZE);
-    int read_length = 0;
-    int protocol_read = 0;
-    int read_status = 0;
-//    printf("event_loop: read_offset(%p): %d\n", &read_offset, read_offset);
     while (1) {
         event_cnt = epoll_wait(epfd, ep_events, EPOLL_SIZE, -1);
         if (event_cnt == -1)
             return;
         for (int i = 0; i < event_cnt; i++) {
-            func(server_socket, epfd, ep_events[i], read_buf, write_buf, &read_length, &protocol_read, &read_status
-            );
+            func(server_socket, epfd, ep_events[i], name);
         }
     }
 }
@@ -50,11 +43,13 @@ void create_add_event(int epfd, int fd, int event) {
     epoll_ctl(epfd, EPOLL_CTL_ADD, fd, new_event);
 
 }
-void create_modify_event(int epfd, int fd, int event){
+
+void create_modify_event(int epfd, int fd, int event) {
     struct epoll_event *new_event = generate_event(fd, event);
     epoll_ctl(epfd, EPOLL_CTL_MOD, fd, new_event);
 }
-void create_delete_event(int epfd, int fd){
+
+void create_delete_event(int epfd, int fd) {
     epoll_ctl(epfd, EPOLL_CTL_DEL, fd, NULL);
 }
 

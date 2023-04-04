@@ -52,6 +52,17 @@ CMakeFiles/eclient.dir/epollclient.c.o: /home/kim/C-study/project/0404/epollclie
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/x86_64-linux-gnu/bits/epoll.h \
+  /usr/include/stdio.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/floatn.h \
+  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
   /home/kim/C-study/project/0404/include/util.h \
   /home/kim/C-study/project/0404/include/epoll.h \
   /home/kim/C-study/project/0404/include/client.h \
@@ -136,6 +147,7 @@ CMakeFiles/eclient.dir/src/chat.c.o: /home/kim/C-study/project/0404/src/chat.c \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/x86_64-linux-gnu/bits/epoll.h \
+  /usr/include/malloc.h \
   /home/kim/C-study/project/0404/include/chat.h \
   /home/kim/C-study/project/0404/include/protocol.h \
   /home/kim/C-study/project/0404/include/user.h \
@@ -949,29 +961,23 @@ CMakeFiles/eclient.dir/src/util.c.o: /home/kim/C-study/project/0404/src/util.c \
 
 /home/kim/C-study/project/0404/include/chat.h:
 
+/usr/include/malloc.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
 
 /usr/include/string.h:
 
-/usr/include/x86_64-linux-gnu/bits/floatn-common.h:
+/home/kim/C-study/project/0404/src/chat.c:
 
-/usr/include/x86_64-linux-gnu/bits/floatn.h:
+/home/kim/C-study/project/0404/include/network.h:
 
-/home/kim/C-study/project/0404/src/protocol.c:
+/usr/include/x86_64-linux-gnu/bits/in.h:
 
-/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+/usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h:
 
-/home/kim/C-study/project/0404/include/nonblocking_io.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
-
-/home/kim/C-study/project/0404/src/nonblocking_io.c:
-
-/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
+/usr/include/x86_64-linux-gnu/asm/sockios.h:
 
 /usr/include/x86_64-linux-gnu/bits/endian.h:
 
@@ -992,10 +998,6 @@ CMakeFiles/eclient.dir/src/util.c.o: /home/kim/C-study/project/0404/src/util.c \
 /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h:
 
 /usr/include/endian.h:
 
@@ -1021,9 +1023,21 @@ CMakeFiles/eclient.dir/src/util.c.o: /home/kim/C-study/project/0404/src/util.c \
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
+/home/kim/C-study/project/0404/src/nonblocking_io.c:
+
+/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
+
 /usr/include/x86_64-linux-gnu/bits/sockaddr.h:
 
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/asm-generic/sockios.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/time_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/environments.h:
 
@@ -1043,15 +1057,15 @@ CMakeFiles/eclient.dir/src/util.c.o: /home/kim/C-study/project/0404/src/util.c \
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h:
+/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+
+/usr/include/arpa/inet.h:
 
 /usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
 
 /usr/include/linux/stddef.h:
-
-/usr/include/arpa/inet.h:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
@@ -1069,6 +1083,10 @@ CMakeFiles/eclient.dir/src/util.c.o: /home/kim/C-study/project/0404/src/util.c \
 
 /usr/include/x86_64-linux-gnu/bits/posix_opt.h:
 
+/home/kim/C-study/project/0404/include/nonblocking_io.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
 
 /usr/include/x86_64-linux-gnu/bits/byteswap.h:
@@ -1085,21 +1103,49 @@ CMakeFiles/eclient.dir/src/util.c.o: /home/kim/C-study/project/0404/src/util.c \
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
 
+/usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/floatn.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
+
+/usr/include/stdio.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
+
+/usr/include/x86_64-linux-gnu/bits/errno.h:
+
+/usr/include/x86_64-linux-gnu/sys/epoll.h:
+
+/usr/include/asm-generic/socket.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
+
+/usr/include/x86_64-linux-gnu/asm/bitsperlong.h:
+
+/usr/include/x86_64-linux-gnu/asm/posix_types_64.h:
+
+/usr/include/asm-generic/bitsperlong.h:
+
+/usr/include/x86_64-linux-gnu/bits/types.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/FILE.h:
+
 /home/kim/C-study/project/0404/include/client.h:
+
+/home/kim/C-study/project/0404/src/protocol.c:
+
+/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/floatn-common.h:
 
 /usr/include/x86_64-linux-gnu/sys/socket.h:
 
 /usr/include/fcntl.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h:
-
-/usr/include/stdlib.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/time_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
-
-/usr/include/asm-generic/sockios.h:
 
 /home/kim/C-study/project/0404/include/epoll.h:
 
@@ -1109,25 +1155,11 @@ CMakeFiles/eclient.dir/src/util.c.o: /home/kim/C-study/project/0404/src/util.c \
 
 /usr/include/x86_64-linux-gnu/asm/socket.h:
 
-/usr/include/x86_64-linux-gnu/bits/errno.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
-
-/usr/include/x86_64-linux-gnu/sys/epoll.h:
-
-/usr/include/asm-generic/socket.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
-
 /usr/include/errno.h:
 
 /usr/include/linux/posix_types.h:
 
 /usr/include/x86_64-linux-gnu/asm/posix_types.h:
-
-/usr/include/x86_64-linux-gnu/asm/bitsperlong.h:
-
-/usr/include/x86_64-linux-gnu/asm/posix_types_64.h:
 
 /home/kim/C-study/project/0404/include/user.h:
 
@@ -1138,21 +1170,3 @@ CMakeFiles/eclient.dir/src/util.c.o: /home/kim/C-study/project/0404/src/util.c \
 /usr/include/x86_64-linux-gnu/bits/epoll.h:
 
 /usr/include/asm-generic/posix_types.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/FILE.h:
-
-/usr/include/x86_64-linux-gnu/bits/types.h:
-
-/usr/include/asm-generic/bitsperlong.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
-
-/usr/include/stdio.h:
-
-/usr/include/x86_64-linux-gnu/asm/sockios.h:
-
-/usr/include/x86_64-linux-gnu/bits/in.h:
-
-/home/kim/C-study/project/0404/include/network.h:
-
-/home/kim/C-study/project/0404/src/chat.c:

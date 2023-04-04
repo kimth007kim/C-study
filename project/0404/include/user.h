@@ -4,10 +4,6 @@
 #include "util.h"
 #include "linkedlist.h"
 
-#define LISTEN_NONE 0
-#define LISTEN_BROADCAST 1
-
-
 //#include "protocol.h"
 extern Node *user_link;
 extern struct user *user_list[MAX_USERS];
@@ -19,17 +15,14 @@ struct user {
     char *name;
     int fd;
     int read_status;        // 숫자가 다들어 왔는지 확인하는 변수
-    int start_offset;
-    int end_offset;
     char read_buf[PROTOCOL_SIZE];
     char write_buf[PROTOCOL_SIZE];
     int write_offset;
     int read_offset;
-    int total_read;
+    int registration;
 //    struct protocol user_protocol;
 
 };
-
 
 
 void write_message(int fd, char *buf, int len);

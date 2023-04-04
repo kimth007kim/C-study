@@ -143,6 +143,7 @@ CMakeFiles/eserver.dir/src/chat.c.o: /home/kim/C-study/project/0404/src/chat.c \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/x86_64-linux-gnu/bits/epoll.h \
+  /usr/include/malloc.h \
   /home/kim/C-study/project/0404/include/chat.h \
   /home/kim/C-study/project/0404/include/protocol.h \
   /home/kim/C-study/project/0404/include/user.h \
@@ -955,6 +956,8 @@ CMakeFiles/eserver.dir/src/util.c.o: /home/kim/C-study/project/0404/src/util.c \
 /home/kim/C-study/project/0404/include/protocol.h:
 
 /home/kim/C-study/project/0404/include/chat.h:
+
+/usr/include/malloc.h:
 
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
 

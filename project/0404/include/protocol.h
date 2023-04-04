@@ -6,6 +6,12 @@
  * message : 클라이언트가 보낸 메시지
  */
 
+ /**  destination 의 정의 */
+#define DESTINATION_ENTER "9001"
+#define DESTINATION_BROADCAST "9999"
+#define DESTINATION_OUT "9002"
+
+
 struct protocol {
     int message_length;
     char *destination;
@@ -27,7 +33,7 @@ char *decode_protocol(struct protocol *protocol_ptr);
 
 char *generate_time();
 
-char *generate_message(int fd, char *buf);
+char *generate_message(int fd, char *buf, int message_length);
 
 char *generate_greeting(int fd, int flag);
 

@@ -1,18 +1,50 @@
 #include <stdio.h>
 #include<string.h>
 #include <sys/epoll.h>
+#include <malloc.h>
 
 #include "../include/chat.h"
 #include "../include/epoll.h"
 
-void set_broadcast_write_buf(int fd, int epfd, struct protocol *protocol_ptr) {
+struct destination_function {
+    char *destination;
 
+    void (*handler)(int fd, int epfd, struct protocol *protocol_ptr);
+};
+
+struct destination_function destination_handlers[] = {
+//        {"9001", handle_destination_9001},
+//        {"9002", broadcast_handler},
+        {DESTINATION_BROADCAST, broadcast_handler},
+        {DESTINATION_ENTER,     enter_handler},
+        // add more entries here as needed
+};
+
+void destination_handler(int fd, int epfd, struct protocol *protocol_ptr) {
+    char *destination = malloc(4);
+    sprintf(destination, "%.*s", 4, protocol_ptr->destination);
+//    destination[4] = '\n';
+    printf(" 여기 destination %s\n", destination);
+
+    for (int i = 0; i < sizeof(destination_handlers) / sizeof(destination_handlers[0]); i++) {
+        if (strcmp(destination, destination_handlers[i].destination) == 0) {
+            destination_handlers[i].handler(fd, epfd, protocol_ptr);
+            break;
+        }
+    }
+
+    memset(destination, 0, 5);
+
+}
+
+void broadcast_handler(int fd, int epfd, struct protocol *protocol_ptr) {
+    printf("broadcast_handler 호출\n");
     Node *temp_user_link = user_link;
     struct user *this_user;
-    char *message = generate_message(fd, protocol_ptr->message);
+    char *message = generate_message(fd, protocol_ptr->message, protocol_ptr->message_length);
 
     // 메세지를 프로토콜로 변경한다.
-    char *protocol = encode_protocol(message, 0);
+    char *protocol = encode_protocol(message, 9999);
 
 
     int target_length = strlen(protocol);
@@ -32,4 +64,22 @@ void set_broadcast_write_buf(int fd, int epfd, struct protocol *protocol_ptr) {
         temp_user_link = temp_user_link->next;
     }
 }
+
+void enter_handler(int fd, int epfd, struct protocol *protocol_ptr) {
+    char *name = malloc(BUF_SIZE);
+    sprintf(name, "%.*s", protocol_ptr->message_length, protocol_ptr->message);
+
+    Node *temp_user_link = user_link;
+    while (temp_user_link != NULL) {
+
+        user_list[temp_user_link->fd] = user_list[temp_user_link->fd];
+        if (user_list[temp_user_link->fd]->fd == fd) {
+            user_list[temp_user_link->fd]->name = name;
+            return;
+        }
+        temp_user_link = temp_user_link->next;
+    }
+//    enter_user(fd);
+}
+
 

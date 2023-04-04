@@ -20,7 +20,7 @@
  *
  */
 
-void server_epoll(int server_socket, int epfd, struct epoll_event event) {
+void server_epoll(int server_socket, int epfd, struct epoll_event event, char *name) {
     if (event.events & EPOLLOUT) {
         // epoll 에서 감시하는 이벤트중에서 EPOLLOUT의 이벤트가 발생 했을경우
         nio_write(SERVER, epfd, user_list[event.data.fd]->fd, user_list[event.data.fd]->write_buf,

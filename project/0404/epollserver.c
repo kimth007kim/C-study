@@ -24,7 +24,7 @@ int main() {
 
 
     //이벤트 루프
-    event_loop(server_epoll, server_socket, epfd);
+    event_loop(server_epoll, server_socket, epfd, NULL);
 
     close(server_socket);
     return 0;

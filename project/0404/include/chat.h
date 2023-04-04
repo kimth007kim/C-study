@@ -2,4 +2,8 @@
 #include "../include/user.h"
 #include <sys/epoll.h>
 
-void set_broadcast_write_buf(int fd, int epfd, struct protocol *protocol_ptr);
+void destination_handler(int fd, int epfd, struct protocol *protocol_ptr);
+
+void broadcast_handler(int fd, int epfd, struct protocol *protocol_ptr);
+
+void enter_handler(int fd, int epfd, struct protocol *protocol_ptr);
