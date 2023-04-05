@@ -8,24 +8,17 @@
 
 struct destination_function {
     char *destination;
-
     void (*handler)(int fd, int epfd, struct protocol *protocol_ptr);
 };
 
 struct destination_function destination_handlers[] = {
-//        {"9001", handle_destination_9001},
-//        {"9002", broadcast_handler},
         {DESTINATION_BROADCAST, broadcast_handler},
         {DESTINATION_ENTER,     enter_handler},
-        // add more entries here as needed
 };
 
 void destination_handler(int fd, int epfd, struct protocol *protocol_ptr) {
     char *destination = malloc(4);
     sprintf(destination, "%.*s", 4, protocol_ptr->destination);
-//    destination[4] = '\n';
-    printf(" 여기 destination %s\n", destination);
-
     for (int i = 0; i < sizeof(destination_handlers) / sizeof(destination_handlers[0]); i++) {
         if (strcmp(destination, destination_handlers[i].destination) == 0) {
             destination_handlers[i].handler(fd, epfd, protocol_ptr);
