@@ -1,5 +1,7 @@
-CMakeFiles/eserver.dir/src/protocol.c.o: \
- /home/kim/C-study/project/0411/src/protocol.c /usr/include/stdc-predef.h \
+CMakeFiles/test.dir/src/linkedlist.c.o: \
+ /home/kim/C-study/project/0411/src/linkedlist.c \
+ /usr/include/stdc-predef.h \
+ /home/kim/C-study/project/0411/src/../include/linkedlist.h \
  /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -47,40 +49,4 @@ CMakeFiles/eserver.dir/src/protocol.c.o: \
  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h /usr/include/alloca.h \
- /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/string.h \
- /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
- /usr/include/strings.h /usr/include/ctype.h /usr/include/netinet/in.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /usr/include/x86_64-linux-gnu/sys/socket.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
- /usr/include/x86_64-linux-gnu/bits/socket.h \
- /usr/include/x86_64-linux-gnu/bits/socket_type.h \
- /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
- /usr/include/x86_64-linux-gnu/asm/socket.h \
- /usr/include/asm-generic/socket.h /usr/include/linux/posix_types.h \
- /usr/include/linux/stddef.h \
- /usr/include/x86_64-linux-gnu/asm/posix_types.h \
- /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
- /usr/include/asm-generic/posix_types.h \
- /usr/include/x86_64-linux-gnu/asm/bitsperlong.h \
- /usr/include/asm-generic/bitsperlong.h \
- /usr/include/x86_64-linux-gnu/asm/sockios.h \
- /usr/include/asm-generic/sockios.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
- /usr/include/x86_64-linux-gnu/bits/in.h /usr/include/time.h \
- /usr/include/x86_64-linux-gnu/bits/time.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
- /home/kim/C-study/project/0411/src/../include/util.h \
- /home/kim/C-study/project/0411/src/../include/protocol.h \
- /home/kim/C-study/project/0411/src/../include/user.h \
- /home/kim/C-study/project/0411/src/../include/util.h \
- /home/kim/C-study/project/0411/src/../include/linkedlist.h \
- /home/kim/C-study/project/0411/src/../include/chat.h \
- /home/kim/C-study/project/0411/src/../include/../include/protocol.h \
- /home/kim/C-study/project/0411/src/../include/../include/user.h \
- /usr/include/x86_64-linux-gnu/sys/epoll.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
- /usr/include/x86_64-linux-gnu/bits/wchar.h \
- /usr/include/x86_64-linux-gnu/bits/epoll.h
+ /usr/include/x86_64-linux-gnu/bits/stdlib-float.h

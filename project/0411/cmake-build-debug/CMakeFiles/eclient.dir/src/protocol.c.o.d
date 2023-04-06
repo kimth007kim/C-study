@@ -76,4 +76,11 @@ CMakeFiles/eclient.dir/src/protocol.c.o: \
  /home/kim/C-study/project/0411/src/../include/protocol.h \
  /home/kim/C-study/project/0411/src/../include/user.h \
  /home/kim/C-study/project/0411/src/../include/util.h \
- /home/kim/C-study/project/0411/src/../include/linkedlist.h
+ /home/kim/C-study/project/0411/src/../include/linkedlist.h \
+ /home/kim/C-study/project/0411/src/../include/chat.h \
+ /home/kim/C-study/project/0411/src/../include/../include/protocol.h \
+ /home/kim/C-study/project/0411/src/../include/../include/user.h \
+ /usr/include/x86_64-linux-gnu/sys/epoll.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar.h \
+ /usr/include/x86_64-linux-gnu/bits/epoll.h

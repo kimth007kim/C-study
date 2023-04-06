@@ -19,7 +19,7 @@ void set_nonblocking_fd(int fd) {
     fcntl(F_SETFL, flag | O_NONBLOCK);
 }
 
-int socket_setup(void(*endpoint_setup)(struct sockaddr_in, int, char *), char *name) {
+int socket_setup(void(*endpoint_setup)(struct sockaddr_in, int)) {
     int server_socket;
     struct sockaddr_in server_address;
 
@@ -31,7 +31,7 @@ int socket_setup(void(*endpoint_setup)(struct sockaddr_in, int, char *), char *n
     server_address.sin_family = AF_INET;
     server_address.sin_port = PORT_NUM;
 
-    endpoint_setup(server_address, server_socket, name);
+    endpoint_setup(server_address, server_socket);
 
     return server_socket;
 }

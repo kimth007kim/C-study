@@ -36,7 +36,7 @@ char *read_buf;
 //TODO 프로토콜 버퍼를 추가하도록하자.
 char *client_buf;
 
-int registered=FALSE;
+int registered = FALSE;
 
 /**
  *
@@ -45,7 +45,7 @@ int registered=FALSE;
  * @param fd            fd 는 이벤트가 발생한 fd를 가리킵니다.
  *
  */
-void client_epoll(int server_socket, int epfd, struct epoll_event event, char *name) {
+void client_epoll(int server_socket, int epfd, struct epoll_event event) {
     if (init_flag == REQUIRE_INIT) {
         init_global_vars();
 //        printf(" [NAME =  %s]\n", name);
@@ -58,10 +58,12 @@ void client_epoll(int server_socket, int epfd, struct epoll_event event, char *n
     } else {
         if (server_socket == event.data.fd) {
             // 서버로 부터 프로토콜을 전송 받았을 경우에 read() 수행
-            nio_read(CLIENT, epfd, server_socket, read_buf, &read_offset, &read_status);
+//            nio_read(CLIENT, epfd, server_socket, read_buf, &read_offset, &read_status);
+            nio_read_parse(CLIENT, epfd, server_socket, read_buf, &read_offset, &read_status);
         } else {
             // stdin으로 부터 문자열을 입력 받을 경우에 read() 수행
-            nio_stdin_read(epfd, server_socket, client_buf, write_buf, &write_length, &write_offset, &registered);
+//            nio_stdin_read(epfd, server_socket, client_buf, write_buf, &write_offset, &registered);
+            nio_read_stdin(epfd, server_socket, client_buf, write_buf, &write_offset, &registered);
         }
     }
 }
@@ -76,7 +78,7 @@ void init_global_vars() {
 }
 
 
-void client_network(struct sockaddr_in server_address, int server_socket, char *name) {
+void client_network(struct sockaddr_in server_address, int server_socket) {
     server_address.sin_addr.s_addr = inet_addr("127.0.0.1");
     if (server_socket == -1) {
         error_handling("socket() error");
@@ -85,23 +87,6 @@ void client_network(struct sockaddr_in server_address, int server_socket, char *
         error_handling("connect error");
     } else {
         puts("Connected");
-//        write(server_socket, name, strlen(name));
     }
 }
 
-
-void client_hello(int epfd, int fd, char *name, int *write_offset) {
-    printf("client _ hello");
-    char *new_protocol = encode_protocol(name, CHAR_REGISTER, 9001);
-    int target_length = strlen(new_protocol);
-
-    //new_protocol write_buf에 write_offset이후에 copy 하기
-    strncpy(write_buf + *write_offset, new_protocol, target_length);
-//    write_buf[*write_offset] = '\n';
-    *write_offset += target_length;
-
-    // TODO client_buf 에 복사 하기.
-
-    create_modify_event(epfd, fd, EPOLLIN | EPOLLOUT);
-
-}

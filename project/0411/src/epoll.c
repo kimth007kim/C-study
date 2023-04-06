@@ -22,8 +22,13 @@ event_loop(void(*func)(int, int, struct epoll_event, char *), int server_socket,
         event_cnt = epoll_wait(epfd, ep_events, EPOLL_SIZE, -1);
         if (event_cnt == -1)
             return;
+
         for (int i = 0; i < event_cnt; i++) {
             func(server_socket, epfd, ep_events[i], name);
+//            printf("========= start ============ \n");
+//            if (ep_events[i].events & EPOLLIN) printf("fd = %d EPOLLIN \n", ep_events[i].data.fd);
+//            if (ep_events[i].events & EPOLLOUT) printf("fd = %d EPOLLOUT \n", ep_events[i].data.fd);
+//            printf("========= end ============ \n");
         }
     }
 }

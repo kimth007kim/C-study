@@ -20,7 +20,7 @@
  *
  */
 
-void server_epoll(int server_socket, int epfd, struct epoll_event event, char *name) {
+void server_epoll(int server_socket, int epfd, struct epoll_event event) {
     if (event.events & EPOLLOUT) {
         // epoll 에서 감시하는 이벤트중에서 EPOLLOUT의 이벤트가 발생 했을경우
         nio_write(SERVER, epfd, user_list[event.data.fd]->fd, user_list[event.data.fd]->write_buf,
@@ -32,7 +32,10 @@ void server_epoll(int server_socket, int epfd, struct epoll_event event, char *n
             accept_socket(epfd, server_socket);
         } else {
             // 클라이언트 소켓으로 부터 수신된 데이터가 존재한다는것.
-            nio_read(SERVER, epfd, event.data.fd, user_list[event.data.fd]->read_buf,
+//            nio_read(SERVER, epfd, event.data.fd, user_list[event.data.fd]->read_buf,
+//                     &user_list[event.data.fd]->read_offset,
+//                     &user_list[event.data.fd]->read_status);
+            nio_read_parse(SERVER, epfd, event.data.fd, user_list[event.data.fd]->read_buf,
                      &user_list[event.data.fd]->read_offset,
                      &user_list[event.data.fd]->read_status);
 
@@ -40,7 +43,7 @@ void server_epoll(int server_socket, int epfd, struct epoll_event event, char *n
     }
 }
 
-void server_network(struct sockaddr_in server_address, int server_socket, char *name) {
+void server_network(struct sockaddr_in server_address, int server_socket) {
     int option = 1;
     int option_len = sizeof(option);
     setsockopt(server_socket, SOL_SOCKET, SO_REUSEADDR, (void *) &option, option_len);

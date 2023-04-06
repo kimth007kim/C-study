@@ -17,14 +17,14 @@ int main() {
     }
 
     //네트워크 연결
-    server_socket = socket_setup(server_network, NULL);
+    server_socket = socket_setup(server_network);
 
     epfd = epoll_create(EPOLL_SIZE);
     create_add_event(epfd, server_socket, EPOLLIN);
 
 
     //이벤트 루프
-    event_loop(server_epoll, server_socket, epfd, NULL);
+    event_loop(server_epoll, server_socket, epfd);
 
     close(server_socket);
     return 0;

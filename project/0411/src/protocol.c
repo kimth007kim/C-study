@@ -10,6 +10,7 @@
 #include "../include/util.h"
 #include "../include/protocol.h"
 #include "../include/user.h"
+#include "../include/chat.h"
 
 //HTTP
 /* HEADER + BODY */
@@ -22,28 +23,65 @@
 
 //    4Byte  + 4Byte + Message Length Byte
 // Body의 길이 + 타겟   +  문자열 길이
-//char *encode_protocol(char *read_buf, int target) {
-//
-//
-////    printf("여기서 받은 %s \n", read_buf);
-//    char *total = malloc(sizeof(4));
-//    char *dest = malloc(sizeof(4));
-//    char *result = malloc(PROTOCOL_SIZE);
-//    int message_length = strlen(read_buf);
-//    // TODO 메세지의 총 길이가 9999를 넘어가면 어떻게 해야할지 정하도록 하자
-//    // 총 문자열의 길이를 char 형으로 변경
-//    total = int_to_charzero(message_length);
-//    // destination을 char형으로 변형
-//    dest = int_to_charzero(target);
-//    // 총길이 + destination + message를 하는 sprintf()
-//    sprintf(result, "%s%s%s", total, dest, read_buf);
-////    result[strlen(result)] = '0';
-////    printf(" 완성된 프로토콜 %s\n", result);
-//    memset(total, 0, sizeof(total));
-//    memset(dest, 0, sizeof(dest));
-////    memset(result,0,sizeof(result));
-//    return result;
-//}
+void
+decode_and_handle_protocol(int host_type,int epfd, int fd, struct protocol *new_protocol, int *protocol_read, int *read_status,
+                int *read_offset,
+                char *read_buf) {
+    while (*protocol_read > 0) {
+        if (*read_status == REQUIRE_HEADER) {
+            if (*protocol_read < 9) {
+                return;
+            } else {
+                memset(new_protocol, 0, sizeof(struct protocol));
+                char temp_length[5];
+
+                strncpy(temp_length, read_buf, 4);
+                temp_length[4] = '\n';
+                int total_length = atoi(temp_length);
+                new_protocol->message_length = total_length;
+//                new_protocol->destination = read_buf + 4;
+
+                *read_offset += 4;
+                new_protocol->mode = read_buf + *read_offset;
+
+                *read_offset += 1;
+                new_protocol->destination = read_buf + *read_offset;
+
+
+                memset(temp_length, 0, 5);
+                *read_offset += 4;
+                *protocol_read -= 9;
+                *read_status = REQUIRE_BODY;
+            }
+        } else {
+            if (*protocol_read < new_protocol->message_length) {
+                return;
+            } else {
+                char *output_message = malloc(BUF_SIZE);
+
+                new_protocol->message = read_buf + *read_offset;
+                *read_offset += new_protocol->message_length;
+                *protocol_read -= new_protocol->message_length;
+
+                if (host_type == SERVER) {
+                    // TODO 추후에는 프로토콜 을 파싱하는 과정을 거치는것으로 수정해야한다.
+                    // 만약에 호출 대상이  서버라면 read() 해온 protocol 을 write_buf 에 복사해주는 역할을 하는 과정을 가진다.
+                    destination_handler(fd, epfd, new_protocol);
+
+                } else if (host_type == CLIENT) {
+                    // 만약에 호출 대상이 클라이언트 라면 read() 해온 protocl 을 write_buf 에 복사해주는 역할을 하는 과정을 가진다.
+                    sprintf(output_message, "%.*s", new_protocol->message_length, new_protocol->message);
+                    fputs(output_message, stdout);
+
+                }
+                switch_buffer(read_buf, read_offset);
+                *read_status = REQUIRE_HEADER;
+                *read_offset = 0;
+
+            }
+        }
+    }
+}
 
 char *encode_protocol(char *read_buf, char *mode, int target) {
 
@@ -59,7 +97,7 @@ char *encode_protocol(char *read_buf, char *mode, int target) {
     // destination을 char형으로 변형
     dest = int_to_charzero(target);
     // 총길이 + destination + message를 하는 sprintf()
-    sprintf(result, "%s%s%s%s", total,mode, dest, read_buf);
+    sprintf(result, "%s%s%s%s", total, mode, dest, read_buf);
 //    result[strlen(result)] = '0';
 //    printf(" 완성된 프로토콜 %s\n", result);
     memset(total, 0, sizeof(total));
