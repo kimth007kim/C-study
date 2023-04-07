@@ -11,22 +11,10 @@
 
 
 Node *user_link = NULL;
+Ptr_node *ptrnode_link = NULL;
 struct user *user_list[MAX_USERS];
 int current_users = 0;
 
-
-
-
-void write_message(int fd, char *buf, int len) {
-    Node *temp_user_link = user_link;
-    while (temp_user_link != NULL) {
-//        if (user_list[temp_user_link->fd]->fd != fd) {
-        write(user_list[temp_user_link->fd]->fd, buf, len);
-//        }
-        temp_user_link = temp_user_link->next;
-    }
-    printf("\n");
-}
 
 void show_users() {
     printf("현재 접속 중인 유저 : ");

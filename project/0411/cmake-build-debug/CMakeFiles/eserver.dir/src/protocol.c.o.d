@@ -77,6 +77,7 @@ CMakeFiles/eserver.dir/src/protocol.c.o: \
  /home/kim/C-study/project/0411/src/../include/user.h \
  /home/kim/C-study/project/0411/src/../include/util.h \
  /home/kim/C-study/project/0411/src/../include/linkedlist.h \
+ /home/kim/C-study/project/0411/src/../include/ptr_linkedlist.h \
  /home/kim/C-study/project/0411/src/../include/chat.h \
  /home/kim/C-study/project/0411/src/../include/../include/protocol.h \
  /home/kim/C-study/project/0411/src/../include/../include/user.h \

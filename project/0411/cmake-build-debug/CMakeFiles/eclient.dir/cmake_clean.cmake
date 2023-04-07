@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/eclient.dir/src/nonblocking_io.c.o.d"
   "CMakeFiles/eclient.dir/src/protocol.c.o"
   "CMakeFiles/eclient.dir/src/protocol.c.o.d"
+  "CMakeFiles/eclient.dir/src/ptr_linkedlist.c.o"
+  "CMakeFiles/eclient.dir/src/ptr_linkedlist.c.o.d"
   "CMakeFiles/eclient.dir/src/server.c.o"
   "CMakeFiles/eclient.dir/src/server.c.o.d"
   "CMakeFiles/eclient.dir/src/user.c.o"

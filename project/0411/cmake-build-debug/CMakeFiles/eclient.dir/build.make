@@ -44,10 +44,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/233/bin/cmake/linux/x64/bin/cmake
+CMAKE_COMMAND = /snap/clion/234/bin/cmake/linux/x64/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/233/bin/cmake/linux/x64/bin/cmake -E rm -f
+RM = /snap/clion/234/bin/cmake/linux/x64/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -111,10 +111,24 @@ CMakeFiles/eclient.dir/src/linkedlist.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/eclient.dir/src/linkedlist.c.s"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/kim/C-study/project/0411/src/linkedlist.c -o CMakeFiles/eclient.dir/src/linkedlist.c.s
 
+CMakeFiles/eclient.dir/src/ptr_linkedlist.c.o: CMakeFiles/eclient.dir/flags.make
+CMakeFiles/eclient.dir/src/ptr_linkedlist.c.o: /home/kim/C-study/project/0411/src/ptr_linkedlist.c
+CMakeFiles/eclient.dir/src/ptr_linkedlist.c.o: CMakeFiles/eclient.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/eclient.dir/src/ptr_linkedlist.c.o"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/eclient.dir/src/ptr_linkedlist.c.o -MF CMakeFiles/eclient.dir/src/ptr_linkedlist.c.o.d -o CMakeFiles/eclient.dir/src/ptr_linkedlist.c.o -c /home/kim/C-study/project/0411/src/ptr_linkedlist.c
+
+CMakeFiles/eclient.dir/src/ptr_linkedlist.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/eclient.dir/src/ptr_linkedlist.c.i"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/kim/C-study/project/0411/src/ptr_linkedlist.c > CMakeFiles/eclient.dir/src/ptr_linkedlist.c.i
+
+CMakeFiles/eclient.dir/src/ptr_linkedlist.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/eclient.dir/src/ptr_linkedlist.c.s"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/kim/C-study/project/0411/src/ptr_linkedlist.c -o CMakeFiles/eclient.dir/src/ptr_linkedlist.c.s
+
 CMakeFiles/eclient.dir/src/protocol.c.o: CMakeFiles/eclient.dir/flags.make
 CMakeFiles/eclient.dir/src/protocol.c.o: /home/kim/C-study/project/0411/src/protocol.c
 CMakeFiles/eclient.dir/src/protocol.c.o: CMakeFiles/eclient.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/eclient.dir/src/protocol.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/eclient.dir/src/protocol.c.o"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/eclient.dir/src/protocol.c.o -MF CMakeFiles/eclient.dir/src/protocol.c.o.d -o CMakeFiles/eclient.dir/src/protocol.c.o -c /home/kim/C-study/project/0411/src/protocol.c
 
 CMakeFiles/eclient.dir/src/protocol.c.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/eclient.dir/src/protocol.c.s: cmake_force
 CMakeFiles/eclient.dir/src/epoll.c.o: CMakeFiles/eclient.dir/flags.make
 CMakeFiles/eclient.dir/src/epoll.c.o: /home/kim/C-study/project/0411/src/epoll.c
 CMakeFiles/eclient.dir/src/epoll.c.o: CMakeFiles/eclient.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/eclient.dir/src/epoll.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/eclient.dir/src/epoll.c.o"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/eclient.dir/src/epoll.c.o -MF CMakeFiles/eclient.dir/src/epoll.c.o.d -o CMakeFiles/eclient.dir/src/epoll.c.o -c /home/kim/C-study/project/0411/src/epoll.c
 
 CMakeFiles/eclient.dir/src/epoll.c.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/eclient.dir/src/epoll.c.s: cmake_force
 CMakeFiles/eclient.dir/src/client.c.o: CMakeFiles/eclient.dir/flags.make
 CMakeFiles/eclient.dir/src/client.c.o: /home/kim/C-study/project/0411/src/client.c
 CMakeFiles/eclient.dir/src/client.c.o: CMakeFiles/eclient.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/eclient.dir/src/client.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/eclient.dir/src/client.c.o"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/eclient.dir/src/client.c.o -MF CMakeFiles/eclient.dir/src/client.c.o.d -o CMakeFiles/eclient.dir/src/client.c.o -c /home/kim/C-study/project/0411/src/client.c
 
 CMakeFiles/eclient.dir/src/client.c.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/eclient.dir/src/client.c.s: cmake_force
 CMakeFiles/eclient.dir/src/server.c.o: CMakeFiles/eclient.dir/flags.make
 CMakeFiles/eclient.dir/src/server.c.o: /home/kim/C-study/project/0411/src/server.c
 CMakeFiles/eclient.dir/src/server.c.o: CMakeFiles/eclient.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/eclient.dir/src/server.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/eclient.dir/src/server.c.o"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/eclient.dir/src/server.c.o -MF CMakeFiles/eclient.dir/src/server.c.o.d -o CMakeFiles/eclient.dir/src/server.c.o -c /home/kim/C-study/project/0411/src/server.c
 
 CMakeFiles/eclient.dir/src/server.c.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/eclient.dir/src/server.c.s: cmake_force
 CMakeFiles/eclient.dir/src/user.c.o: CMakeFiles/eclient.dir/flags.make
 CMakeFiles/eclient.dir/src/user.c.o: /home/kim/C-study/project/0411/src/user.c
 CMakeFiles/eclient.dir/src/user.c.o: CMakeFiles/eclient.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/eclient.dir/src/user.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/eclient.dir/src/user.c.o"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/eclient.dir/src/user.c.o -MF CMakeFiles/eclient.dir/src/user.c.o.d -o CMakeFiles/eclient.dir/src/user.c.o -c /home/kim/C-study/project/0411/src/user.c
 
 CMakeFiles/eclient.dir/src/user.c.i: cmake_force
@@ -184,7 +198,7 @@ CMakeFiles/eclient.dir/src/user.c.s: cmake_force
 CMakeFiles/eclient.dir/src/network.c.o: CMakeFiles/eclient.dir/flags.make
 CMakeFiles/eclient.dir/src/network.c.o: /home/kim/C-study/project/0411/src/network.c
 CMakeFiles/eclient.dir/src/network.c.o: CMakeFiles/eclient.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/eclient.dir/src/network.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/eclient.dir/src/network.c.o"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/eclient.dir/src/network.c.o -MF CMakeFiles/eclient.dir/src/network.c.o.d -o CMakeFiles/eclient.dir/src/network.c.o -c /home/kim/C-study/project/0411/src/network.c
 
 CMakeFiles/eclient.dir/src/network.c.i: cmake_force
@@ -198,7 +212,7 @@ CMakeFiles/eclient.dir/src/network.c.s: cmake_force
 CMakeFiles/eclient.dir/src/chat.c.o: CMakeFiles/eclient.dir/flags.make
 CMakeFiles/eclient.dir/src/chat.c.o: /home/kim/C-study/project/0411/src/chat.c
 CMakeFiles/eclient.dir/src/chat.c.o: CMakeFiles/eclient.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/eclient.dir/src/chat.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/eclient.dir/src/chat.c.o"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/eclient.dir/src/chat.c.o -MF CMakeFiles/eclient.dir/src/chat.c.o.d -o CMakeFiles/eclient.dir/src/chat.c.o -c /home/kim/C-study/project/0411/src/chat.c
 
 CMakeFiles/eclient.dir/src/chat.c.i: cmake_force
@@ -212,7 +226,7 @@ CMakeFiles/eclient.dir/src/chat.c.s: cmake_force
 CMakeFiles/eclient.dir/src/nonblocking_io.c.o: CMakeFiles/eclient.dir/flags.make
 CMakeFiles/eclient.dir/src/nonblocking_io.c.o: /home/kim/C-study/project/0411/src/nonblocking_io.c
 CMakeFiles/eclient.dir/src/nonblocking_io.c.o: CMakeFiles/eclient.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/eclient.dir/src/nonblocking_io.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/eclient.dir/src/nonblocking_io.c.o"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/eclient.dir/src/nonblocking_io.c.o -MF CMakeFiles/eclient.dir/src/nonblocking_io.c.o.d -o CMakeFiles/eclient.dir/src/nonblocking_io.c.o -c /home/kim/C-study/project/0411/src/nonblocking_io.c
 
 CMakeFiles/eclient.dir/src/nonblocking_io.c.i: cmake_force
@@ -228,6 +242,7 @@ eclient_OBJECTS = \
 "CMakeFiles/eclient.dir/epollclient.c.o" \
 "CMakeFiles/eclient.dir/src/util.c.o" \
 "CMakeFiles/eclient.dir/src/linkedlist.c.o" \
+"CMakeFiles/eclient.dir/src/ptr_linkedlist.c.o" \
 "CMakeFiles/eclient.dir/src/protocol.c.o" \
 "CMakeFiles/eclient.dir/src/epoll.c.o" \
 "CMakeFiles/eclient.dir/src/client.c.o" \
@@ -243,6 +258,7 @@ eclient_EXTERNAL_OBJECTS =
 eclient: CMakeFiles/eclient.dir/epollclient.c.o
 eclient: CMakeFiles/eclient.dir/src/util.c.o
 eclient: CMakeFiles/eclient.dir/src/linkedlist.c.o
+eclient: CMakeFiles/eclient.dir/src/ptr_linkedlist.c.o
 eclient: CMakeFiles/eclient.dir/src/protocol.c.o
 eclient: CMakeFiles/eclient.dir/src/epoll.c.o
 eclient: CMakeFiles/eclient.dir/src/client.c.o
@@ -253,7 +269,7 @@ eclient: CMakeFiles/eclient.dir/src/chat.c.o
 eclient: CMakeFiles/eclient.dir/src/nonblocking_io.c.o
 eclient: CMakeFiles/eclient.dir/build.make
 eclient: CMakeFiles/eclient.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking C executable eclient"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking C executable eclient"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/eclient.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

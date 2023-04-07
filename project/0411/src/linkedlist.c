@@ -3,13 +3,32 @@
 #include <stdlib.h>
 
 
+//Node *add_node(Node *head, int fd) {
+//    Node *new_node = malloc(sizeof(Node));
+//    new_node->fd = fd;
+//    new_node->next = head;
+//    return new_node;
+//}
 Node *add_node(Node *head, int fd) {
     Node *new_node = malloc(sizeof(Node));
     new_node->fd = fd;
-    new_node->next = head;
-    return new_node;
-}
+    new_node->next = NULL;  // set the next pointer to NULL
 
+    if (head == NULL) {
+        // if the linked list is empty, make the new node the head
+        head = new_node;
+    } else {
+        // traverse the linked list to find the last node
+        Node *last_node = head;
+        while (last_node->next != NULL) {
+            last_node = last_node->next;
+        }
+        // set the next pointer of the last node to the new node
+        last_node->next = new_node;
+    }
+
+    return head;
+}
 
 Node *remove_node(Node *head, int fd) {
     if (head == NULL) {

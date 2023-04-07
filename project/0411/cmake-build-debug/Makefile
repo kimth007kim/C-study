@@ -48,10 +48,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/233/bin/cmake/linux/x64/bin/cmake
+CMAKE_COMMAND = /snap/clion/234/bin/cmake/linux/x64/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/233/bin/cmake/linux/x64/bin/cmake -E rm -f
+RM = /snap/clion/234/bin/cmake/linux/x64/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /home/kim/C-study/project/0411/cmake-build-debug
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/233/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/234/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/233/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/234/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -97,37 +97,37 @@ list_install_components/fast: list_install_components
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/snap/clion/233/bin/cmake/linux/x64/bin/cmake -P cmake_install.cmake
+	/snap/clion/234/bin/cmake/linux/x64/bin/cmake -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/snap/clion/233/bin/cmake/linux/x64/bin/cmake -P cmake_install.cmake
+	/snap/clion/234/bin/cmake/linux/x64/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/snap/clion/233/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/snap/clion/234/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local
 
 # Special rule for the target install/local
 install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/snap/clion/233/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/snap/clion/234/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/snap/clion/233/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/snap/clion/234/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip
 
 # Special rule for the target install/strip
 install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/snap/clion/233/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/snap/clion/234/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
 # The main all target
@@ -440,6 +440,33 @@ src/protocol.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/protocol.c.s
 .PHONY : src/protocol.c.s
 
+src/ptr_linkedlist.o: src/ptr_linkedlist.c.o
+.PHONY : src/ptr_linkedlist.o
+
+# target to build an object file
+src/ptr_linkedlist.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eclient.dir/build.make CMakeFiles/eclient.dir/src/ptr_linkedlist.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/ptr_linkedlist.c.o
+.PHONY : src/ptr_linkedlist.c.o
+
+src/ptr_linkedlist.i: src/ptr_linkedlist.c.i
+.PHONY : src/ptr_linkedlist.i
+
+# target to preprocess a source file
+src/ptr_linkedlist.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eclient.dir/build.make CMakeFiles/eclient.dir/src/ptr_linkedlist.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/ptr_linkedlist.c.i
+.PHONY : src/ptr_linkedlist.c.i
+
+src/ptr_linkedlist.s: src/ptr_linkedlist.c.s
+.PHONY : src/ptr_linkedlist.s
+
+# target to generate assembly for a file
+src/ptr_linkedlist.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eclient.dir/build.make CMakeFiles/eclient.dir/src/ptr_linkedlist.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/ptr_linkedlist.c.s
+.PHONY : src/ptr_linkedlist.c.s
+
 src/server.o: src/server.c.o
 .PHONY : src/server.o
 
@@ -590,6 +617,9 @@ help:
 	@echo "... src/protocol.o"
 	@echo "... src/protocol.i"
 	@echo "... src/protocol.s"
+	@echo "... src/ptr_linkedlist.o"
+	@echo "... src/ptr_linkedlist.i"
+	@echo "... src/ptr_linkedlist.s"
 	@echo "... src/server.o"
 	@echo "... src/server.i"
 	@echo "... src/server.s"

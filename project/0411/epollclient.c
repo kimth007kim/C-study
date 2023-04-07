@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
 
     //TODO EPOLL에다가 EPOLLOUT이벤트를 붙여서 처리하는 방법
     // EPOLLOUT의 경우에는 네트워크 버퍼가 비어있을경우 이벤트를 발생 시킨다.
-
+    printf("닉네임을 입력하세요 \n");
     event_loop(client_epoll, server_socket, epfd);
     close(server_socket);
     return 0;

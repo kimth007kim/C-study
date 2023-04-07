@@ -3,9 +3,13 @@
 
 #include "util.h"
 #include "linkedlist.h"
+#include "ptr_linkedlist.h"
 
-//#include "protocol.h"
+#define NOT_REGISTERED 0
+#define REGISTERED_DONE 1
+
 extern Node *user_link;
+extern Ptr_node *ptrnode_link;
 extern struct user *user_list[MAX_USERS];
 extern int current_users;
 

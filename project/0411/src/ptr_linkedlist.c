@@ -2,17 +2,38 @@
 #include<stdio.h>
 #include <stdlib.h>
 
+//
+//Ptr_node *add_ptrnode(Ptr_node *head, int cnt, char *char_ptr) {
+//    Ptr_node *new_node = malloc(sizeof(Ptr_node));
+//    new_node->cnt = cnt;
+//    new_node->char_ptr = char_ptr;
+//    new_node->next = head;
+//    return new_node;
+//}
 
-Ptr_node *add_node(Ptr_node *head, int cnt, char *char_ptr) {
+Ptr_node *add_ptrnode(Ptr_node *head, int cnt, char *char_ptr) {
     Ptr_node *new_node = malloc(sizeof(Ptr_node));
     new_node->cnt = cnt;
     new_node->char_ptr = char_ptr;
-    new_node->next = head;
-    return new_node;
+    new_node->next = NULL;  // set the next pointer to NULL
+
+    if (head == NULL) {
+        // if the linked list is empty, make the new node the head
+        head = new_node;
+    } else {
+        // traverse the linked list to find the last node
+        Ptr_node *last_node = head;
+        while (last_node->next != NULL) {
+            last_node = last_node->next;
+        }
+        // set the next pointer of the last node to the new node
+        last_node->next = new_node;
+    }
+
+    return head;
 }
 
-
-Ptr_node *remove_node(Ptr_node *head, char *char_ptr) {
+Ptr_node *remove_ptrnode(Ptr_node *head, char *char_ptr) {
     if (head == NULL) {
         return NULL;
     }
@@ -38,7 +59,7 @@ Ptr_node *remove_node(Ptr_node *head, char *char_ptr) {
 }
 
 
-void free_nodes(Ptr_node *head) {
+void free_ptrnode(Ptr_node *head) {
     while (head != NULL) {
         Ptr_node *next_node = head->next;
         free(head);
@@ -46,7 +67,7 @@ void free_nodes(Ptr_node *head) {
     }
 }
 
-void print_users(Ptr_node *head) {
+void print_ptrnode(Ptr_node *head) {
     printf("Node list:\n");
     if (head == NULL) {
         return;

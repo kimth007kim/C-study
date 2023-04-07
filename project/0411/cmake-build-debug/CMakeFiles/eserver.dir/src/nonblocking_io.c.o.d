@@ -18,6 +18,7 @@ CMakeFiles/eserver.dir/src/nonblocking_io.c.o: \
  /home/kim/C-study/project/0411/src/../include/../include/user.h \
  /home/kim/C-study/project/0411/src/../include/../include/util.h \
  /home/kim/C-study/project/0411/src/../include/../include/linkedlist.h \
+ /home/kim/C-study/project/0411/src/../include/../include/ptr_linkedlist.h \
  /usr/include/x86_64-linux-gnu/sys/epoll.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \

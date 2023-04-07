@@ -248,6 +248,10 @@
 			<Option target="eclient"/>
 			<Option target="eserver"/>
 		</Unit>
+		<Unit filename="/home/kim/C-study/project/0411/src/ptr_linkedlist.c">
+			<Option target="eclient"/>
+			<Option target="eserver"/>
+		</Unit>
 		<Unit filename="/home/kim/C-study/project/0411/src/server.c">
 			<Option target="eclient"/>
 			<Option target="eserver"/>
