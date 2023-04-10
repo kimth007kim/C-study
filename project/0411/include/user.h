@@ -24,6 +24,8 @@ struct user {
     int write_offset;
     int read_offset;
     int registration;
+    int write_start;
+    char * char_start;
 //    struct protocol user_protocol;
 
 };

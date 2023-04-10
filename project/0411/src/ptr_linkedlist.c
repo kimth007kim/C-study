@@ -57,8 +57,6 @@ Ptr_node *remove_ptrnode(Ptr_node *head, char *char_ptr) {
     }
     return head;
 }
-
-
 void free_ptrnode(Ptr_node *head) {
     while (head != NULL) {
         Ptr_node *next_node = head->next;

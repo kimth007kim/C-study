@@ -24,9 +24,10 @@
 //    4Byte  + 4Byte + Message Length Byte
 // Body의 길이 + 타겟   +  문자열 길이
 void
-decode_and_handle_protocol(int host_type,int epfd, int fd, struct protocol *new_protocol, int *protocol_read, int *read_status,
-                int *read_offset,
-                char *read_buf) {
+handle_protocol_decoding(int host_type, int epfd, int fd, struct protocol *new_protocol, int *protocol_read,
+                         int *read_status,
+                         int *read_offset,
+                         char *read_buf, char *broadcast_buf, int *broadcast_offset) {
     while (*protocol_read > 0) {
         if (*read_status == REQUIRE_HEADER) {
             if (*protocol_read < 9) {
@@ -39,11 +40,8 @@ decode_and_handle_protocol(int host_type,int epfd, int fd, struct protocol *new_
                 temp_length[4] = '\n';
                 int total_length = atoi(temp_length);
                 new_protocol->message_length = total_length;
-//                new_protocol->destination = read_buf + 4;
-
                 *read_offset += 4;
                 new_protocol->mode = read_buf + *read_offset;
-
                 *read_offset += 1;
                 new_protocol->destination = read_buf + *read_offset;
 
@@ -64,9 +62,8 @@ decode_and_handle_protocol(int host_type,int epfd, int fd, struct protocol *new_
                 *protocol_read -= new_protocol->message_length;
 
                 if (host_type == SERVER) {
-                    // TODO 추후에는 프로토콜 을 파싱하는 과정을 거치는것으로 수정해야한다.
                     // 만약에 호출 대상이  서버라면 read() 해온 protocol 을 write_buf 에 복사해주는 역할을 하는 과정을 가진다.
-                    destination_handler(fd, epfd, new_protocol);
+                    destination_handler(fd, epfd, new_protocol, broadcast_buf, broadcast_offset);
 
                 } else if (host_type == CLIENT) {
                     // 만약에 호출 대상이 클라이언트 라면 read() 해온 protocl 을 write_buf 에 복사해주는 역할을 하는 과정을 가진다.

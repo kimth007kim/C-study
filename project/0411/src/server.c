@@ -20,13 +20,22 @@
  *
  */
 
-void server_epoll(int server_socket, int epfd, struct epoll_event event) {
+char *broadcast_buf;
+int broadcast_offset;
+int server_init = 0;
 
+void server_epoll(int server_socket, int epfd, struct epoll_event event) {
+    if (server_init == 0) {
+        server_init = 1;
+        broadcast_buf = malloc(BUF_SIZE);
+    }
     if (event.events & EPOLLOUT) {
         // epoll 에서 감시하는 이벤트중에서 EPOLLOUT의 이벤트가 발생 했을경우
-        nio_write(SERVER, epfd, user_list[event.data.fd]->fd, user_list[event.data.fd]->write_buf,
-                  &user_list[event.data.fd]->write_offset);
+//        nio_write(SERVER, epfd, user_list[event.data.fd]->fd, user_list[event.data.fd]->write_buf,
+//                  &user_list[event.data.fd]->write_offset);
 
+        server_write(SERVER, epfd, user_list[event.data.fd]->fd, user_list[event.data.fd]->write_buf,
+                     &user_list[event.data.fd]->write_offset, broadcast_buf, &broadcast_offset);
     } else {
         if (server_socket == event.data.fd) {
             // 서버 소켓으로 수신된 데이터가 존재한다는것은 연결 요청(connect)이 있다는 것이다.
@@ -37,8 +46,8 @@ void server_epoll(int server_socket, int epfd, struct epoll_event event) {
 //                     &user_list[event.data.fd]->read_offset,
 //                     &user_list[event.data.fd]->read_status);
             nio_read_parse(SERVER, epfd, event.data.fd, user_list[event.data.fd]->read_buf,
-                     &user_list[event.data.fd]->read_offset,
-                     &user_list[event.data.fd]->read_status);
+                           &user_list[event.data.fd]->read_offset,
+                           &user_list[event.data.fd]->read_status, broadcast_buf, &broadcast_offset);
 
         }
     }

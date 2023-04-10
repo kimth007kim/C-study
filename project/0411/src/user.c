@@ -28,14 +28,9 @@ void show_users() {
 }
 
 void enter_user(int fd) {
-    current_users += 1;
     struct user *new_user = malloc(sizeof(struct user));
     new_user->fd = fd;
-//    new_user->name = malloc(MAX_NAME_SIZE);
-//    int str_len = read(fd, new_user->name, MAX_NAME_SIZE);
-//    new_user->name[str_len] = '\0';
     user_list[fd] = new_user;
-
     user_link = add_node(user_link, fd);
     show_users();
 }
