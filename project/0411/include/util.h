@@ -13,6 +13,9 @@
 #define CLIENT 1
 
 
+#define READ_BUF_SIZE 3
+#define WRITE_BUF_SIZE 3
+
 #define TRUE 1
 #define FALSE 0
 

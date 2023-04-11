@@ -25,7 +25,8 @@ struct user {
     int read_offset;
     int registration;
     int write_start;
-    char * char_start;
+    char *current_message;
+    int offset;
 //    struct protocol user_protocol;
 
 };
@@ -38,6 +39,6 @@ void show_users();
 void enter_user(int fd);
 
 void exit_user(int fd);
-
+void set_ptr(struct user *this_user, Ptr_node *head);
 
 #endif //MY_PROGRAM_USER_H

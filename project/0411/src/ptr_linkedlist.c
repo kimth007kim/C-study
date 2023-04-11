@@ -1,4 +1,5 @@
-#include "../include/ptr_linkedlist.h"
+#include "../include/user.h"
+//#include "../include/ptr_linkedlist.h"
 #include<stdio.h>
 #include <stdlib.h>
 
@@ -11,10 +12,11 @@
 //    return new_node;
 //}
 
-Ptr_node *add_ptrnode(Ptr_node *head, int cnt, char *char_ptr) {
+Ptr_node *add_ptrnode(Ptr_node *head, int cnt, char *char_ptr, int length) {
     Ptr_node *new_node = malloc(sizeof(Ptr_node));
     new_node->cnt = cnt;
     new_node->char_ptr = char_ptr;
+    new_node->length = length;
     new_node->next = NULL;  // set the next pointer to NULL
 
     if (head == NULL) {
@@ -57,6 +59,7 @@ Ptr_node *remove_ptrnode(Ptr_node *head, char *char_ptr) {
     }
     return head;
 }
+
 void free_ptrnode(Ptr_node *head) {
     while (head != NULL) {
         Ptr_node *next_node = head->next;
@@ -75,4 +78,39 @@ void print_ptrnode(Ptr_node *head) {
         printf(" - fd : %p\n", head->char_ptr);
         head = head->next;
     }
+}
+
+Ptr_node *find_ptrnode(Ptr_node *head, char *target) {
+    Ptr_node *current_node = head;
+    while (current_node != NULL) {
+        if (current_node->char_ptr == target) {
+            return current_node;
+        }
+        current_node = current_node->next;
+    }
+    return NULL;  // target not found in linked list
+}
+
+Ptr_node *get_next(Ptr_node **head_ptr, struct user *this_user) {
+    Ptr_node *head = *head_ptr;
+    head->cnt -= 1;
+    Ptr_node *next_node = head->next;
+
+    if (head->cnt == 0) { // 현재 노드를 삭제하는 경우
+        Ptr_node *node_to_remove = head;
+        *head_ptr = head->next;
+        free(node_to_remove->char_ptr); // 할당된 메모리를 해제
+        free(node_to_remove); // 노드를 삭제
+        if (next_node != NULL)
+            this_user->current_message = next_node->char_ptr;
+        else
+            this_user->current_message = NULL;
+        return next_node;
+    }
+    if (next_node != NULL)
+        this_user->current_message = next_node->char_ptr;
+    else
+        this_user->current_message = NULL;
+
+    return head;
 }

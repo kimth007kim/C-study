@@ -1,6 +1,9 @@
 CMakeFiles/eclient.dir/src/ptr_linkedlist.c.o: \
  /home/kim/C-study/project/0411/src/ptr_linkedlist.c \
  /usr/include/stdc-predef.h \
+ /home/kim/C-study/project/0411/src/../include/user.h \
+ /home/kim/C-study/project/0411/src/../include/util.h \
+ /home/kim/C-study/project/0411/src/../include/linkedlist.h \
  /home/kim/C-study/project/0411/src/../include/ptr_linkedlist.h \
  /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \

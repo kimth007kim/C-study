@@ -219,10 +219,6 @@
 		<Unit filename="/home/kim/C-study/project/0411/include/linkedlist.h">
 			<Option target="test"/>
 		</Unit>
-		<Unit filename="/home/kim/C-study/project/0411/src/chat.c">
-			<Option target="eclient"/>
-			<Option target="eserver"/>
-		</Unit>
 		<Unit filename="/home/kim/C-study/project/0411/src/client.c">
 			<Option target="eclient"/>
 			<Option target="eserver"/>
@@ -253,6 +249,10 @@
 			<Option target="eserver"/>
 		</Unit>
 		<Unit filename="/home/kim/C-study/project/0411/src/server.c">
+			<Option target="eclient"/>
+			<Option target="eserver"/>
+		</Unit>
+		<Unit filename="/home/kim/C-study/project/0411/src/server_io.c">
 			<Option target="eclient"/>
 			<Option target="eserver"/>
 		</Unit>

@@ -23,16 +23,12 @@ int int_to_strlength(int num) {
 char *int_to_charzero(int num) {
     char *result = malloc(5);
     sprintf(result, "%04d", num);
-//    result[4]='\n';
     return result;
 }
 
 void switch_buffer(char *buffer, int *offset) {
 
     int new_length = strlen(buffer) - *offset;
-    char *new_buf = malloc(BUF_SIZE);
-    strncpy(new_buf, buffer + *offset, new_length);
-    memset(buffer, 0, BUF_SIZE);
-    strncpy(buffer, new_buf, new_length);
+    memmove(buffer, buffer + *offset, new_length);
     *offset = new_length;
 }

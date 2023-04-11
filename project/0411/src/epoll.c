@@ -9,10 +9,9 @@
 #include "../include/server.h"
 #include "../include/client.h"
 
-//void event_loop(void(*func)(int, int, int, char *, char *, int *), int server_socket, int epfd) {
 void
-event_loop(void(*func)(int, int, struct epoll_event, char *), int server_socket,
-           int epfd, char *name) {
+event_loop(void(*func)(int, int, struct epoll_event), int server_socket,
+           int epfd) {
 
     int event_cnt;
     struct epoll_event *ep_events;
@@ -24,7 +23,7 @@ event_loop(void(*func)(int, int, struct epoll_event, char *), int server_socket,
             return;
 
         for (int i = 0; i < event_cnt; i++) {
-            func(server_socket, epfd, ep_events[i], name);
+            func(server_socket, epfd, ep_events[i]);
         }
     }
 }

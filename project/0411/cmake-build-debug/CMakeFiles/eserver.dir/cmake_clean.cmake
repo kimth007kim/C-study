@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/eserver.dir/epollserver.c.o"
   "CMakeFiles/eserver.dir/epollserver.c.o.d"
-  "CMakeFiles/eserver.dir/src/chat.c.o"
-  "CMakeFiles/eserver.dir/src/chat.c.o.d"
   "CMakeFiles/eserver.dir/src/client.c.o"
   "CMakeFiles/eserver.dir/src/client.c.o.d"
   "CMakeFiles/eserver.dir/src/epoll.c.o"
@@ -19,6 +17,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/eserver.dir/src/ptr_linkedlist.c.o.d"
   "CMakeFiles/eserver.dir/src/server.c.o"
   "CMakeFiles/eserver.dir/src/server.c.o.d"
+  "CMakeFiles/eserver.dir/src/server_io.c.o"
+  "CMakeFiles/eserver.dir/src/server_io.c.o.d"
   "CMakeFiles/eserver.dir/src/user.c.o"
   "CMakeFiles/eserver.dir/src/user.c.o.d"
   "CMakeFiles/eserver.dir/src/util.c.o"

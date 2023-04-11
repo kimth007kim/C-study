@@ -10,7 +10,7 @@
 #include "../include/util.h"
 #include "../include/protocol.h"
 #include "../include/user.h"
-#include "../include/chat.h"
+#include "../include/server_io.h"
 
 //HTTP
 /* HEADER + BODY */
@@ -27,7 +27,7 @@ void
 handle_protocol_decoding(int host_type, int epfd, int fd, struct protocol *new_protocol, int *protocol_read,
                          int *read_status,
                          int *read_offset,
-                         char *read_buf, char *broadcast_buf, int *broadcast_offset) {
+                         char *read_buf) {
     while (*protocol_read > 0) {
         if (*read_status == REQUIRE_HEADER) {
             if (*protocol_read < 9) {
@@ -63,7 +63,7 @@ handle_protocol_decoding(int host_type, int epfd, int fd, struct protocol *new_p
 
                 if (host_type == SERVER) {
                     // 만약에 호출 대상이  서버라면 read() 해온 protocol 을 write_buf 에 복사해주는 역할을 하는 과정을 가진다.
-                    destination_handler(fd, epfd, new_protocol, broadcast_buf, broadcast_offset);
+                    destination_handler(fd, epfd, new_protocol);
 
                 } else if (host_type == CLIENT) {
                     // 만약에 호출 대상이 클라이언트 라면 read() 해온 protocl 을 write_buf 에 복사해주는 역할을 하는 과정을 가진다.
@@ -74,7 +74,7 @@ handle_protocol_decoding(int host_type, int epfd, int fd, struct protocol *new_p
                 switch_buffer(read_buf, read_offset);
                 *read_status = REQUIRE_HEADER;
                 *read_offset = 0;
-
+                memset(new_protocol, 0, sizeof(struct protocol));
             }
         }
     }

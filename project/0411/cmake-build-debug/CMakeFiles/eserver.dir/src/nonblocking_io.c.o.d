@@ -13,7 +13,7 @@ CMakeFiles/eserver.dir/src/nonblocking_io.c.o: \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /home/kim/C-study/project/0411/src/../include/util.h \
  /home/kim/C-study/project/0411/src/../include/protocol.h \
- /home/kim/C-study/project/0411/src/../include/chat.h \
+ /home/kim/C-study/project/0411/src/../include/server_io.h \
  /home/kim/C-study/project/0411/src/../include/../include/protocol.h \
  /home/kim/C-study/project/0411/src/../include/../include/user.h \
  /home/kim/C-study/project/0411/src/../include/../include/util.h \
@@ -66,12 +66,4 @@ CMakeFiles/eserver.dir/src/nonblocking_io.c.o: \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/alloca.h \
- /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/stdio.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
- /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
- /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
- /usr/include/x86_64-linux-gnu/bits/stdio_lim.h
+ /usr/include/x86_64-linux-gnu/bits/stdlib-float.h

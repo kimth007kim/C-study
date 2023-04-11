@@ -1,6 +1,6 @@
-CMakeFiles/eclient.dir/src/chat.c.o: \
- /home/kim/C-study/project/0411/src/chat.c /usr/include/stdc-predef.h \
- /usr/include/stdio.h \
+CMakeFiles/eclient.dir/src/server_io.c.o: \
+ /home/kim/C-study/project/0411/src/server_io.c \
+ /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -55,11 +55,11 @@ CMakeFiles/eclient.dir/src/chat.c.o: \
  /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /home/kim/C-study/project/0411/src/../include/chat.h \
+ /home/kim/C-study/project/0411/src/../include/server_io.h \
  /home/kim/C-study/project/0411/src/../include/../include/protocol.h \
  /home/kim/C-study/project/0411/src/../include/../include/user.h \
  /home/kim/C-study/project/0411/src/../include/../include/util.h \
  /home/kim/C-study/project/0411/src/../include/../include/linkedlist.h \
  /home/kim/C-study/project/0411/src/../include/../include/ptr_linkedlist.h \
- /home/kim/C-study/project/0411/src/../include/../include/user.h \
- /home/kim/C-study/project/0411/src/../include/epoll.h
+ /home/kim/C-study/project/0411/src/../include/epoll.h \
+ /home/kim/C-study/project/0411/src/../include/nonblocking_io.h

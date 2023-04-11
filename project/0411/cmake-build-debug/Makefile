@@ -248,33 +248,6 @@ epollserver.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/epollserver.c.s
 .PHONY : epollserver.c.s
 
-src/chat.o: src/chat.c.o
-.PHONY : src/chat.o
-
-# target to build an object file
-src/chat.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/eclient.dir/build.make CMakeFiles/eclient.dir/src/chat.c.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/chat.c.o
-.PHONY : src/chat.c.o
-
-src/chat.i: src/chat.c.i
-.PHONY : src/chat.i
-
-# target to preprocess a source file
-src/chat.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/eclient.dir/build.make CMakeFiles/eclient.dir/src/chat.c.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/chat.c.i
-.PHONY : src/chat.c.i
-
-src/chat.s: src/chat.c.s
-.PHONY : src/chat.s
-
-# target to generate assembly for a file
-src/chat.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/eclient.dir/build.make CMakeFiles/eclient.dir/src/chat.c.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/chat.c.s
-.PHONY : src/chat.c.s
-
 src/client.o: src/client.c.o
 .PHONY : src/client.o
 
@@ -494,6 +467,33 @@ src/server.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/server.c.s
 .PHONY : src/server.c.s
 
+src/server_io.o: src/server_io.c.o
+.PHONY : src/server_io.o
+
+# target to build an object file
+src/server_io.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eclient.dir/build.make CMakeFiles/eclient.dir/src/server_io.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/server_io.c.o
+.PHONY : src/server_io.c.o
+
+src/server_io.i: src/server_io.c.i
+.PHONY : src/server_io.i
+
+# target to preprocess a source file
+src/server_io.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eclient.dir/build.make CMakeFiles/eclient.dir/src/server_io.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/server_io.c.i
+.PHONY : src/server_io.c.i
+
+src/server_io.s: src/server_io.c.s
+.PHONY : src/server_io.s
+
+# target to generate assembly for a file
+src/server_io.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eclient.dir/build.make CMakeFiles/eclient.dir/src/server_io.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/server_io.c.s
+.PHONY : src/server_io.c.s
+
 src/user.o: src/user.c.o
 .PHONY : src/user.o
 
@@ -596,9 +596,6 @@ help:
 	@echo "... epollserver.o"
 	@echo "... epollserver.i"
 	@echo "... epollserver.s"
-	@echo "... src/chat.o"
-	@echo "... src/chat.i"
-	@echo "... src/chat.s"
 	@echo "... src/client.o"
 	@echo "... src/client.i"
 	@echo "... src/client.s"
@@ -623,6 +620,9 @@ help:
 	@echo "... src/server.o"
 	@echo "... src/server.i"
 	@echo "... src/server.s"
+	@echo "... src/server_io.o"
+	@echo "... src/server_io.i"
+	@echo "... src/server_io.s"
 	@echo "... src/user.o"
 	@echo "... src/user.i"
 	@echo "... src/user.s"

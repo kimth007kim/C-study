@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/eclient.dir/epollclient.c.o"
   "CMakeFiles/eclient.dir/epollclient.c.o.d"
-  "CMakeFiles/eclient.dir/src/chat.c.o"
-  "CMakeFiles/eclient.dir/src/chat.c.o.d"
   "CMakeFiles/eclient.dir/src/client.c.o"
   "CMakeFiles/eclient.dir/src/client.c.o.d"
   "CMakeFiles/eclient.dir/src/epoll.c.o"
@@ -19,6 +17,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/eclient.dir/src/ptr_linkedlist.c.o.d"
   "CMakeFiles/eclient.dir/src/server.c.o"
   "CMakeFiles/eclient.dir/src/server.c.o.d"
+  "CMakeFiles/eclient.dir/src/server_io.c.o"
+  "CMakeFiles/eclient.dir/src/server_io.c.o.d"
   "CMakeFiles/eclient.dir/src/user.c.o"
   "CMakeFiles/eclient.dir/src/user.c.o.d"
   "CMakeFiles/eclient.dir/src/util.c.o"

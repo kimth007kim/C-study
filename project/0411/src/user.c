@@ -51,3 +51,11 @@ void exit_user(int fd) {
     show_users();
 
 }
+void set_ptr(struct user *this_user, Ptr_node *head) {
+    if (this_user->current_message == NULL) {
+        if (head != NULL) {
+            this_user->current_message = head->char_ptr;
+            this_user->offset = 0;
+        }
+    }
+}

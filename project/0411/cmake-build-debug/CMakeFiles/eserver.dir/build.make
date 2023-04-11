@@ -209,19 +209,19 @@ CMakeFiles/eserver.dir/src/network.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/eserver.dir/src/network.c.s"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/kim/C-study/project/0411/src/network.c -o CMakeFiles/eserver.dir/src/network.c.s
 
-CMakeFiles/eserver.dir/src/chat.c.o: CMakeFiles/eserver.dir/flags.make
-CMakeFiles/eserver.dir/src/chat.c.o: /home/kim/C-study/project/0411/src/chat.c
-CMakeFiles/eserver.dir/src/chat.c.o: CMakeFiles/eserver.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/eserver.dir/src/chat.c.o"
-	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/eserver.dir/src/chat.c.o -MF CMakeFiles/eserver.dir/src/chat.c.o.d -o CMakeFiles/eserver.dir/src/chat.c.o -c /home/kim/C-study/project/0411/src/chat.c
+CMakeFiles/eserver.dir/src/server_io.c.o: CMakeFiles/eserver.dir/flags.make
+CMakeFiles/eserver.dir/src/server_io.c.o: /home/kim/C-study/project/0411/src/server_io.c
+CMakeFiles/eserver.dir/src/server_io.c.o: CMakeFiles/eserver.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/eserver.dir/src/server_io.c.o"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/eserver.dir/src/server_io.c.o -MF CMakeFiles/eserver.dir/src/server_io.c.o.d -o CMakeFiles/eserver.dir/src/server_io.c.o -c /home/kim/C-study/project/0411/src/server_io.c
 
-CMakeFiles/eserver.dir/src/chat.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/eserver.dir/src/chat.c.i"
-	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/kim/C-study/project/0411/src/chat.c > CMakeFiles/eserver.dir/src/chat.c.i
+CMakeFiles/eserver.dir/src/server_io.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/eserver.dir/src/server_io.c.i"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/kim/C-study/project/0411/src/server_io.c > CMakeFiles/eserver.dir/src/server_io.c.i
 
-CMakeFiles/eserver.dir/src/chat.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/eserver.dir/src/chat.c.s"
-	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/kim/C-study/project/0411/src/chat.c -o CMakeFiles/eserver.dir/src/chat.c.s
+CMakeFiles/eserver.dir/src/server_io.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/eserver.dir/src/server_io.c.s"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/kim/C-study/project/0411/src/server_io.c -o CMakeFiles/eserver.dir/src/server_io.c.s
 
 CMakeFiles/eserver.dir/src/nonblocking_io.c.o: CMakeFiles/eserver.dir/flags.make
 CMakeFiles/eserver.dir/src/nonblocking_io.c.o: /home/kim/C-study/project/0411/src/nonblocking_io.c
@@ -249,7 +249,7 @@ eserver_OBJECTS = \
 "CMakeFiles/eserver.dir/src/server.c.o" \
 "CMakeFiles/eserver.dir/src/user.c.o" \
 "CMakeFiles/eserver.dir/src/network.c.o" \
-"CMakeFiles/eserver.dir/src/chat.c.o" \
+"CMakeFiles/eserver.dir/src/server_io.c.o" \
 "CMakeFiles/eserver.dir/src/nonblocking_io.c.o"
 
 # External object files for target eserver
@@ -265,7 +265,7 @@ eserver: CMakeFiles/eserver.dir/src/client.c.o
 eserver: CMakeFiles/eserver.dir/src/server.c.o
 eserver: CMakeFiles/eserver.dir/src/user.c.o
 eserver: CMakeFiles/eserver.dir/src/network.c.o
-eserver: CMakeFiles/eserver.dir/src/chat.c.o
+eserver: CMakeFiles/eserver.dir/src/server_io.c.o
 eserver: CMakeFiles/eserver.dir/src/nonblocking_io.c.o
 eserver: CMakeFiles/eserver.dir/build.make
 eserver: CMakeFiles/eserver.dir/link.txt

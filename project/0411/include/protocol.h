@@ -42,7 +42,7 @@ void encode_kd_protocol(char *read_buf, int target, char *output_str);
 void handle_protocol_decoding(int host_type, int epfd, int fd, struct protocol *new_protocol, int *protocol_read,
                               int *read_status,
                               int *read_offset,
-                              char *read_buf, char *broadcast_buf, int *broadcast_offset);
+                              char *read_buf);
 
 char *generate_time();
 
