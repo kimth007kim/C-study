@@ -237,6 +237,34 @@ CMakeFiles/eserver.dir/src/nonblocking_io.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/eserver.dir/src/nonblocking_io.c.s"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/kim/C-study/project/0411/src/nonblocking_io.c -o CMakeFiles/eserver.dir/src/nonblocking_io.c.s
 
+CMakeFiles/eserver.dir/src/client_message_linkedlist.c.o: CMakeFiles/eserver.dir/flags.make
+CMakeFiles/eserver.dir/src/client_message_linkedlist.c.o: /home/kim/C-study/project/0411/src/client_message_linkedlist.c
+CMakeFiles/eserver.dir/src/client_message_linkedlist.c.o: CMakeFiles/eserver.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/eserver.dir/src/client_message_linkedlist.c.o"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/eserver.dir/src/client_message_linkedlist.c.o -MF CMakeFiles/eserver.dir/src/client_message_linkedlist.c.o.d -o CMakeFiles/eserver.dir/src/client_message_linkedlist.c.o -c /home/kim/C-study/project/0411/src/client_message_linkedlist.c
+
+CMakeFiles/eserver.dir/src/client_message_linkedlist.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/eserver.dir/src/client_message_linkedlist.c.i"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/kim/C-study/project/0411/src/client_message_linkedlist.c > CMakeFiles/eserver.dir/src/client_message_linkedlist.c.i
+
+CMakeFiles/eserver.dir/src/client_message_linkedlist.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/eserver.dir/src/client_message_linkedlist.c.s"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/kim/C-study/project/0411/src/client_message_linkedlist.c -o CMakeFiles/eserver.dir/src/client_message_linkedlist.c.s
+
+CMakeFiles/eserver.dir/src/client_io.c.o: CMakeFiles/eserver.dir/flags.make
+CMakeFiles/eserver.dir/src/client_io.c.o: /home/kim/C-study/project/0411/src/client_io.c
+CMakeFiles/eserver.dir/src/client_io.c.o: CMakeFiles/eserver.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/eserver.dir/src/client_io.c.o"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/eserver.dir/src/client_io.c.o -MF CMakeFiles/eserver.dir/src/client_io.c.o.d -o CMakeFiles/eserver.dir/src/client_io.c.o -c /home/kim/C-study/project/0411/src/client_io.c
+
+CMakeFiles/eserver.dir/src/client_io.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/eserver.dir/src/client_io.c.i"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/kim/C-study/project/0411/src/client_io.c > CMakeFiles/eserver.dir/src/client_io.c.i
+
+CMakeFiles/eserver.dir/src/client_io.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/eserver.dir/src/client_io.c.s"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/kim/C-study/project/0411/src/client_io.c -o CMakeFiles/eserver.dir/src/client_io.c.s
+
 # Object files for target eserver
 eserver_OBJECTS = \
 "CMakeFiles/eserver.dir/epollserver.c.o" \
@@ -250,7 +278,9 @@ eserver_OBJECTS = \
 "CMakeFiles/eserver.dir/src/user.c.o" \
 "CMakeFiles/eserver.dir/src/network.c.o" \
 "CMakeFiles/eserver.dir/src/server_io.c.o" \
-"CMakeFiles/eserver.dir/src/nonblocking_io.c.o"
+"CMakeFiles/eserver.dir/src/nonblocking_io.c.o" \
+"CMakeFiles/eserver.dir/src/client_message_linkedlist.c.o" \
+"CMakeFiles/eserver.dir/src/client_io.c.o"
 
 # External object files for target eserver
 eserver_EXTERNAL_OBJECTS =
@@ -267,9 +297,11 @@ eserver: CMakeFiles/eserver.dir/src/user.c.o
 eserver: CMakeFiles/eserver.dir/src/network.c.o
 eserver: CMakeFiles/eserver.dir/src/server_io.c.o
 eserver: CMakeFiles/eserver.dir/src/nonblocking_io.c.o
+eserver: CMakeFiles/eserver.dir/src/client_message_linkedlist.c.o
+eserver: CMakeFiles/eserver.dir/src/client_io.c.o
 eserver: CMakeFiles/eserver.dir/build.make
 eserver: CMakeFiles/eserver.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking C executable eserver"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kim/C-study/project/0411/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking C executable eserver"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/eserver.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

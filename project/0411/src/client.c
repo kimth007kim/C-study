@@ -6,11 +6,11 @@
 #include <arpa/inet.h>
 #include <errno.h>
 #include "../include/util.h"
-#include "../include/protocol.h"
 #include "../include/linkedlist.h"
 #include "../include/client.h"
 #include "../include/epoll.h"
 #include "../include/nonblocking_io.h"
+#include "../include/client_io.h"
 
 
 #define REQUIRE_INIT 0
@@ -22,9 +22,8 @@
 int init_flag = REQUIRE_INIT;
 int read_status;
 
+int read_current_idx = 0;
 int read_offset = 0;
-
-int write_length = 0;
 int write_offset = 0;
 //char *protocol;
 //
@@ -45,24 +44,25 @@ int registered = FALSE;
  * @param fd            fd 는 이벤트가 발생한 fd를 가리킵니다.
  *
  */
+
+
+Message_node *message_node_link = NULL;
+
 void client_epoll(int server_socket, int epfd, struct epoll_event event) {
     if (init_flag == REQUIRE_INIT) {
         init_global_vars();
-//        printf(" [NAME =  %s]\n", name);
         // TODO 초기화를 진행하는 부분에서 닉네임을 프로토콜화 해서 넘겨주는 코드를 작성
-//        client_hello(epfd, server_socket, name, &write_offset);
     }
     if (event.events & EPOLLOUT) {
-        nio_write(CLIENT, epfd, server_socket, write_buf, &write_offset);
+//        nio_write(CLIENT, epfd, server_socket, write_buf, &write_offset);
+        client_write(epfd, server_socket);
 
     } else {
         if (server_socket == event.data.fd) {
             // 서버로 부터 프로토콜을 전송 받았을 경우에 read() 수행
-//            nio_read(CLIENT, epfd, server_socket, read_buf, &read_offset, &read_status);
-            nio_read_parse(CLIENT, epfd, server_socket, read_buf, &read_offset, &read_status);
+            nio_read_parse(CLIENT, epfd, server_socket, read_buf, &read_offset, &read_current_idx, &read_status);
         } else {
             // stdin으로 부터 문자열을 입력 받을 경우에 read() 수행
-//            nio_stdin_read(epfd, server_socket, client_buf, write_buf, &write_offset, &registered);
             nio_read_stdin(epfd, server_socket, client_buf, write_buf, &write_offset, &registered);
         }
     }

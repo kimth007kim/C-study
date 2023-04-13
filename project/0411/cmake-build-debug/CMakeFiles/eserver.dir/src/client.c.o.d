@@ -82,8 +82,9 @@ CMakeFiles/eserver.dir/src/client.c.o: \
  /usr/include/x86_64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /home/kim/C-study/project/0411/src/../include/util.h \
- /home/kim/C-study/project/0411/src/../include/protocol.h \
  /home/kim/C-study/project/0411/src/../include/linkedlist.h \
  /home/kim/C-study/project/0411/src/../include/client.h \
+ /home/kim/C-study/project/0411/src/../include/client_message_linkedlist.h \
  /home/kim/C-study/project/0411/src/../include/epoll.h \
- /home/kim/C-study/project/0411/src/../include/nonblocking_io.h
+ /home/kim/C-study/project/0411/src/../include/nonblocking_io.h \
+ /home/kim/C-study/project/0411/src/../include/client_io.h

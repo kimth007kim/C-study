@@ -30,7 +30,9 @@ void show_users() {
 void enter_user(int fd) {
     struct user *new_user = malloc(sizeof(struct user));
     new_user->fd = fd;
+    new_user->read_buffer = malloc(BUF_SIZE);
     user_list[fd] = new_user;
+
     user_link = add_node(user_link, fd);
     show_users();
 }
@@ -51,6 +53,7 @@ void exit_user(int fd) {
     show_users();
 
 }
+
 void set_ptr(struct user *this_user, Ptr_node *head) {
     if (this_user->current_message == NULL) {
         if (head != NULL) {

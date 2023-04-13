@@ -10,6 +10,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/kim/C-study/project/0411/epollclient.c" "CMakeFiles/eclient.dir/epollclient.c.o" "gcc" "CMakeFiles/eclient.dir/epollclient.c.o.d"
   "/home/kim/C-study/project/0411/src/client.c" "CMakeFiles/eclient.dir/src/client.c.o" "gcc" "CMakeFiles/eclient.dir/src/client.c.o.d"
+  "/home/kim/C-study/project/0411/src/client_io.c" "CMakeFiles/eclient.dir/src/client_io.c.o" "gcc" "CMakeFiles/eclient.dir/src/client_io.c.o.d"
+  "/home/kim/C-study/project/0411/src/client_message_linkedlist.c" "CMakeFiles/eclient.dir/src/client_message_linkedlist.c.o" "gcc" "CMakeFiles/eclient.dir/src/client_message_linkedlist.c.o.d"
   "/home/kim/C-study/project/0411/src/epoll.c" "CMakeFiles/eclient.dir/src/epoll.c.o" "gcc" "CMakeFiles/eclient.dir/src/epoll.c.o.d"
   "/home/kim/C-study/project/0411/src/linkedlist.c" "CMakeFiles/eclient.dir/src/linkedlist.c.o" "gcc" "CMakeFiles/eclient.dir/src/linkedlist.c.o.d"
   "/home/kim/C-study/project/0411/src/network.c" "CMakeFiles/eclient.dir/src/network.c.o" "gcc" "CMakeFiles/eclient.dir/src/network.c.o.d"

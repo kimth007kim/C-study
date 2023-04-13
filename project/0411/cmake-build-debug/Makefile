@@ -275,6 +275,60 @@ src/client.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/client.c.s
 .PHONY : src/client.c.s
 
+src/client_io.o: src/client_io.c.o
+.PHONY : src/client_io.o
+
+# target to build an object file
+src/client_io.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eclient.dir/build.make CMakeFiles/eclient.dir/src/client_io.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/client_io.c.o
+.PHONY : src/client_io.c.o
+
+src/client_io.i: src/client_io.c.i
+.PHONY : src/client_io.i
+
+# target to preprocess a source file
+src/client_io.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eclient.dir/build.make CMakeFiles/eclient.dir/src/client_io.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/client_io.c.i
+.PHONY : src/client_io.c.i
+
+src/client_io.s: src/client_io.c.s
+.PHONY : src/client_io.s
+
+# target to generate assembly for a file
+src/client_io.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eclient.dir/build.make CMakeFiles/eclient.dir/src/client_io.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/client_io.c.s
+.PHONY : src/client_io.c.s
+
+src/client_message_linkedlist.o: src/client_message_linkedlist.c.o
+.PHONY : src/client_message_linkedlist.o
+
+# target to build an object file
+src/client_message_linkedlist.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eclient.dir/build.make CMakeFiles/eclient.dir/src/client_message_linkedlist.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/client_message_linkedlist.c.o
+.PHONY : src/client_message_linkedlist.c.o
+
+src/client_message_linkedlist.i: src/client_message_linkedlist.c.i
+.PHONY : src/client_message_linkedlist.i
+
+# target to preprocess a source file
+src/client_message_linkedlist.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eclient.dir/build.make CMakeFiles/eclient.dir/src/client_message_linkedlist.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/client_message_linkedlist.c.i
+.PHONY : src/client_message_linkedlist.c.i
+
+src/client_message_linkedlist.s: src/client_message_linkedlist.c.s
+.PHONY : src/client_message_linkedlist.s
+
+# target to generate assembly for a file
+src/client_message_linkedlist.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eclient.dir/build.make CMakeFiles/eclient.dir/src/client_message_linkedlist.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eserver.dir/build.make CMakeFiles/eserver.dir/src/client_message_linkedlist.c.s
+.PHONY : src/client_message_linkedlist.c.s
+
 src/epoll.o: src/epoll.c.o
 .PHONY : src/epoll.o
 
@@ -599,6 +653,12 @@ help:
 	@echo "... src/client.o"
 	@echo "... src/client.i"
 	@echo "... src/client.s"
+	@echo "... src/client_io.o"
+	@echo "... src/client_io.i"
+	@echo "... src/client_io.s"
+	@echo "... src/client_message_linkedlist.o"
+	@echo "... src/client_message_linkedlist.i"
+	@echo "... src/client_message_linkedlist.s"
 	@echo "... src/epoll.o"
 	@echo "... src/epoll.i"
 	@echo "... src/epoll.s"

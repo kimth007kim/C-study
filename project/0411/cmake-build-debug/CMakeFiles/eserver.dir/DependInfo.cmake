@@ -10,6 +10,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/kim/C-study/project/0411/epollserver.c" "CMakeFiles/eserver.dir/epollserver.c.o" "gcc" "CMakeFiles/eserver.dir/epollserver.c.o.d"
   "/home/kim/C-study/project/0411/src/client.c" "CMakeFiles/eserver.dir/src/client.c.o" "gcc" "CMakeFiles/eserver.dir/src/client.c.o.d"
+  "/home/kim/C-study/project/0411/src/client_io.c" "CMakeFiles/eserver.dir/src/client_io.c.o" "gcc" "CMakeFiles/eserver.dir/src/client_io.c.o.d"
+  "/home/kim/C-study/project/0411/src/client_message_linkedlist.c" "CMakeFiles/eserver.dir/src/client_message_linkedlist.c.o" "gcc" "CMakeFiles/eserver.dir/src/client_message_linkedlist.c.o.d"
   "/home/kim/C-study/project/0411/src/epoll.c" "CMakeFiles/eserver.dir/src/epoll.c.o" "gcc" "CMakeFiles/eserver.dir/src/epoll.c.o.d"
   "/home/kim/C-study/project/0411/src/linkedlist.c" "CMakeFiles/eserver.dir/src/linkedlist.c.o" "gcc" "CMakeFiles/eserver.dir/src/linkedlist.c.o.d"
   "/home/kim/C-study/project/0411/src/network.c" "CMakeFiles/eserver.dir/src/network.c.o" "gcc" "CMakeFiles/eserver.dir/src/network.c.o.d"

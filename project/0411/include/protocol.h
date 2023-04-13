@@ -35,14 +35,14 @@ struct kd_protocol {
 };
 
 
-char *encode_protocol(char *read_buf, char *mode, int target);
+char *encode_protocol(char *read_buf, int length, char *mode, int target);
 
 void encode_kd_protocol(char *read_buf, int target, char *output_str);
 
-void handle_protocol_decoding(int host_type, int epfd, int fd, struct protocol *new_protocol, int *protocol_read,
+void handle_protocol_decoding(int host_type, int epfd, int fd, struct protocol *new_protocol,
                               int *read_status,
-                              int *read_offset,
-                              char *read_buf);
+                              char *read_buf, int *offset);
+
 
 char *generate_time();
 

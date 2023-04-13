@@ -20,8 +20,8 @@ struct user {
     int fd;
     int read_status;        // 숫자가 다들어 왔는지 확인하는 변수
     char read_buf[PROTOCOL_SIZE];
-    char write_buf[PROTOCOL_SIZE];
-    int write_offset;
+    char *read_buffer;
+    int read_current_idx;
     int read_offset;
     int registration;
     int write_start;
@@ -39,6 +39,7 @@ void show_users();
 void enter_user(int fd);
 
 void exit_user(int fd);
+
 void set_ptr(struct user *this_user, Ptr_node *head);
 
 #endif //MY_PROGRAM_USER_H

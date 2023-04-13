@@ -2,7 +2,7 @@
 #define EPOLL_SIZE 4000
 #define MAX_NAME_SIZE 30
 #define MAX_USERS 2000
-#define PROTOCOL_SIZE BUF_SIZE+8
+#define PROTOCOL_SIZE BUF_SIZE+9
 
 #define PORT_NUM 9190
 
@@ -13,8 +13,8 @@
 #define CLIENT 1
 
 
-#define READ_BUF_SIZE 3
-#define WRITE_BUF_SIZE 3
+#define READ_BUF_SIZE BUF_SIZE*2
+#define WRITE_BUF_SIZE BUF_SIZE
 
 #define TRUE 1
 #define FALSE 0

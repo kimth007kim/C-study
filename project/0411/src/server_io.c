@@ -38,7 +38,7 @@ void broadcast_handler(int fd, int epfd, struct protocol *protocol_ptr) {
 
     struct user *this_user;
     char *message = generate_message(fd, protocol_ptr->message, protocol_ptr->message_length);
-    char *protocol = encode_protocol(message, CHAR_BROADCAST, 9999);
+    char *protocol = encode_protocol(message, strlen(message), CHAR_BROADCAST, 9999);
 
 
     int target_length = strlen(protocol);

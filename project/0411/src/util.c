@@ -28,7 +28,17 @@ char *int_to_charzero(int num) {
 
 void switch_buffer(char *buffer, int *offset) {
 
+//    int new_length = strlen(buffer) - *offset;
+//    char *new_buffer = malloc(BUF_SIZE);
+//    memmove(new_buffer, buffer + *offset, new_length);
+//    *buffer = *new_buffer;
+////    memmove(buffer, buffer + *offset, new_length);
+//    *offset = new_length;
+
     int new_length = strlen(buffer) - *offset;
-    memmove(buffer, buffer + *offset, new_length);
+    char *new_buf = malloc(BUF_SIZE);
+    strncpy(new_buf, buffer + *offset, new_length);
+    memset(buffer, 0, BUF_SIZE);
+    strncpy(buffer, new_buf, new_length);
     *offset = new_length;
 }
