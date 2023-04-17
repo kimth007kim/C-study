@@ -19,6 +19,11 @@
 #define TRUE 1
 #define FALSE 0
 
+
+#define NEVER 0
+#define READY 1
+#define DONE 2
+
 void error_handling(char *message);
 
 int int_to_strlength(int num); // int형 변수의 길이를 측정해 주는 함수 100일경우 3을 리턴

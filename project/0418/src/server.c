@@ -38,7 +38,7 @@ void server_epoll(int server_socket, int epfd, struct epoll_event event) {
 //            nio_read_parse(SERVER, epfd, event.data.fd, user_list[event.data.fd]->read_buf,
 //                           &user_list[event.data.fd]->read_current_idx,
 //                           &user_list[event.data.fd]->read_status);
-            nio_read_parse(SERVER, epfd, event.data.fd, user_list[event.data.fd]->read_buffer,
+            nio_read_parse_server(SERVER, epfd, event.data.fd, user_list[event.data.fd]->read_buffer,
                            &user_list[event.data.fd]->read_offset,
                            &user_list[event.data.fd]->read_current_idx,
                            &user_list[event.data.fd]->read_status);

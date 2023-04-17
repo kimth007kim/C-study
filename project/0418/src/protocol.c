@@ -26,12 +26,15 @@
 
 int
 decode_and_handle_protocol(int host_type, int epfd, int fd, struct protocol *new_protocol, int *read_status,
-                           char *read_buf, int total_length) {
+                           char *read_buf, int total_length, char *message, int *message_offset) {
 
     int current_read_idx = 0;
+    int completed = 0;
     while (total_length > 0) {
         if (*read_status == REQUIRE_HEADER) {
             if (total_length < 9) {
+                if (completed == 0)
+                    return 0;
                 return current_read_idx;
             } else {
                 memset(new_protocol, 0, sizeof(struct protocol));
@@ -56,88 +59,80 @@ decode_and_handle_protocol(int host_type, int epfd, int fd, struct protocol *new
             }
         } else {
             if (total_length < new_protocol->message_length) {
-                return current_read_idx;
-            } else {
-                char *output_message = malloc(BUF_SIZE);
+                *read_status = REQUIRE_HEADER;
+                if (completed == 0)
+                    return 0;
 
+                return current_read_idx - 9;
+            } else {
                 new_protocol->message = read_buf + current_read_idx;
                 current_read_idx += new_protocol->message_length;
                 total_length -= new_protocol->message_length;
 
-                if (host_type == SERVER) {
-                    // TODO 추후에는 프로토콜 을 파싱하는 과정을 거치는것으로 수정해야한다.
-                    // 만약에 호출 대상이  서버라면 read() 해온 protocol 을 write_buf 에 복사해주는 역할을 하는 과정을 가진다.
-                    destination_handler(fd, epfd, new_protocol);
+                destination_handler(fd, epfd, new_protocol, message, message_offset, &current_read_idx);
 
-                } else if (host_type == CLIENT) {
-                    // 만약에 호출 대상이 클라이언트 라면 read() 해온 protocl 을 write_buf 에 복사해주는 역할을 하는 과정을 가진다.
-                    sprintf(output_message, "%.*s", new_protocol->message_length, new_protocol->message);
-                    fputs(output_message, stdout);
-
-                }
                 *read_status = REQUIRE_HEADER;
-                current_read_idx += new_protocol->message_length;
-                total_length -= new_protocol->message_length;
+                completed += 1;
             }
         }
     }
+    return current_read_idx;
 }
 
-void
+int
 handle_protocol_decoding(int host_type, int epfd, int fd, struct protocol *new_protocol,
                          int *read_status,
-                         char *read_buf, int *offset) {
+                         char *read_buf, int *offset, int total_length, char *message, int *message_offset) {
     int current_read_idx = 0;
-    int protocol_read = strlen(read_buf);
-    if (*read_status == REQUIRE_HEADER) {
-        if (protocol_read < 9) {
-            return;
+    int completed = 0;
+    while (total_length > 0) {
+        if (*read_status == REQUIRE_HEADER) {
+            if (total_length < 9) {
+                if (completed == 0)
+                    return 0;
+                return current_read_idx;
+            } else {
+                memset(new_protocol, 0, sizeof(struct protocol));
+                char temp_length[5];
+
+                strncpy(temp_length, read_buf, 4);
+                temp_length[4] = '\n';
+                int length = atoi(temp_length);
+                new_protocol->message_length = length;
+
+                current_read_idx += 4;
+                new_protocol->mode = read_buf + current_read_idx;
+
+                current_read_idx += 1;
+                new_protocol->destination = read_buf + current_read_idx;
+
+
+                memset(temp_length, 0, 5);
+                current_read_idx += 4;
+                total_length -= 9;
+                *read_status = REQUIRE_BODY;
+            }
         } else {
-            memset(new_protocol, 0, sizeof(struct protocol));
-            char temp_length[5];
+            if (total_length < new_protocol->message_length) {
+                *read_status = REQUIRE_HEADER;
+                if (completed == 0)
+                    return 0;
+                return current_read_idx - 9;
+            } else {
+                char *output_message = malloc(BUF_SIZE);
+                new_protocol->message = read_buf + current_read_idx;
+                current_read_idx += new_protocol->message_length;
+                total_length -= new_protocol->message_length;
 
-            strncpy(temp_length, read_buf, 4);
-            temp_length[4] = '\n';
-            int total_length = atoi(temp_length);
-            new_protocol->message_length = total_length;
-            current_read_idx += 4;
-            new_protocol->mode = read_buf + current_read_idx;
-            current_read_idx += 1;
-            new_protocol->destination = read_buf + current_read_idx;
-
-
-            memset(temp_length, 0, 5);
-            current_read_idx += 4;
-            protocol_read -= 9;
-            *read_status = REQUIRE_BODY;
-        }
-    }
-    if (*read_status == REQUIRE_BODY) {
-        if (protocol_read < new_protocol->message_length) {
-            return;
-        } else {
-            char *output_message = malloc(BUF_SIZE);
-
-            new_protocol->message = read_buf + current_read_idx;
-            current_read_idx += new_protocol->message_length;
-            protocol_read -= new_protocol->message_length;
-
-            if (host_type == SERVER) {
-                // 만약에 호출 대상이  서버라면 read() 해온 protocol 을 write_buf 에 복사해주는 역할을 하는 과정을 가진다.
-                destination_handler(fd, epfd, new_protocol);
-
-            } else if (host_type == CLIENT) {
-                // 만약에 호출 대상이 클라이언트 라면 read() 해온 protocl 을 write_buf 에 복사해주는 역할을 하는 과정을 가진다.
                 sprintf(output_message, "%.*s", new_protocol->message_length, new_protocol->message);
                 fputs(output_message, stdout);
 
+                *read_status = REQUIRE_HEADER;
+                completed += 1;
             }
-            *read_status = REQUIRE_HEADER;
-            current_read_idx = 0;
-            memset(new_protocol, 0, sizeof(struct protocol));
-            *offset = 0;
         }
     }
+    return current_read_idx;
 }
 
 char *encode_protocol(char *read_buf, int length, char *mode, int target) {
@@ -237,7 +232,7 @@ char *generate_message(int fd, char *buf, int message_length) {
     return message;
 }
 
-char *generate_greeting(int fd, int flag) {
+char *generate_greeting_protocol(int fd, int flag) {
     char *message = malloc(sizeof(char) * PROTOCOL_SIZE);
     char *time_str;
     char *hey = "입장하셨습니다";
@@ -250,5 +245,9 @@ char *generate_greeting(int fd, int flag) {
         sprintf(message, "[%s] %s 님이 %s.\n", time_str, user_list[fd]->name, bye);
     }
     int message_length = strlen(message);
-    return message;
+
+    char *result = encode_protocol(message, message_length, CHAR_BROADCAST, 9999);
+
+
+    return result;
 }

@@ -39,18 +39,18 @@ char *encode_protocol(char *read_buf, int length, char *mode, int target);
 
 void encode_kd_protocol(char *read_buf, int target, char *output_str);
 
-void handle_protocol_decoding(int host_type, int epfd, int fd, struct protocol *new_protocol,
-                              int *read_status,
-                              char *read_buf, int *offset);
+int handle_protocol_decoding(int host_type, int epfd, int fd, struct protocol *new_protocol,
+                             int *read_status,
+                             char *read_buf, int *offset, int total_length, char *message, int *message_offset);
 
 int decode_and_handle_protocol(int host_type, int epfd, int fd, struct protocol *new_protocol,
                                int *read_status,
-                               char *read_buf, int total_length);
+                               char *read_buf, int total_length, char *message, int *message_offset);
 
 char *generate_time();
 
 char *generate_message(int fd, char *buf, int message_length);
 
-char *generate_greeting(int fd, int flag);
+char *generate_greeting_protocol(int fd, int flag);
 
 #endif /* PROTOCOL_H */

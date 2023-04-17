@@ -11,7 +11,8 @@
 
 
 Node *user_link = NULL;
-Ptr_node *ptrnode_link = NULL;
+Ptr_node *ptrnode_head = NULL;
+Ptr_node *ptrnode_tail = NULL;
 struct user *user_list[MAX_USERS];
 int current_users = 0;
 
@@ -31,6 +32,7 @@ void enter_user(int fd) {
     struct user *new_user = malloc(sizeof(struct user));
     new_user->fd = fd;
     new_user->read_buffer = malloc(BUF_SIZE);
+    new_user->read_status = REQUIRE_HEADER;
     user_list[fd] = new_user;
 
     user_link = add_node(user_link, fd);

@@ -17,7 +17,7 @@ int nio_write(int host_type, int epfd, int fd, char *write_buf, int *write_offse
 //int n_write(int host_type, int epfd, int fd, char *message, int *write_offset, int *total_length) ;
 
 void
-nio_read_parse(int host_type, int epfd, int fd, char *read_buf, int *read_offset, int *read_current_idx,
+nio_read_parse(int host_type, int epfd, int fd, char *read_buf, int *read_offset,
                int *read_status);
 
 void

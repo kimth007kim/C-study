@@ -2,13 +2,6 @@
 #include<stdio.h>
 #include <stdlib.h>
 
-
-//Node *add_node(Node *head, int fd) {
-//    Node *new_node = malloc(sizeof(Node));
-//    new_node->fd = fd;
-//    new_node->next = head;
-//    return new_node;
-//}
 Node *add_node(Node *head, int fd) {
     Node *new_node = malloc(sizeof(Node));
     new_node->fd = fd;

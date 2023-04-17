@@ -60,7 +60,7 @@ void client_epoll(int server_socket, int epfd, struct epoll_event event) {
     } else {
         if (server_socket == event.data.fd) {
             // 서버로 부터 프로토콜을 전송 받았을 경우에 read() 수행
-            nio_read_parse(CLIENT, epfd, server_socket, read_buf, &read_offset, &read_current_idx, &read_status);
+            nio_read_parse(CLIENT, epfd, server_socket, read_buf, &read_offset, &read_status);
         } else {
             // stdin으로 부터 문자열을 입력 받을 경우에 read() 수행
             nio_read_stdin(epfd, server_socket, client_buf, write_buf, &write_offset, &registered);

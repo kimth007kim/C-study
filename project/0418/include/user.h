@@ -9,7 +9,8 @@
 #define REGISTERED_DONE 1
 
 extern Node *user_link;
-extern Ptr_node *ptrnode_link;
+extern Ptr_node *ptrnode_head;
+extern Ptr_node *ptrnode_tail;
 extern struct user *user_list[MAX_USERS];
 extern int current_users;
 
@@ -27,6 +28,7 @@ struct user {
     int write_start;
     char *current_message;
     int offset;
+    int set_name;
 //    struct protocol user_protocol;
 
 };
