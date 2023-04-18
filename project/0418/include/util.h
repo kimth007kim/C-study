@@ -1,4 +1,7 @@
 #define BUF_SIZE 1000
+
+#define TEST_READ_SIZE 10
+
 #define EPOLL_SIZE 4000
 #define MAX_NAME_SIZE 30
 #define MAX_USERS 2000

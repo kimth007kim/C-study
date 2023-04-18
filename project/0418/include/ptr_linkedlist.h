@@ -20,6 +20,6 @@ void print_ptrnode(Ptr_node *head);
 
 Ptr_node *find_ptrnode(Ptr_node *head, char *target);
 
-Ptr_node *get_next(Ptr_node **head_ptr,struct user * this_user);
+Ptr_node *get_next(Ptr_node **head_ptr,struct user * this_user,int epfd);
 
 //void set_ptr(struct user *this_user, Ptr_node *head);

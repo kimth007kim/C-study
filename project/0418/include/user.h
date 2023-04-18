@@ -40,7 +40,7 @@ void show_users();
 
 void enter_user(int fd);
 
-void exit_user(int fd);
+void exit_user(int epfd,int fd);
 
 void set_ptr(struct user *this_user, Ptr_node *head);
 

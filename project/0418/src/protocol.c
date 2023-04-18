@@ -26,7 +26,7 @@
 
 int
 decode_and_handle_protocol(int host_type, int epfd, int fd, struct protocol *new_protocol, int *read_status,
-                           char *read_buf, int total_length, char *message, int *message_offset) {
+                           char *read_buf, int total_length, char *message, int *message_offset, int *read_idx) {
 
     int current_read_idx = 0;
     int completed = 0;
@@ -40,20 +40,20 @@ decode_and_handle_protocol(int host_type, int epfd, int fd, struct protocol *new
                 memset(new_protocol, 0, sizeof(struct protocol));
                 char temp_length[5];
 
-                strncpy(temp_length, read_buf, 4);
+                strncpy(temp_length, read_buf + current_read_idx, 4);
                 temp_length[4] = '\n';
                 int length = atoi(temp_length);
                 new_protocol->message_length = length;
-
                 current_read_idx += 4;
-                new_protocol->mode = read_buf + current_read_idx;
 
+                new_protocol->mode = read_buf + current_read_idx;
                 current_read_idx += 1;
+
                 new_protocol->destination = read_buf + current_read_idx;
+                current_read_idx += 4;
 
 
                 memset(temp_length, 0, 5);
-                current_read_idx += 4;
                 total_length -= 9;
                 *read_status = REQUIRE_BODY;
             }
@@ -70,7 +70,7 @@ decode_and_handle_protocol(int host_type, int epfd, int fd, struct protocol *new
                 total_length -= new_protocol->message_length;
 
                 destination_handler(fd, epfd, new_protocol, message, message_offset, &current_read_idx);
-
+                *read_idx += new_protocol->message_length + 9;
                 *read_status = REQUIRE_HEADER;
                 completed += 1;
             }
@@ -125,8 +125,8 @@ handle_protocol_decoding(int host_type, int epfd, int fd, struct protocol *new_p
                 total_length -= new_protocol->message_length;
 
                 sprintf(output_message, "%.*s", new_protocol->message_length, new_protocol->message);
-                fputs(output_message, stdout);
-
+//                fputs(output_message, stdout);
+                printf("%s \n", output_message);
                 *read_status = REQUIRE_HEADER;
                 completed += 1;
             }
@@ -240,9 +240,9 @@ char *generate_greeting_protocol(int fd, int flag) {
 
     time_str = generate_time();
     if (flag == 0) {
-        sprintf(message, "[%s] %s 님이 %s.\n", time_str, user_list[fd]->name, hey);
+        sprintf(message, "[%s] %s 님이 %s.", time_str, user_list[fd]->name, hey);
     } else {
-        sprintf(message, "[%s] %s 님이 %s.\n", time_str, user_list[fd]->name, bye);
+        sprintf(message, "[%s] %s 님이 %s.", time_str, user_list[fd]->name, bye);
     }
     int message_length = strlen(message);
 

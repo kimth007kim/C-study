@@ -19,6 +19,7 @@ struct destination_function {
 struct destination_function destination_handlers[] = {
         {DESTINATION_ENTER,     enter_handler},
         {DESTINATION_BROADCAST, broadcast_handler},
+        {DESTINATION_EXIT,      exit_handler},
 };
 
 void destination_handler(int fd, int epfd, struct protocol *protocol_ptr, char *message, int *message_offset,
@@ -49,19 +50,6 @@ void broadcast_handler(int fd, int epfd, struct protocol *protocol_ptr, char *me
 
     strncpy(message + *message_offset, protocol, target_length);
     *message_offset += target_length;
-//    *current_read_idx += target_length - 9;
-//    ptrnode_head = add_ptrnode(ptrnode_head, current_users, protocol, target_length);
-//    Node *temp_user_link = user_link;
-//    while (temp_user_link != NULL) {
-//        this_user = user_list[temp_user_link->fd];
-////
-//        if (this_user->registration == REGISTERED_DONE) {
-//            create_modify_event(epfd, this_user->fd, EPOLLIN | EPOLLOUT);
-//        }
-////
-//        temp_user_link = temp_user_link->next;
-//    }
-
 
 }
 
@@ -69,8 +57,7 @@ void enter_handler(int fd, int epfd, struct protocol *protocol_ptr, char *messag
                    int *current_read_idx) {
     printf(" enter_handler 호출한다. \n");
     char *name = malloc(protocol_ptr->message_length);
-    sprintf(name, "%.*s", protocol_ptr->message_length - 1, protocol_ptr->message);
-
+    sprintf(name, "%.*s", protocol_ptr->message_length, protocol_ptr->message);
     user_list[fd]->name = name;
     if (user_list[fd]->registration == NOT_REGISTERED)
         user_list[fd]->registration = REGISTERED_DONE;
@@ -80,10 +67,36 @@ void enter_handler(int fd, int epfd, struct protocol *protocol_ptr, char *messag
 
     strncpy(message + *message_offset, protocol, target_length);
     *message_offset += target_length;
-
 //    user_list[fd]->current_message = protocol;
     user_list[fd]->offset = 0;
 
+//    *current_read_idx += target_length - 9;
+    show_users();
+}
+
+void exit_handler(int fd, int epfd, struct protocol *protocol_ptr, char *message, int *message_offset,
+                  int *current_read_idx) {
+    printf(" enter_handler 호출한다. \n");
+    char *name = malloc(protocol_ptr->message_length);
+    sprintf(name, "%.*s", protocol_ptr->message_length, protocol_ptr->message);
+    user_list[fd]->name = name;
+
+
+    if (user_list[fd]->registration == NOT_REGISTERED)
+        user_list[fd]->registration = REGISTERED_DONE;
+    current_users += 1;
+
+
+    char *protocol = generate_greeting_protocol(fd, 1);
+
+    int target_length = strlen(protocol);
+
+
+    strncpy(message + *message_offset, protocol, target_length);
+
+    *message_offset += target_length;
+//    user_list[fd]->current_message = protocol;
+    user_list[fd]->offset = 0;
 
 //    *current_read_idx += target_length - 9;
     show_users();
@@ -95,13 +108,16 @@ void server_write(int host_type, int epfd, int fd) {
     this_user = user_list[fd];
 
 //    set_ptr(this_user, ptrnode_head);
+//    if (this_user->current_message == NULL) {
+//        return;
+//    }
     Ptr_node *current_node = find_ptrnode(ptrnode_head, this_user->current_message);
     int write_cnt = nio_server_write(host_type, epfd, fd, this_user->current_message + this_user->offset,
                                      current_node->length - this_user->offset);
     this_user->offset += write_cnt;
     if (this_user->offset == current_node->length) {
 //        this_user->offset = 0;
-        Ptr_node *next_node = get_next(&ptrnode_head, this_user);
+        Ptr_node *next_node = get_next(&ptrnode_head, this_user, epfd);
         ptrnode_head = next_node;
     }
 }

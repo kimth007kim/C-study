@@ -791,6 +791,7 @@ CMakeFiles/eclient.dir/src/ptr_linkedlist.c.o
  /home/kim/C-study/project/0418/include/util.h
  /home/kim/C-study/project/0418/include/linkedlist.h
  /home/kim/C-study/project/0418/include/ptr_linkedlist.h
+ /home/kim/C-study/project/0418/include/epoll.h
  /usr/include/stdio.h
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h
  /usr/include/features.h
@@ -843,6 +844,12 @@ CMakeFiles/eclient.dir/src/ptr_linkedlist.c.o
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h
  /usr/include/alloca.h
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h
+ /usr/include/x86_64-linux-gnu/sys/epoll.h
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h
+ /usr/include/stdint.h
+ /usr/include/x86_64-linux-gnu/bits/wchar.h
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h
+ /usr/include/x86_64-linux-gnu/bits/epoll.h
 
 CMakeFiles/eclient.dir/src/server.c.o
  /home/kim/C-study/project/0418/src/server.c
@@ -1090,10 +1097,18 @@ CMakeFiles/eclient.dir/src/user.c.o
  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h
  /usr/include/x86_64-linux-gnu/bits/getopt_core.h
  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h
+ /usr/include/x86_64-linux-gnu/sys/epoll.h
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h
+ /usr/include/stdint.h
+ /usr/include/x86_64-linux-gnu/bits/wchar.h
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h
+ /usr/include/x86_64-linux-gnu/bits/epoll.h
  /home/kim/C-study/project/0418/include/user.h
  /home/kim/C-study/project/0418/include/util.h
  /home/kim/C-study/project/0418/include/linkedlist.h
  /home/kim/C-study/project/0418/include/ptr_linkedlist.h
+ /home/kim/C-study/project/0418/include/protocol.h
+ /home/kim/C-study/project/0418/include/epoll.h
 
 CMakeFiles/eclient.dir/src/util.c.o
  /home/kim/C-study/project/0418/src/util.c

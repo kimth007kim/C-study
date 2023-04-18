@@ -60,7 +60,14 @@ CMakeFiles/eserver.dir/src/user.c.o: \
  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+ /usr/include/x86_64-linux-gnu/sys/epoll.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/include/x86_64-linux-gnu/bits/epoll.h \
  /home/kim/C-study/project/0418/src/../include/user.h \
  /home/kim/C-study/project/0418/src/../include/util.h \
  /home/kim/C-study/project/0418/src/../include/linkedlist.h \
- /home/kim/C-study/project/0418/src/../include/ptr_linkedlist.h
+ /home/kim/C-study/project/0418/src/../include/ptr_linkedlist.h \
+ /home/kim/C-study/project/0418/src/../include/protocol.h \
+ /home/kim/C-study/project/0418/src/../include/epoll.h

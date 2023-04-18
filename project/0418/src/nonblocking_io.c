@@ -17,7 +17,8 @@ int nio_server_write(int host_type, int epfd, int fd, char *write_buf, int lengt
     if (write_cnt <= 0) {
         if (errno == EAGAIN || errno == EWOULDBLOCK) {
             return 0;
-        } else {
+        }
+        else {
             error_handling("write() error");
         }
     } else if (write_cnt == length) {
@@ -57,7 +58,7 @@ int nio_read(int host_type, int epfd, int fd, char *buf, int *offset, int total_
     } else if (read_cnt == 0) {
         epoll_ctl(epfd, EPOLL_CTL_DEL, fd, NULL);
         if (host_type == SERVER) {
-            exit_user(fd);
+            exit_user(epfd, fd);
             return 0;
         } else if (host_type == CLIENT) {
             close(fd);
@@ -68,29 +69,6 @@ int nio_read(int host_type, int epfd, int fd, char *buf, int *offset, int total_
 
     return read_cnt;
 }
-//int nio_read(int host_type, int epfd, int fd, char *buf, int *offset, int total_length) {
-//    int read_cnt = read(fd, buf + *offset, total_length);
-//
-//    if (read_cnt < 0) {
-//        if (errno == EAGAIN || errno == EWOULDBLOCK) {
-//            return 0;
-//        } else {
-//            error_handling("read()시 에러 발생");
-//        }
-//    } else if (read_cnt == 0) {
-//        epoll_ctl(epfd, EPOLL_CTL_DEL, fd, NULL);
-//        if (host_type == SERVER) {
-//            exit_user(fd);
-//            return 0;
-//        } else if (host_type == CLIENT) {
-//            close(fd);
-//            exit(1);
-//        }
-//    }
-//    *offset += read_cnt;
-//
-//    return read_cnt;
-//}
 
 
 int stdin_nio_read(int host_type, int epfd, int fd, char *buf) {
@@ -105,32 +83,20 @@ int stdin_nio_read(int host_type, int epfd, int fd, char *buf) {
     } else if (read_cnt == 0) {
         epoll_ctl(epfd, EPOLL_CTL_DEL, fd, NULL);
         if (host_type == SERVER) {
-            exit_user(fd);
+            exit_user(epfd, fd);
             return 0;
         } else if (host_type == CLIENT) {
             close(fd);
             exit(1);
         }
+    } else {
+        if (buf[read_cnt - 1] == '\n') {
+            buf[read_cnt - 1] = '\0';
+            read_cnt--;
+        }
     }
     return read_cnt;
 }
-
-
-//void
-//nio_read_parse_server(int host_type, int epfd, int fd, char *read_buf, int *read_offset, int *read_current_idx,
-//                      int *read_status) {
-//    if (nio_init_flag == 0) {
-//        temp_protocol = malloc(sizeof(struct protocol));
-//        nio_init_flag = 1;
-//    }
-////    struct protocol *new_protocol = malloc(sizeof(struct protocol));
-//    char *message = malloc(BUF_SIZE);
-//    int read_cnt = nio_read(host_type, epfd, fd, read_buf, read_offset, BUF_SIZE);
-//    handle_protocol_decoding(host_type, epfd, fd, temp_protocol, read_status,
-//                             read_buf, read_offset);
-//
-//}
-
 
 void
 nio_read_parse(int host_type, int epfd, int fd, char *read_buf, int *read_offset,
@@ -146,7 +112,7 @@ nio_read_parse(int host_type, int epfd, int fd, char *read_buf, int *read_offset
 
 
 //    int read_cnt = nio_read(host_type, epfd, fd, read_buf, read_offset, BUF_SIZE);
-    int read_cnt = nio_read(host_type, epfd, fd, read_buf, read_offset, 10);
+    int read_cnt = nio_read(host_type, epfd, fd, read_buf, read_offset, TEST_READ_SIZE);
     int result = handle_protocol_decoding(host_type, epfd, fd, new_protocol, read_status,
                                           read_buf, read_offset, strlen(read_buf), message, &message_offset);
     if (new_protocol->message == NULL) {
@@ -160,21 +126,10 @@ nio_read_parse(int host_type, int epfd, int fd, char *read_buf, int *read_offset
         memcpy(new_read_buf, read_buf + result, strlen(read_buf) - result);
         *read_offset -= result;
 
-//    *read_offset -= decoded;
         memcpy(read_buf, new_read_buf, BUF_SIZE);
         free(new_read_buf);
 
     }
-//    char *new_read_buf = malloc(BUF_SIZE);
-//    memset(new_read_buf, 0, BUF_SIZE);
-//    memcpy(new_read_buf, read_buf + read_cnt, strlen(read_buf) - read_cnt);
-//    *read_offset -= read_cnt;
-////        free(read_buf);
-//    memcpy(read_buf, new_read_buf, BUF_SIZE);
-//    free(new_read_buf);
-//    Node *temp_user_link = user_link;
-
-
 }
 
 
@@ -192,16 +147,9 @@ nio_read_parse_server(int host_type, int epfd, int fd, char *read_buf, int *read
 
 
 //    int read_cnt = nio_read(host_type, epfd, fd, read_buf, read_offset, BUF_SIZE);
-    int read_cnt = nio_read(host_type, epfd, fd, read_buf, read_offset, 10);
+    int read_cnt = nio_read(host_type, epfd, fd, read_buf, read_offset, TEST_READ_SIZE);
     int result = decode_and_handle_protocol(host_type, epfd, fd, new_protocol, read_status,
-                                            read_buf, strlen(read_buf), message, &message_offset);
-//    if (result ==0) {
-//        if (message != NULL) {
-//            free(message);
-//            message = NULL;
-//            return;
-//        }
-
+                                            read_buf, strlen(read_buf), message, &message_offset, read_current_idx);
     if (new_protocol->message == NULL) {
         memset(new_protocol, 0, sizeof(new_protocol));
         free(message);

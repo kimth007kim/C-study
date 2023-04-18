@@ -9,17 +9,15 @@
 /**  destination 의 정의 */
 #define DESTINATION_ENTER "9001"
 #define DESTINATION_BROADCAST "9999"
-#define DESTINATION_OUT "9002"
+#define DESTINATION_EXIT "9002"
 
 #define IDX_REGISTER 0
 #define IDX_BROADCAST 1
-#define IDX_WHISPER 8
-
+#define IDX_EXIT "2"
 
 #define CHAR_REGISTER "0"
 #define CHAR_BROADCAST "1"
-#define CHAR_WHISPER "8"
-
+#define CHAR_EXIT "2"
 
 struct protocol {
     int message_length;
@@ -45,7 +43,7 @@ int handle_protocol_decoding(int host_type, int epfd, int fd, struct protocol *n
 
 int decode_and_handle_protocol(int host_type, int epfd, int fd, struct protocol *new_protocol,
                                int *read_status,
-                               char *read_buf, int total_length, char *message, int *message_offset);
+                               char *read_buf, int total_length, char *message, int *message_offset, int *read_idx);
 
 char *generate_time();
 

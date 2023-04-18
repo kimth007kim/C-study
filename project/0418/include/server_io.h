@@ -8,4 +8,7 @@ void broadcast_handler(int fd, int epfd, struct protocol *protocol_ptr, char *me
 
 void enter_handler(int fd, int epfd, struct protocol *protocol_ptr, char *message, int *message_offset,int * current_read_idx);
 
+void exit_handler(int fd, int epfd, struct protocol *protocol_ptr, char *message, int *message_offset,
+                  int *current_read_idx);
+
 void server_write(int host_type, int epfd, int fd);
