@@ -102,18 +102,17 @@ void exit_handler(int fd, int epfd, struct protocol *protocol_ptr, char *message
     show_users();
 }
 
-
-void server_write(int host_type, int epfd, int fd) {
+void server_nio_write(int host_type, int epfd, int fd) {
     struct user *this_user;
     this_user = user_list[fd];
 
-//    set_ptr(this_user, ptrnode_head);
-//    if (this_user->current_message == NULL) {
-//        return;
-//    }
     Ptr_node *current_node = find_ptrnode(ptrnode_head, this_user->current_message);
-    int write_cnt = nio_server_write(host_type, epfd, fd, this_user->current_message + this_user->offset,
-                                     current_node->length - this_user->offset);
+    if (current_node == NULL) {
+        create_modify_event(epfd, fd, EPOLLIN);
+        return;
+    }
+    int write_cnt = server_write(host_type, epfd, fd, this_user->current_message + this_user->offset,
+                                 current_node->length - this_user->offset);
     this_user->offset += write_cnt;
     if (this_user->offset == current_node->length) {
 //        this_user->offset = 0;

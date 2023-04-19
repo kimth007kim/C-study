@@ -19,8 +19,23 @@ event_loop(void(*func)(int, int, struct epoll_event), int server_socket,
     ep_events = malloc(sizeof(struct epoll_event) * EPOLL_SIZE);
     while (1) {
         event_cnt = epoll_wait(epfd, ep_events, EPOLL_SIZE, -1);
-        if (event_cnt == -1)
+//        printf("event_cnt == %d \n", event_cnt);
+
+        if (event_cnt == -1) {
             return;
+        }
+
+        for (int n = 0; n < event_cnt; ++n) {
+            if (ep_events[n].data.fd == 5 | ep_events[n].data.fd == 6) {
+
+                if (ep_events[n].events & EPOLLIN) {
+                    printf("fd = %d  EPOLLIN \n", ep_events[n].data.fd);
+                }
+                if (ep_events[n].events & EPOLLOUT) {
+                    printf("fd = %d  EPOLLOUT \n", ep_events[n].data.fd);
+                }
+            }
+        }
 
         for (int i = 0; i < event_cnt; i++) {
             func(server_socket, epfd, ep_events[i]);

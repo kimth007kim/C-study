@@ -25,7 +25,7 @@
 // Body의 길이 + 타겟   +  문자열 길이
 
 int
-decode_and_handle_protocol(int host_type, int epfd, int fd, struct protocol *new_protocol, int *read_status,
+server_protocol_handler( int epfd, int fd, struct protocol *new_protocol, int *read_status,
                            char *read_buf, int total_length, char *message, int *message_offset, int *read_idx) {
 
     int current_read_idx = 0;
@@ -71,6 +71,7 @@ decode_and_handle_protocol(int host_type, int epfd, int fd, struct protocol *new
 
                 destination_handler(fd, epfd, new_protocol, message, message_offset, &current_read_idx);
                 *read_idx += new_protocol->message_length + 9;
+
                 *read_status = REQUIRE_HEADER;
                 completed += 1;
             }
@@ -80,9 +81,9 @@ decode_and_handle_protocol(int host_type, int epfd, int fd, struct protocol *new
 }
 
 int
-handle_protocol_decoding(int host_type, int epfd, int fd, struct protocol *new_protocol,
+client_protocol_handler(int host_type, int epfd, int fd, struct protocol *new_protocol,
                          int *read_status,
-                         char *read_buf, int *offset, int total_length, char *message, int *message_offset) {
+                         char *read_buf, int total_length) {
     int current_read_idx = 0;
     int completed = 0;
     while (total_length > 0) {
@@ -95,7 +96,7 @@ handle_protocol_decoding(int host_type, int epfd, int fd, struct protocol *new_p
                 memset(new_protocol, 0, sizeof(struct protocol));
                 char temp_length[5];
 
-                strncpy(temp_length, read_buf, 4);
+                strncpy(temp_length, read_buf + current_read_idx, 4);
                 temp_length[4] = '\n';
                 int length = atoi(temp_length);
                 new_protocol->message_length = length;
@@ -105,10 +106,10 @@ handle_protocol_decoding(int host_type, int epfd, int fd, struct protocol *new_p
 
                 current_read_idx += 1;
                 new_protocol->destination = read_buf + current_read_idx;
+                current_read_idx += 4;
 
 
                 memset(temp_length, 0, 5);
-                current_read_idx += 4;
                 total_length -= 9;
                 *read_status = REQUIRE_BODY;
             }
@@ -119,14 +120,14 @@ handle_protocol_decoding(int host_type, int epfd, int fd, struct protocol *new_p
                     return 0;
                 return current_read_idx - 9;
             } else {
-                char *output_message = malloc(BUF_SIZE);
                 new_protocol->message = read_buf + current_read_idx;
                 current_read_idx += new_protocol->message_length;
                 total_length -= new_protocol->message_length;
 
+                char *output_message = malloc(BUF_SIZE);
                 sprintf(output_message, "%.*s", new_protocol->message_length, new_protocol->message);
-//                fputs(output_message, stdout);
                 printf("%s \n", output_message);
+
                 *read_status = REQUIRE_HEADER;
                 completed += 1;
             }

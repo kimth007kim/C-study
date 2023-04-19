@@ -283,7 +283,8 @@ CMakeFiles/eserver.dir/src/client_io.c.o: /home/kim/C-study/project/0418/src/cli
   /usr/include/arpa/inet.h \
   /home/kim/C-study/project/0418/include/client_message_linkedlist.h \
   /home/kim/C-study/project/0418/include/epoll.h \
-  /home/kim/C-study/project/0418/include/protocol.h
+  /home/kim/C-study/project/0418/include/protocol.h \
+  /home/kim/C-study/project/0418/include/client_io.h
 
 CMakeFiles/eserver.dir/src/client_message_linkedlist.c.o: /home/kim/C-study/project/0418/src/client_message_linkedlist.c \
   /usr/include/stdc-predef.h \

@@ -55,15 +55,16 @@ void client_epoll(int server_socket, int epfd, struct epoll_event event) {
     }
     if (event.events & EPOLLOUT) {
 //        nio_write(CLIENT, epfd, server_socket, write_buf, &write_offset);
-        client_write(epfd, server_socket);
+//        client_write(epfd, server_socket);
+        client_nio_write(epfd, server_socket);
 
     } else {
         if (server_socket == event.data.fd) {
             // 서버로 부터 프로토콜을 전송 받았을 경우에 read() 수행
-            nio_read_parse(CLIENT, epfd, server_socket, read_buf, &read_offset, &read_status);
+            client_nio_read_parse(CLIENT, epfd, server_socket, read_buf, &read_offset, &read_status);
         } else {
             // stdin으로 부터 문자열을 입력 받을 경우에 read() 수행
-            nio_read_stdin(epfd, server_socket, client_buf, write_buf, &write_offset, &registered);
+            client_nio_read_stdin(epfd, server_socket, client_buf, write_buf, &write_offset, &registered);
         }
     }
 }

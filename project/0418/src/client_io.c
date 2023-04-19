@@ -9,8 +9,9 @@
 #include "../include/client.h"
 #include "../include/epoll.h"
 #include "../include/protocol.h"
+#include "../include/client_io.h"
 
-void nio_read_stdin(int epfd, int fd, char *client_buf, char *write_buf, int *write_offset,
+void client_nio_read_stdin(int epfd, int fd, char *client_buf, char *write_buf, int *write_offset,
                     int *registered) {
 
 
@@ -33,7 +34,8 @@ void nio_read_stdin(int epfd, int fd, char *client_buf, char *write_buf, int *wr
 }
 
 
-int n_write(int host_type, int epfd, int fd, char *message, int *write_offset, int *total_length) {
+int  client_write(int host_type, int epfd, int fd, char *message, int *write_offset, int *total_length) {
+//int client_nio_write(int host_type, int epfd, int fd, char *message, int *write_offset, int *total_length) {
 //    int target_length = strlen(write_buf);
 
     int target_length = *total_length - *write_offset;
@@ -47,8 +49,8 @@ int n_write(int host_type, int epfd, int fd, char *message, int *write_offset, i
         }
     } else if (write_cnt == target_length) {
         *write_offset = 0;
-        message_node_link=remove_message_node(message_node_link);
-        if (message_node_link== NULL) {
+        message_node_link = remove_message_node(message_node_link);
+        if (message_node_link == NULL) {
             create_modify_event(epfd, fd, EPOLLIN);
         }
     } else if (write_cnt < target_length) {
@@ -57,13 +59,15 @@ int n_write(int host_type, int epfd, int fd, char *message, int *write_offset, i
     return write_cnt;
 }
 
-void client_write(int epfd, int fd) {
+//void client_write(int epfd, int fd) {
+void client_nio_write(int epfd, int fd) {
     if (message_node_link == NULL) {
         create_modify_event(epfd, fd, EPOLLIN);
         return;
     }
     Message_node *current_message_node = message_node_link;
 
-    n_write(CLIENT, epfd, fd, current_message_node->char_ptr, &current_message_node->offset,
-            &current_message_node->length);
+    client_write(CLIENT, epfd, fd, current_message_node->char_ptr, &current_message_node->offset,
+                     &current_message_node->length);
+
 }

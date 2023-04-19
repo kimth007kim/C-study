@@ -37,11 +37,11 @@ char *encode_protocol(char *read_buf, int length, char *mode, int target);
 
 void encode_kd_protocol(char *read_buf, int target, char *output_str);
 
-int handle_protocol_decoding(int host_type, int epfd, int fd, struct protocol *new_protocol,
+int client_protocol_handler(int host_type, int epfd, int fd, struct protocol *new_protocol,
                              int *read_status,
-                             char *read_buf, int *offset, int total_length, char *message, int *message_offset);
+                             char *read_buf, int total_length);
 
-int decode_and_handle_protocol(int host_type, int epfd, int fd, struct protocol *new_protocol,
+int server_protocol_handler(int epfd, int fd, struct protocol *new_protocol,
                                int *read_status,
                                char *read_buf, int total_length, char *message, int *message_offset, int *read_idx);
 

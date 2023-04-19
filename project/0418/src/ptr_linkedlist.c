@@ -130,17 +130,10 @@ Ptr_node *get_next(Ptr_node **head_ptr, struct user *this_user, int epfd) {
                 ptrnode_tail = NULL;
                 ptrnode_head = NULL;
                 this_user->current_message = NULL;
-                create_modify_event(epfd, this_user->fd, EPOLLIN);
-
+//                create_modify_event(epfd, this_user->fd, EPOLLIN);
                 return NULL;
             } else {
-
-//            Node *temp_user_link = user_link;
-//            while (temp_user_link!=NULL){
-//
-//            }
                 this_user->current_message = next_node->char_ptr;
-
             }
             free(node_to_remove->char_ptr); // 할당된 메모리를 해제
             free(node_to_remove); // 노드를 삭제
@@ -150,11 +143,11 @@ Ptr_node *get_next(Ptr_node **head_ptr, struct user *this_user, int epfd) {
 //        this_user->current_message = ptrnode_tail->char_ptr;
             if (current_node == NULL) {
                 this_user->current_message = NULL;
-                create_modify_event(epfd, this_user->fd, EPOLLIN);
+//                create_modify_event(epfd, this_user->fd, EPOLLIN);
             } else {
                 if (next_node == NULL) {
                     this_user->current_message = NULL;
-                    create_modify_event(epfd, this_user->fd, EPOLLIN);
+//                    create_modify_event(epfd, this_user->fd, EPOLLIN);
                 } else {
                     this_user->current_message = next_node->char_ptr;
                 }
@@ -166,6 +159,7 @@ Ptr_node *get_next(Ptr_node **head_ptr, struct user *this_user, int epfd) {
         while (current_node != NULL) {
             if (current_node->char_ptr == this_user->current_message)
                 break;
+            current_node = current_node->next;
         }
         current_node->cnt -= 1;
         return ptrnode_head;

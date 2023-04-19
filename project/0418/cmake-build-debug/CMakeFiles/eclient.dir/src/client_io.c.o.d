@@ -78,4 +78,5 @@ CMakeFiles/eclient.dir/src/client_io.c.o: \
  /usr/include/x86_64-linux-gnu/bits/in.h /usr/include/arpa/inet.h \
  /home/kim/C-study/project/0418/src/../include/client_message_linkedlist.h \
  /home/kim/C-study/project/0418/src/../include/epoll.h \
- /home/kim/C-study/project/0418/src/../include/protocol.h
+ /home/kim/C-study/project/0418/src/../include/protocol.h \
+ /home/kim/C-study/project/0418/src/../include/client_io.h

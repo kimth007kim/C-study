@@ -11,4 +11,5 @@ void enter_handler(int fd, int epfd, struct protocol *protocol_ptr, char *messag
 void exit_handler(int fd, int epfd, struct protocol *protocol_ptr, char *message, int *message_offset,
                   int *current_read_idx);
 
-void server_write(int host_type, int epfd, int fd);
+//void server_write(int host_type, int epfd, int fd);
+void server_nio_write(int host_type, int epfd, int fd);

@@ -28,17 +28,14 @@ void server_epoll(int server_socket, int epfd, struct epoll_event event) {
     }
     if (event.events & EPOLLOUT) {
         // epoll 에서 감시하는 이벤트중에서 EPOLLOUT의 이벤트가 발생 했을경우
-        server_write(SERVER, epfd, user_list[event.data.fd]->fd);
+        server_nio_write(SERVER, epfd, user_list[event.data.fd]->fd);
     } else {
         if (server_socket == event.data.fd) {
             // 서버 소켓으로 수신된 데이터가 존재한다는것은 연결 요청(connect)이 있다는 것이다.
             accept_socket(epfd, server_socket);
         } else {
             // 클라이언트 소켓으로 부터 수신된 데이터가 존재한다는것.
-//            nio_read_parse(SERVER, epfd, event.data.fd, user_list[event.data.fd]->read_buf,
-//                           &user_list[event.data.fd]->read_current_idx,
-//                           &user_list[event.data.fd]->read_status);
-            nio_read_parse_server(SERVER, epfd, event.data.fd, user_list[event.data.fd]->read_buffer,
+            server_nio_read_parse(SERVER, epfd, event.data.fd, user_list[event.data.fd]->read_buffer,
                            &user_list[event.data.fd]->read_offset,
                            &user_list[event.data.fd]->read_current_idx,
                            &user_list[event.data.fd]->read_status);
