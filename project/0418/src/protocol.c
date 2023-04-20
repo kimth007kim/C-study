@@ -25,8 +25,8 @@
 // Body의 길이 + 타겟   +  문자열 길이
 
 int
-server_protocol_handler( int epfd, int fd, struct protocol *new_protocol, int *read_status,
-                           char *read_buf, int total_length, char *message, int *message_offset, int *read_idx) {
+server_protocol_handler(int epfd, int fd, struct protocol *new_protocol, int *read_status,
+                        char *read_buf, int total_length, char *message, int *message_offset, int *read_idx) {
 
     int current_read_idx = 0;
     int completed = 0;
@@ -39,8 +39,11 @@ server_protocol_handler( int epfd, int fd, struct protocol *new_protocol, int *r
             } else {
                 memset(new_protocol, 0, sizeof(struct protocol));
                 char temp_length[5];
+                memset(temp_length, 0, 5);
+//                sprintf(temp_length, "%4s", read_buf + current_read_idx);
 
                 strncpy(temp_length, read_buf + current_read_idx, 4);
+
                 temp_length[4] = '\n';
                 int length = atoi(temp_length);
                 new_protocol->message_length = length;
@@ -74,6 +77,8 @@ server_protocol_handler( int epfd, int fd, struct protocol *new_protocol, int *r
 
                 *read_status = REQUIRE_HEADER;
                 completed += 1;
+                if (*message_offset + 9 >= PROTOCOL_SIZE)
+                    return current_read_idx;
             }
         }
     }
@@ -82,8 +87,8 @@ server_protocol_handler( int epfd, int fd, struct protocol *new_protocol, int *r
 
 int
 client_protocol_handler(int host_type, int epfd, int fd, struct protocol *new_protocol,
-                         int *read_status,
-                         char *read_buf, int total_length) {
+                        int *read_status,
+                        char *read_buf, int total_length) {
     int current_read_idx = 0;
     int completed = 0;
     while (total_length > 0) {
@@ -95,6 +100,8 @@ client_protocol_handler(int host_type, int epfd, int fd, struct protocol *new_pr
             } else {
                 memset(new_protocol, 0, sizeof(struct protocol));
                 char temp_length[5];
+                memset(temp_length, 0, 5);
+//                sprintf(temp_length, "%4s", read_buf + current_read_idx);
 
                 strncpy(temp_length, read_buf + current_read_idx, 4);
                 temp_length[4] = '\n';
@@ -120,13 +127,17 @@ client_protocol_handler(int host_type, int epfd, int fd, struct protocol *new_pr
                     return 0;
                 return current_read_idx - 9;
             } else {
+                new_protocol->message = malloc(new_protocol->message_length);
+                memset(new_protocol->message, 0, new_protocol->message_length);
                 new_protocol->message = read_buf + current_read_idx;
+//                new_protocol->message = read_buf + current_read_idx;
                 current_read_idx += new_protocol->message_length;
                 total_length -= new_protocol->message_length;
 
-                char *output_message = malloc(BUF_SIZE);
-                sprintf(output_message, "%.*s", new_protocol->message_length, new_protocol->message);
-                printf("%s \n", output_message);
+//                char *output_message = malloc(BUF_SIZE);
+//                memset(output_message, 0, BUF_SIZE);
+//                sprintf(output_message, "%.*s", new_protocol->message_length, new_protocol->message);
+                printf("%.*s \n", new_protocol->message_length, new_protocol->message);
 
                 *read_status = REQUIRE_HEADER;
                 completed += 1;
@@ -140,8 +151,10 @@ char *encode_protocol(char *read_buf, int length, char *mode, int target) {
 
 
 //    printf("여기서 받은 %s \n", read_buf);
-    char *total = malloc(4);
-    char *dest = malloc(4);
+//    char *total = malloc(4);
+//    char *dest = malloc(4);
+    char *total;
+    char *dest;
     char *result = malloc(PROTOCOL_SIZE);
     // TODO 메세지의 총 길이가 9999를 넘어가면 어떻게 해야할지 정하도록 하자
     // 총 문자열의 길이를 char 형으로 변경
@@ -152,9 +165,11 @@ char *encode_protocol(char *read_buf, int length, char *mode, int target) {
     sprintf(result, "%s%s%s%s", total, mode, dest, read_buf);
 //    result[strlen(result)] = '0';
 //    printf(" 완성된 프로토콜 %s\n", result);
-    memset(total, 0, sizeof(total));
-    memset(dest, 0, sizeof(dest));
+//    memset(total, 0, sizeof(total));
+//    memset(dest, 0, sizeof(dest));
 //    memset(result,0,sizeof(result));
+    free(total);
+    free(dest);
     return result;
 }
 

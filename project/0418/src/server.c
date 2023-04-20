@@ -35,10 +35,11 @@ void server_epoll(int server_socket, int epfd, struct epoll_event event) {
             accept_socket(epfd, server_socket);
         } else {
             // 클라이언트 소켓으로 부터 수신된 데이터가 존재한다는것.
-            server_nio_read_parse(SERVER, epfd, event.data.fd, user_list[event.data.fd]->read_buffer,
-                           &user_list[event.data.fd]->read_offset,
-                           &user_list[event.data.fd]->read_current_idx,
-                           &user_list[event.data.fd]->read_status);
+            server_nio_read_parse(SERVER, epfd, event.data.fd,
+                                  user_list[event.data.fd]->read_buffer,
+                                  &user_list[event.data.fd]->read_offset,
+                                  &user_list[event.data.fd]->read_current_idx,
+                                  &user_list[event.data.fd]->read_status);
         }
     }
 }

@@ -25,15 +25,19 @@ int read_status;
 int read_current_idx = 0;
 int read_offset = 0;
 int write_offset = 0;
+int client_offset = 0;
 //char *protocol;
 //
 //struct protocol *new_protocol;
-char *write_buf;
+//char *write_buf;
+//char *read_buf;
+//char *client_buf;
 
-char *read_buf;
+char write_buf[PROTOCOL_SIZE];
+char read_buf[PROTOCOL_SIZE];
+char client_buf[PROTOCOL_SIZE];
 
 //TODO 프로토콜 버퍼를 추가하도록하자.
-char *client_buf;
 
 int registered = FALSE;
 
@@ -56,7 +60,8 @@ void client_epoll(int server_socket, int epfd, struct epoll_event event) {
     if (event.events & EPOLLOUT) {
 //        nio_write(CLIENT, epfd, server_socket, write_buf, &write_offset);
 //        client_write(epfd, server_socket);
-        client_nio_write(epfd, server_socket);
+//        client_nio_write(epfd, server_socket);
+        test_client_nio_write(epfd, server_socket, write_buf, &write_offset);
 
     } else {
         if (server_socket == event.data.fd) {
@@ -70,9 +75,9 @@ void client_epoll(int server_socket, int epfd, struct epoll_event event) {
 }
 
 void init_global_vars() {
-    read_buf = malloc(BUF_SIZE);
-    write_buf = malloc(BUF_SIZE);
-    client_buf = malloc(BUF_SIZE);
+//    read_buf = malloc(BUF_SIZE);
+//    write_buf = malloc(BUF_SIZE);
+//    client_buf = malloc(BUF_SIZE);
     read_status = REQUIRE_HEADER;
     errno = 0;
     init_flag = ALREADY_INIT;

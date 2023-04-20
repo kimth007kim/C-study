@@ -19,7 +19,7 @@ struct destination_function {
 struct destination_function destination_handlers[] = {
         {DESTINATION_ENTER,     enter_handler},
         {DESTINATION_BROADCAST, broadcast_handler},
-        {DESTINATION_EXIT,      exit_handler},
+//        {DESTINATION_EXIT,      exit_handler},
 };
 
 void destination_handler(int fd, int epfd, struct protocol *protocol_ptr, char *message, int *message_offset,
@@ -111,7 +111,7 @@ void server_nio_write(int host_type, int epfd, int fd) {
         create_modify_event(epfd, fd, EPOLLIN);
         return;
     }
-    int write_cnt = server_write(host_type, epfd, fd, this_user->current_message + this_user->offset,
+    int write_cnt = server_write(host_type, epfd, fd, current_node->char_ptr + this_user->offset,
                                  current_node->length - this_user->offset);
     this_user->offset += write_cnt;
     if (this_user->offset == current_node->length) {
@@ -119,5 +119,8 @@ void server_nio_write(int host_type, int epfd, int fd) {
         Ptr_node *next_node = get_next(&ptrnode_head, this_user, epfd);
         ptrnode_head = next_node;
     }
+    current_node = find_ptrnode(ptrnode_head, this_user->current_message);
+    if (current_node == NULL)
+        create_modify_event(epfd, fd, EPOLLIN);
 }
 

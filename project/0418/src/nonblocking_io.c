@@ -104,8 +104,10 @@ void
 client_nio_read_parse(int host_type, int epfd, int fd, char *read_buf, int *read_offset,
                       int *read_status) {
 
-
-    struct protocol *new_protocol = malloc(sizeof(struct protocol));
+    errno = 0;
+    int asize = sizeof(struct protocol);
+    struct protocol *new_protocol = malloc(asize);
+//    struct protocol *new_protocol = malloc(sizeof(struct protocol));
 
     char *message = malloc(BUF_SIZE);
     memset(message, 0, BUF_SIZE);
@@ -115,14 +117,16 @@ client_nio_read_parse(int host_type, int epfd, int fd, char *read_buf, int *read
 
     int read_cnt = nio_read(host_type, epfd, fd, read_buf, read_offset, TEST_READ_SIZE);
     int result = client_protocol_handler(host_type, epfd, fd, new_protocol, read_status,
-                                          read_buf, *read_offset);
+                                         read_buf, *read_offset);
     if (new_protocol->message == NULL) {
+//        free(new_protocol);
         memset(new_protocol, 0, sizeof(new_protocol));
         free(message);
         message = NULL;
         return;
     } else {
-//        memset(new_protocol, 0, sizeof(new_protocol));
+        memset(new_protocol, 0, sizeof(new_protocol));
+//        free(new_protocol);
 //        char *new_read_buf = malloc(BUF_SIZE);
 //        memset(new_read_buf, 0, BUF_SIZE);
 //
@@ -135,9 +139,22 @@ client_nio_read_parse(int host_type, int epfd, int fd, char *read_buf, int *read
 //            free(new_read_buf);
 //            new_read_buf = NULL;
 //        }
-        memmove(read_buf, read_buf + *read_offset, *read_offset - result);
+        char new_read_buf[PROTOCOL_SIZE];
+        memset(new_read_buf, 0, PROTOCOL_SIZE);
+        memmove(new_read_buf, read_buf + *read_offset, *read_offset - result);
+        strncpy(read_buf,new_read_buf,PROTOCOL_SIZE);
+//        read_buf = new_read_buf;
+
+//        memmove(read_buf, read_buf + *read_offset, *read_offset - result);
         *read_offset -= result;
-//
+//        if (new_protocol != NULL) {
+//            if (new_protocol->message != NULL) {
+//                free(new_protocol->message);
+//                new_protocol->message = NULL;
+//            }
+//            free(new_protocol);
+//            new_protocol = NULL;
+//        }
     }
 }
 
@@ -157,8 +174,8 @@ server_nio_read_parse(int host_type, int epfd, int fd, char *read_buf, int *read
 
     int read_cnt = nio_read(host_type, epfd, fd, read_buf, read_offset, TEST_READ_SIZE);
 
-    int result = server_protocol_handler( epfd, fd, new_protocol, read_status,
-                                            read_buf, strlen(read_buf), message, &message_offset, read_current_idx);
+    int result = server_protocol_handler(epfd, fd, new_protocol, read_status,
+                                         read_buf, strlen(read_buf), message, &message_offset, read_current_idx);
     if (new_protocol->message == NULL) {
         memset(new_protocol, 0, sizeof(new_protocol));
         free(message);

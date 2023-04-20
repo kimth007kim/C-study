@@ -34,7 +34,7 @@ void show_users() {
 void enter_user(int fd) {
     struct user *new_user = malloc(sizeof(struct user));
     new_user->fd = fd;
-    new_user->read_buffer = malloc(BUF_SIZE);
+//    new_user->read_buffer = malloc(BUF_SIZE);
     new_user->read_status = REQUIRE_HEADER;
     user_list[fd] = new_user;
 
@@ -95,8 +95,8 @@ void exit_user(int epfd, int fd) {
                 temp_user_link = temp_user_link->next;
             }
         }
-        close(fd);
-    }
 
+    }
+    close(fd);
     show_users();
 }

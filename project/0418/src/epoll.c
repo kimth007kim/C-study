@@ -25,17 +25,15 @@ event_loop(void(*func)(int, int, struct epoll_event), int server_socket,
             return;
         }
 
-        for (int n = 0; n < event_cnt; ++n) {
-            if (ep_events[n].data.fd == 5 | ep_events[n].data.fd == 6) {
-
-                if (ep_events[n].events & EPOLLIN) {
-                    printf("fd = %d  EPOLLIN \n", ep_events[n].data.fd);
-                }
-                if (ep_events[n].events & EPOLLOUT) {
-                    printf("fd = %d  EPOLLOUT \n", ep_events[n].data.fd);
-                }
-            }
-        }
+//        for (int n = 0; n < event_cnt; ++n) {
+//
+//            if (ep_events[n].events & EPOLLIN) {
+//                printf("fd = %d  EPOLLIN \n", ep_events[n].data.fd);
+//            }
+//            if (ep_events[n].events & EPOLLOUT) {
+//                printf("fd = %d  EPOLLOUT \n", ep_events[n].data.fd);
+//            }
+//        }
 
         for (int i = 0; i < event_cnt; i++) {
             func(server_socket, epfd, ep_events[i]);

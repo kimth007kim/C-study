@@ -21,7 +21,8 @@ struct user {
     int fd;
     int read_status;        // 숫자가 다들어 왔는지 확인하는 변수
     char read_buf[PROTOCOL_SIZE];
-    char *read_buffer;
+//    char *read_buffer;
+    char read_buffer[PROTOCOL_SIZE];
     int read_current_idx;
     int read_offset;
     int registration;
