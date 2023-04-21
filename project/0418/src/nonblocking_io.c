@@ -142,19 +142,8 @@ client_nio_read_parse(int host_type, int epfd, int fd, char *read_buf, int *read
         char new_read_buf[PROTOCOL_SIZE];
         memset(new_read_buf, 0, PROTOCOL_SIZE);
         memmove(new_read_buf, read_buf + *read_offset, *read_offset - result);
-        strncpy(read_buf,new_read_buf,PROTOCOL_SIZE);
-//        read_buf = new_read_buf;
-
-//        memmove(read_buf, read_buf + *read_offset, *read_offset - result);
+        strncpy(read_buf, new_read_buf, PROTOCOL_SIZE);
         *read_offset -= result;
-//        if (new_protocol != NULL) {
-//            if (new_protocol->message != NULL) {
-//                free(new_protocol->message);
-//                new_protocol->message = NULL;
-//            }
-//            free(new_protocol);
-//            new_protocol = NULL;
-//        }
     }
 }
 
@@ -175,7 +164,7 @@ server_nio_read_parse(int host_type, int epfd, int fd, char *read_buf, int *read
     int read_cnt = nio_read(host_type, epfd, fd, read_buf, read_offset, TEST_READ_SIZE);
 
     int result = server_protocol_handler(epfd, fd, new_protocol, read_status,
-                                         read_buf, strlen(read_buf), message, &message_offset, read_current_idx);
+                                         read_buf, *read_offset, message, &message_offset, read_current_idx);
     if (new_protocol->message == NULL) {
         memset(new_protocol, 0, sizeof(new_protocol));
         free(message);

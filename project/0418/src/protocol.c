@@ -77,8 +77,6 @@ server_protocol_handler(int epfd, int fd, struct protocol *new_protocol, int *re
 
                 *read_status = REQUIRE_HEADER;
                 completed += 1;
-                if (*message_offset + 9 >= PROTOCOL_SIZE)
-                    return current_read_idx;
             }
         }
     }
