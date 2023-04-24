@@ -175,6 +175,7 @@ server_nio_read_parse(int host_type, int epfd, int fd, char *read_buf, int *read
 
 
     struct protocol *new_protocol = malloc(sizeof(struct protocol));
+    new_protocol->message = NULL;
     struct user *this_user;
     char *message = malloc(BUF_SIZE);
     memset(message, 0, BUF_SIZE);
@@ -191,13 +192,14 @@ server_nio_read_parse(int host_type, int epfd, int fd, char *read_buf, int *read
     //read_cnt 는 offset 을 조절하는것이다.
 
     if (new_protocol->message == NULL) {
-        memset(new_protocol, 0, sizeof(new_protocol));
+//        memset(new_protocol, 0, sizeof(new_protocol));
         free(message);
-        message = NULL;
-        return;
+//        message = NULL;
+        safe_free((void **) &new_protocol);
 
     } else {
-        memset(new_protocol, 0, sizeof(new_protocol));
+//        memset(new_protocol, 0, sizeof(new_protocol));
+        safe_free((void **) &new_protocol);
 
         ptrnode_head = add_ptrnode(ptrnode_head, current_users, message, strlen(message));
 

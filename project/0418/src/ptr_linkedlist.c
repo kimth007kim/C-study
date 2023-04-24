@@ -130,13 +130,20 @@ Ptr_node *get_next(Ptr_node **head_ptr, struct user *this_user, int epfd) {
                 ptrnode_tail = NULL;
                 ptrnode_head = NULL;
                 this_user->current_message = NULL;
-//                create_modify_event(epfd, this_user->fd, EPOLLIN);
+
+                safe_free((void **) &node_to_remove->char_ptr);
+                safe_free((void **) &node_to_remove);
+
                 return NULL;
             } else {
                 this_user->current_message = next_node->char_ptr;
             }
-            free(node_to_remove->char_ptr); // 할당된 메모리를 해제
-            free(node_to_remove); // 노드를 삭제
+
+            safe_free((void **) &node_to_remove->char_ptr);
+            safe_free((void **) &node_to_remove);
+
+//            free(node_to_remove->char_ptr); // 할당된 메모리를 해제
+//            free(node_to_remove); // 노드를 삭제
             return next_node;
         } else {
             current_node = head;

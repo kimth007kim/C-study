@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/mnt/c/Users/Kyungdong/Documents/C-study/project/0418/cmake-build-debug"
+			"value" : "/home/kim/C-study/project/0418/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -79,7 +79,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "22"
+			"value" : "25"
 		},
 		{
 			"name" : "CMAKE_CACHE_PATCH_VERSION",
@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "1"
+			"value" : "2"
 		},
 		{
 			"name" : "CMAKE_CODEBLOCKS_COMPILER_ID",
@@ -127,7 +127,19 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-j8"
+			"value" : "-j20"
+		},
+		{
+			"name" : "CMAKE_COLOR_DIAGNOSTICS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Enable colored diagnostics throughout."
+				}
+			],
+			"type" : "BOOL",
+			"value" : "ON"
 		},
 		{
 			"name" : "CMAKE_COLOR_MAKEFILE",
@@ -139,11 +151,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "Enable/Disable color output during build."
+					"value" : "(This variable does not exist and should not be used)"
 				}
 			],
-			"type" : "BOOL",
-			"value" : "ON"
+			"type" : "UNINITIALIZED",
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_COMMAND",
@@ -155,7 +167,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/usr/bin/cmake"
+			"value" : "/snap/clion/234/bin/cmake/linux/x64/bin/cmake"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -167,7 +179,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/usr/bin/cpack"
+			"value" : "/snap/clion/234/bin/cmake/linux/x64/bin/cpack"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -179,7 +191,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/usr/bin/ctest"
+			"value" : "/snap/clion/234/bin/cmake/linux/x64/bin/ctest"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -194,8 +206,8 @@
 					"value" : "CXX compiler"
 				}
 			],
-			"type" : "FILEPATH",
-			"value" : "/usr/bin/c++"
+			"type" : "STRING",
+			"value" : "/usr/bin/g++"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_AR",
@@ -322,8 +334,8 @@
 					"value" : "C compiler"
 				}
 			],
-			"type" : "FILEPATH",
-			"value" : "/usr/bin/cc"
+			"type" : "STRING",
+			"value" : "/usr/bin/gcc"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_AR",
@@ -622,6 +634,18 @@
 			"value" : "/usr/lib/gcc/x86_64-linux-gnu/11/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include"
 		},
 		{
+			"name" : "CMAKE_FIND_PACKAGE_REDIRECTS_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake."
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/kim/C-study/project/0418/cmake-build-debug/CMakeFiles/pkgRedirects"
+		},
+		{
 			"name" : "CMAKE_GENERATOR",
 			"properties" : 
 			[
@@ -679,7 +703,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/mnt/c/Users/Kyungdong/Documents/C-study/project/0418"
+			"value" : "/home/kim/C-study/project/0418"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -967,7 +991,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/usr/share/cmake-3.22"
+			"value" : "/snap/clion/234/bin/cmake/linux/x64/share/cmake-3.25"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1238,6 +1262,18 @@
 			"value" : "/usr/sbin/sysctl"
 		},
 		{
+			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "linker supports push/pop state"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "TRUE"
+		},
+		{
 			"name" : "my_program_BINARY_DIR",
 			"properties" : 
 			[
@@ -1247,7 +1283,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/mnt/c/Users/Kyungdong/Documents/C-study/project/0418/cmake-build-debug"
+			"value" : "/home/kim/C-study/project/0418/cmake-build-debug"
 		},
 		{
 			"name" : "my_program_IS_TOP_LEVEL",
@@ -1271,7 +1307,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/mnt/c/Users/Kyungdong/Documents/C-study/project/0418"
+			"value" : "/home/kim/C-study/project/0418"
 		}
 	],
 	"kind" : "cache",

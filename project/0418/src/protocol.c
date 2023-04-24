@@ -244,25 +244,29 @@ char *generate_message(int fd, char *buf, int message_length) {
     time_str = generate_time();
     sprintf(message, "[%s] %s : %.*s", time_str, user_list[fd]->name, message_length, buf);
 
+    safe_free((void **) &time_str);
     return message;
 }
 
 char *generate_greeting_protocol(int fd, int flag) {
     char *message = malloc(sizeof(char) * PROTOCOL_SIZE);
-    char *time_str;
+    char *time_str = generate_time();
     char *hey = "입장하셨습니다";
     char *bye = "퇴장하셨습니다";
 
-    time_str = generate_time();
+
     if (flag == 0) {
         sprintf(message, "[%s] %s 님이 %s.", time_str, user_list[fd]->name, hey);
     } else {
         sprintf(message, "[%s] %s 님이 %s.", time_str, user_list[fd]->name, bye);
     }
+
     int message_length = strlen(message);
 
     char *result = encode_protocol(message, message_length, CHAR_BROADCAST, 9999);
 
+    safe_free((void **) &time_str);
+    safe_free((void **) &message);
 
     return result;
 }

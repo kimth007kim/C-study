@@ -42,3 +42,10 @@ void switch_buffer(char *buffer, int *offset) {
     strncpy(buffer, new_buf, new_length);
     *offset = new_length;
 }
+
+void safe_free(void **ptr) {
+    if (*ptr != NULL) {
+        free(*ptr);
+        *ptr = NULL;
+    }
+}

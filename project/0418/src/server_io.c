@@ -25,13 +25,14 @@ struct destination_function destination_handlers[] = {
 void destination_handler(int fd, int epfd, struct protocol *protocol_ptr, char *message, int *message_offset,
                          int *current_read_idx) {
 //    char *destination = malloc(4);
-    char *mode = malloc(1);
+//    char *mode = malloc(1);
+    char mode[2];
     sprintf(mode, "%.*s", 1, protocol_ptr->mode);
     int integer_mode = atoi(mode);
     destination_handlers[integer_mode].handler(fd, epfd, protocol_ptr, message, message_offset,
                                                current_read_idx);
     printf("mode  = %s \n", mode);
-    memset(mode, 0, 1);
+//    memset(mode, 0, 1);
 
 }
 
@@ -50,6 +51,10 @@ void broadcast_handler(int fd, int epfd, struct protocol *protocol_ptr, char *me
 
     strncpy(message + *message_offset, protocol, target_length);
     *message_offset += target_length;
+
+    safe_free((void **) &protocol);
+    safe_free((void **) &new_message);
+
 
 }
 
@@ -72,6 +77,7 @@ void enter_handler(int fd, int epfd, struct protocol *protocol_ptr, char *messag
 
 //    *current_read_idx += target_length - 9;
     show_users();
+    safe_free((void **) &protocol);
 }
 
 void exit_handler(int fd, int epfd, struct protocol *protocol_ptr, char *message, int *message_offset,
@@ -114,7 +120,7 @@ void server_nio_write(int host_type, int epfd, int fd) {
 //    int write_cnt = server_write(host_type, epfd, fd, current_node->char_ptr + this_user->offset,
 //                                 current_node->length - this_user->offset);
     int write_cnt = server_write_test(host_type, epfd, fd, current_node->char_ptr + this_user->offset,
-                                 current_node->length,this_user->offset);
+                                      current_node->length, this_user->offset);
     this_user->offset += write_cnt;
 
     if (this_user->offset == current_node->length) {

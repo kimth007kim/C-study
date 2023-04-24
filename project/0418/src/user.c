@@ -34,8 +34,12 @@ void show_users() {
 void enter_user(int fd) {
     struct user *new_user = malloc(sizeof(struct user));
     new_user->fd = fd;
-//    new_user->read_buffer = malloc(BUF_SIZE);
+    new_user->name = NULL;
     new_user->read_status = REQUIRE_HEADER;
+    new_user->write_status = WRITE_COMPLETED;
+    new_user->read_offset = 0;
+    new_user->registration = NOT_REGISTERED;
+    new_user->current_message = NULL;
     user_list[fd] = new_user;
 
     user_link = add_node(user_link, fd);
@@ -83,7 +87,7 @@ void exit_user(int epfd, int fd) {
 
     if (user_list[fd]->fd == fd) {
         printf("%d번 %s님  퇴장\n", user_list[fd]->fd, user_list[fd]->name);
-        user_list[fd] = NULL;
+//        user_list[fd] = NULL;
         // 링크드리스트에 해당 소켓을 제거
         user_link = remove_node(user_link, fd);
         current_users -= 1;
@@ -95,8 +99,11 @@ void exit_user(int epfd, int fd) {
                 temp_user_link = temp_user_link->next;
             }
         }
-
+        safe_free((void **) &user_list[fd]->name);
+        safe_free((void **) &user_list[fd]);
     }
+
+    safe_free((void **) &protocol);
     close(fd);
     show_users();
 }

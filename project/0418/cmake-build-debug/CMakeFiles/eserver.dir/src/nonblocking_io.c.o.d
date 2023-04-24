@@ -1,5 +1,5 @@
 CMakeFiles/eserver.dir/src/nonblocking_io.c.o: \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/nonblocking_io.c \
+ /home/kim/C-study/project/0418/src/nonblocking_io.c \
  /usr/include/stdc-predef.h /usr/include/errno.h /usr/include/features.h \
  /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -11,14 +11,14 @@ CMakeFiles/eserver.dir/src/nonblocking_io.c.o: \
  /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
  /usr/include/x86_64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/util.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/protocol.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/server_io.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/../include/protocol.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/../include/user.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/../include/util.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/../include/linkedlist.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/../include/ptr_linkedlist.h \
+ /home/kim/C-study/project/0418/src/../include/util.h \
+ /home/kim/C-study/project/0418/src/../include/protocol.h \
+ /home/kim/C-study/project/0418/src/../include/server_io.h \
+ /home/kim/C-study/project/0418/src/../include/../include/protocol.h \
+ /home/kim/C-study/project/0418/src/../include/../include/user.h \
+ /home/kim/C-study/project/0418/src/../include/../include/util.h \
+ /home/kim/C-study/project/0418/src/../include/../include/linkedlist.h \
+ /home/kim/C-study/project/0418/src/../include/../include/ptr_linkedlist.h \
  /usr/include/x86_64-linux-gnu/sys/time.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
@@ -52,8 +52,8 @@ CMakeFiles/eserver.dir/src/nonblocking_io.c.o: \
  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
  /usr/include/x86_64-linux-gnu/bits/epoll.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/nonblocking_io.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/epoll.h \
+ /home/kim/C-study/project/0418/src/../include/nonblocking_io.h \
+ /home/kim/C-study/project/0418/src/../include/epoll.h \
  /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
  /usr/include/x86_64-linux-gnu/bits/confname.h \

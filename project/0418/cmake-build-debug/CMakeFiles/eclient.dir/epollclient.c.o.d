@@ -1,6 +1,6 @@
 CMakeFiles/eclient.dir/epollclient.c.o: \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/epollclient.c \
- /usr/include/stdc-predef.h /usr/include/unistd.h /usr/include/features.h \
+ /home/kim/C-study/project/0418/epollclient.c /usr/include/stdc-predef.h \
+ /usr/include/unistd.h /usr/include/features.h \
  /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/bits/timesize.h \
@@ -56,9 +56,9 @@ CMakeFiles/eclient.dir/epollclient.c.o: \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/include/util.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/include/epoll.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/include/client.h \
+ /home/kim/C-study/project/0418/include/util.h \
+ /home/kim/C-study/project/0418/include/epoll.h \
+ /home/kim/C-study/project/0418/include/client.h \
  /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/sys/socket.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
  /usr/include/x86_64-linux-gnu/bits/socket.h \
@@ -76,5 +76,5 @@ CMakeFiles/eclient.dir/epollclient.c.o: \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
  /usr/include/x86_64-linux-gnu/bits/in.h /usr/include/arpa/inet.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/include/client_message_linkedlist.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/include/network.h
+ /home/kim/C-study/project/0418/include/client_message_linkedlist.h \
+ /home/kim/C-study/project/0418/include/network.h

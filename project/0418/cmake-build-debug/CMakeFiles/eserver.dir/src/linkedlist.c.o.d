@@ -1,7 +1,7 @@
 CMakeFiles/eserver.dir/src/linkedlist.c.o: \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/linkedlist.c \
+ /home/kim/C-study/project/0418/src/linkedlist.c \
  /usr/include/stdc-predef.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/linkedlist.h \
+ /home/kim/C-study/project/0418/src/../include/linkedlist.h \
  /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \

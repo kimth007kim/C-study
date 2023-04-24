@@ -1,5 +1,5 @@
 CMakeFiles/eserver.dir/src/server_io.c.o: \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/server_io.c \
+ /home/kim/C-study/project/0418/src/server_io.c \
  /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -55,12 +55,12 @@ CMakeFiles/eserver.dir/src/server_io.c.o: \
  /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/server_io.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/../include/protocol.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/../include/user.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/../include/util.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/../include/linkedlist.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/../include/ptr_linkedlist.h \
+ /home/kim/C-study/project/0418/src/../include/server_io.h \
+ /home/kim/C-study/project/0418/src/../include/../include/protocol.h \
+ /home/kim/C-study/project/0418/src/../include/../include/user.h \
+ /home/kim/C-study/project/0418/src/../include/../include/util.h \
+ /home/kim/C-study/project/0418/src/../include/../include/linkedlist.h \
+ /home/kim/C-study/project/0418/src/../include/../include/ptr_linkedlist.h \
  /usr/include/x86_64-linux-gnu/sys/time.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/epoll.h \
- /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/nonblocking_io.h
+ /home/kim/C-study/project/0418/src/../include/epoll.h \
+ /home/kim/C-study/project/0418/src/../include/nonblocking_io.h

@@ -54,12 +54,14 @@ struct epoll_event *generate_event(int fd, int event) {
 void create_add_event(int epfd, int fd, int event) {
     struct epoll_event *new_event = generate_event(fd, event);
     epoll_ctl(epfd, EPOLL_CTL_ADD, fd, new_event);
+    safe_free((void **) &new_event);
 
 }
 
 void create_modify_event(int epfd, int fd, int event) {
     struct epoll_event *new_event = generate_event(fd, event);
     epoll_ctl(epfd, EPOLL_CTL_MOD, fd, new_event);
+    safe_free((void **) &new_event);
 }
 
 void create_delete_event(int epfd, int fd) {
