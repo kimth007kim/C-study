@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/kim/C-study/project/0418/src/linkedlist.c" "CMakeFiles/test.dir/src/linkedlist.c.o" "gcc" "CMakeFiles/test.dir/src/linkedlist.c.o.d"
-  "/home/kim/C-study/project/0418/src/util.c" "CMakeFiles/test.dir/src/util.c.o" "gcc" "CMakeFiles/test.dir/src/util.c.o.d"
-  "/home/kim/C-study/project/0418/test.c" "CMakeFiles/test.dir/test.c.o" "gcc" "CMakeFiles/test.dir/test.c.o.d"
+  "/mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/linkedlist.c" "CMakeFiles/test.dir/src/linkedlist.c.o" "gcc" "CMakeFiles/test.dir/src/linkedlist.c.o.d"
+  "/mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/util.c" "CMakeFiles/test.dir/src/util.c.o" "gcc" "CMakeFiles/test.dir/src/util.c.o.d"
+  "/mnt/c/Users/Kyungdong/Documents/C-study/project/0418/test.c" "CMakeFiles/test.dir/test.c.o" "gcc" "CMakeFiles/test.dir/test.c.o.d"
   )
 
 # Targets to which this target links.

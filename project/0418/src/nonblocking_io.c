@@ -13,6 +13,7 @@ struct protocol *temp_protocol;
 int nio_init_flag = 0;
 
 int server_write(int host_type, int epfd, int fd, char *write_buf, int length) {
+
     int write_cnt = write(fd, write_buf, length);
     if (write_cnt < 0) {
         if (errno == EAGAIN || errno == EWOULDBLOCK) {
@@ -25,6 +26,26 @@ int server_write(int host_type, int epfd, int fd, char *write_buf, int length) {
 //        create_modify_event(epfd, fd, EPOLLIN);
     }
     return write_cnt;
+}
+
+int server_write_test(int host_type, int epfd, int fd, char *write_buf, int total_length, int current_user_offset) {
+
+    int write_length;
+    if (total_length - current_user_offset >= 10) {
+        write_length = 10;
+    } else {
+        write_length = total_length - current_user_offset;
+    }
+
+    int write_cnt = write(fd, write_buf, write_length);
+    if (write_cnt < 0) {
+        if (errno == EAGAIN || errno == EWOULDBLOCK) {
+            return 0;
+        } else {
+            error_handling("write() error");
+        }
+        return write_cnt;
+    }
 }
 
 //int nio_write(int host_type, int epfd, int fd, char *write_buf, int *write_offset) {
@@ -165,6 +186,10 @@ server_nio_read_parse(int host_type, int epfd, int fd, char *read_buf, int *read
 
     int result = server_protocol_handler(epfd, fd, new_protocol, read_status,
                                          read_buf, *read_offset, message, &message_offset, read_current_idx);
+
+
+    //read_cnt 는 offset 을 조절하는것이다.
+
     if (new_protocol->message == NULL) {
         memset(new_protocol, 0, sizeof(new_protocol));
         free(message);

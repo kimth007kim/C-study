@@ -111,16 +111,41 @@ void server_nio_write(int host_type, int epfd, int fd) {
         create_modify_event(epfd, fd, EPOLLIN);
         return;
     }
-    int write_cnt = server_write(host_type, epfd, fd, current_node->char_ptr + this_user->offset,
-                                 current_node->length - this_user->offset);
+//    int write_cnt = server_write(host_type, epfd, fd, current_node->char_ptr + this_user->offset,
+//                                 current_node->length - this_user->offset);
+    int write_cnt = server_write_test(host_type, epfd, fd, current_node->char_ptr + this_user->offset,
+                                 current_node->length,this_user->offset);
     this_user->offset += write_cnt;
+
     if (this_user->offset == current_node->length) {
+        this_user->write_status = WRITE_COMPLETED;
 //        this_user->offset = 0;
         Ptr_node *next_node = get_next(&ptrnode_head, this_user, epfd);
         ptrnode_head = next_node;
-    }
-    current_node = find_ptrnode(ptrnode_head, this_user->current_message);
-    if (current_node == NULL)
-        create_modify_event(epfd, fd, EPOLLIN);
-}
 
+        current_node = find_ptrnode(ptrnode_head, this_user->current_message);
+        if (current_node == NULL)
+            create_modify_event(epfd, fd, EPOLLIN);
+
+    } else {
+        if (this_user->write_status == WRITE_COMPLETED) {
+            gettimeofday(&this_user->start_time, NULL);
+        } else {
+            int timeout_ms = 5000;
+            struct timeval current_time;
+            gettimeofday(&current_time, NULL);
+
+            long elapsed_ms = (current_time.tv_sec - this_user->start_time.tv_sec) * 1000 +
+                              (current_time.tv_usec - this_user->start_time.tv_usec) / 1000;
+            if (elapsed_ms >= timeout_ms) {
+                exit_user(epfd, fd);
+            }
+
+        }
+        this_user->write_status = WRITE_UNCOMPLETED;
+//    current_node = find_ptrnode(ptrnode_head, this_user->current_message);
+//    if (current_node == NULL)
+//        create_modify_event(epfd, fd, EPOLLIN);
+    }
+
+}

@@ -1,5 +1,5 @@
 CMakeFiles/eserver.dir/src/client_io.c.o: \
- /home/kim/C-study/project/0418/src/client_io.c \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/client_io.c \
  /usr/include/stdc-predef.h /usr/include/unistd.h /usr/include/features.h \
  /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -64,9 +64,9 @@ CMakeFiles/eserver.dir/src/client_io.c.o: \
  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
- /home/kim/C-study/project/0418/src/../include/nonblocking_io.h \
- /home/kim/C-study/project/0418/src/../include/util.h \
- /home/kim/C-study/project/0418/src/../include/client.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/nonblocking_io.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/util.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/client.h \
  /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/sys/socket.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
  /usr/include/x86_64-linux-gnu/bits/socket.h \
@@ -84,7 +84,7 @@ CMakeFiles/eserver.dir/src/client_io.c.o: \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
  /usr/include/x86_64-linux-gnu/bits/in.h /usr/include/arpa/inet.h \
- /home/kim/C-study/project/0418/src/../include/client_message_linkedlist.h \
- /home/kim/C-study/project/0418/src/../include/epoll.h \
- /home/kim/C-study/project/0418/src/../include/protocol.h \
- /home/kim/C-study/project/0418/src/../include/client_io.h
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/client_message_linkedlist.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/epoll.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/protocol.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/client_io.h

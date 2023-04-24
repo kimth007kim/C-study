@@ -1,6 +1,6 @@
 CMakeFiles/eserver.dir/src/user.c.o: \
- /home/kim/C-study/project/0418/src/user.c /usr/include/stdc-predef.h \
- /usr/include/string.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/user.c \
+ /usr/include/stdc-predef.h /usr/include/string.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -65,9 +65,10 @@ CMakeFiles/eserver.dir/src/user.c.o: \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
  /usr/include/x86_64-linux-gnu/bits/epoll.h \
- /home/kim/C-study/project/0418/src/../include/user.h \
- /home/kim/C-study/project/0418/src/../include/util.h \
- /home/kim/C-study/project/0418/src/../include/linkedlist.h \
- /home/kim/C-study/project/0418/src/../include/ptr_linkedlist.h \
- /home/kim/C-study/project/0418/src/../include/protocol.h \
- /home/kim/C-study/project/0418/src/../include/epoll.h
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/user.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/util.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/linkedlist.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/ptr_linkedlist.h \
+ /usr/include/x86_64-linux-gnu/sys/time.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/protocol.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/epoll.h

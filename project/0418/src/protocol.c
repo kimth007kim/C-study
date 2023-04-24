@@ -62,6 +62,7 @@ server_protocol_handler(int epfd, int fd, struct protocol *new_protocol, int *re
             }
         } else {
             if (total_length < new_protocol->message_length) {
+//                user_list[fd]->prev_read_done = FALSE;
                 *read_status = REQUIRE_HEADER;
                 if (completed == 0)
                     return 0;

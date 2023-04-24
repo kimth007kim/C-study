@@ -1,6 +1,6 @@
 CMakeFiles/eclient.dir/src/protocol.c.o: \
- /home/kim/C-study/project/0418/src/protocol.c /usr/include/stdc-predef.h \
- /usr/include/stdio.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/protocol.c \
+ /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -72,15 +72,16 @@ CMakeFiles/eclient.dir/src/protocol.c.o: \
  /usr/include/x86_64-linux-gnu/bits/time.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
- /home/kim/C-study/project/0418/src/../include/util.h \
- /home/kim/C-study/project/0418/src/../include/protocol.h \
- /home/kim/C-study/project/0418/src/../include/user.h \
- /home/kim/C-study/project/0418/src/../include/util.h \
- /home/kim/C-study/project/0418/src/../include/linkedlist.h \
- /home/kim/C-study/project/0418/src/../include/ptr_linkedlist.h \
- /home/kim/C-study/project/0418/src/../include/server_io.h \
- /home/kim/C-study/project/0418/src/../include/../include/protocol.h \
- /home/kim/C-study/project/0418/src/../include/../include/user.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/util.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/protocol.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/user.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/util.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/linkedlist.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/ptr_linkedlist.h \
+ /usr/include/x86_64-linux-gnu/sys/time.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/server_io.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/../include/protocol.h \
+ /mnt/c/Users/Kyungdong/Documents/C-study/project/0418/src/../include/../include/user.h \
  /usr/include/x86_64-linux-gnu/sys/epoll.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
