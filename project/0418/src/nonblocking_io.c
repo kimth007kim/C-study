@@ -28,11 +28,12 @@ int server_write(int host_type, int epfd, int fd, char *write_buf, int length) {
     return write_cnt;
 }
 
-int server_write_test(int host_type, int epfd, int fd, char *write_buf, int total_length, int current_user_offset) {
+int server_write_test(int host_type, int epfd, int fd, char *write_buf, int total_length, int current_user_offset,
+                      int num) {
 
     int write_length;
-    if (total_length - current_user_offset >= 10) {
-        write_length = 10;
+    if (total_length - current_user_offset >= num) {
+        write_length = num;
     } else {
         write_length = total_length - current_user_offset;
     }
@@ -130,23 +131,18 @@ client_nio_read_parse(int host_type, int epfd, int fd, char *read_buf, int *read
     struct protocol *new_protocol = malloc(asize);
 //    struct protocol *new_protocol = malloc(sizeof(struct protocol));
 
-    char *message = malloc(BUF_SIZE);
-    memset(message, 0, BUF_SIZE);
-
-    int message_offset = 0;
-
 
     int read_cnt = nio_read(host_type, epfd, fd, read_buf, read_offset, TEST_READ_SIZE);
     int result = client_protocol_handler(host_type, epfd, fd, new_protocol, read_status,
                                          read_buf, *read_offset);
     if (new_protocol->message == NULL) {
 //        free(new_protocol);
-        memset(new_protocol, 0, sizeof(new_protocol));
-        free(message);
-        message = NULL;
+//        memset(new_protocol, 0, sizeof(new_protocol));
+        safe_free((void **) &new_protocol);
         return;
     } else {
-        memset(new_protocol, 0, sizeof(new_protocol));
+//        memset(new_protocol, 0, sizeof(new_protocol));
+        safe_free((void **) &new_protocol);
 //        free(new_protocol);
 //        char *new_read_buf = malloc(BUF_SIZE);
 //        memset(new_read_buf, 0, BUF_SIZE);
@@ -188,13 +184,31 @@ server_nio_read_parse(int host_type, int epfd, int fd, char *read_buf, int *read
     int result = server_protocol_handler(epfd, fd, new_protocol, read_status,
                                          read_buf, *read_offset, message, &message_offset, read_current_idx);
 
+//    // read_buf안에 있는 것으로 프로토콜을 못만들었을때 시간을 +1 하는 방법
 
-    //read_cnt 는 offset 을 조절하는것이다.
+    if (user_list[fd] != NULL) {
+        if (result == 0) {
+            user_list[fd]->read_delay_time += 1;
+        } else {
+            if (*read_offset - result == 0) {
+                user_list[fd]->read_delay_time = 0;
+            } else {
+                user_list[fd]->read_delay_time = 1;
+            }
+        }
+    }
+
+
+    // 또는 read_cnt를 0을 읽어왔을 경우에 시간을 +1 하는 방법
+//    if (read_cnt == 0) {
+//        user_list[fd]->read_delay_time += 1;
+//    } else {
+//        user_list[fd]->read_delay_time = 0;
+//    }
 
     if (new_protocol->message == NULL) {
 //        memset(new_protocol, 0, sizeof(new_protocol));
         free(message);
-//        message = NULL;
         safe_free((void **) &new_protocol);
 
     } else {

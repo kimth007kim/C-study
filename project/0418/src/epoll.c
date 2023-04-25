@@ -18,7 +18,8 @@ event_loop(void(*func)(int, int, struct epoll_event), int server_socket,
 
     ep_events = malloc(sizeof(struct epoll_event) * EPOLL_SIZE);
     while (1) {
-        event_cnt = epoll_wait(epfd, ep_events, EPOLL_SIZE, -1);
+//        event_cnt = epoll_wait(epfd, ep_events, EPOLL_SIZE, -1);
+        event_cnt = epoll_wait(epfd, ep_events, EPOLL_SIZE, 1000);
 //        printf("event_cnt == %d \n", event_cnt);
 
         if (event_cnt == -1) {
@@ -82,4 +83,30 @@ int check_event(int epfd, int fd_to_check, int event) {
     } else {
         error_handling("epoll check error");
     }
+}
+
+
+void remove_epoll_event(int epfd, int fd, int target_event) {
+    struct epoll_event event = {0};
+
+    if (epoll_ctl(epfd, EPOLL_CTL_MOD, fd, &event) == -1) {
+        perror("epoll_ctl");
+        exit(EXIT_FAILURE);
+    }
+}
+
+void print_monitored_event(int epfd, int fd) {
+    struct epoll_event ev = {0};
+    if (epoll_ctl(epfd, EPOLL_CTL_MOD, fd, &ev) == -1) {
+        perror("epoll_ctl");
+        exit(EXIT_FAILURE);
+    }
+    printf("현재 fd=  %d 가 감시하고있는 이벤트: ", fd);
+    if (ev.events & EPOLLIN) {
+        printf("EPOLLIN ,");
+    }
+    if (ev.events & EPOLLOUT) {
+        printf("EPOLLOUT ");
+    }
+    printf("\n");
 }

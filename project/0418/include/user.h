@@ -32,8 +32,12 @@ struct user {
     int registration;
     char *current_message;
     int offset;
-    int write_status;
-    int set_name;
+
+
+    int write_delay;
+    int read_delay;
+    int read_delay_time;
+    int write_delay_time;
 
     struct timeval start_time;
     // 전에 프로토콜이 완성되었는지 여부를 판별한다.

@@ -42,6 +42,9 @@ void server_epoll(int server_socket, int epfd, struct epoll_event event) {
                                   &user_list[event.data.fd]->read_status);
         }
     }
+    delay_check(server_socket, epfd);
+
+
 }
 
 void server_network(struct sockaddr_in server_address, int server_socket) {
@@ -57,5 +60,19 @@ void server_network(struct sockaddr_in server_address, int server_socket) {
 
     if (listen(server_socket, MAX_USERS) == -1) {
         error_handling("listen() error");
+    }
+}
+
+void delay_check(int server_socket, int epfd) {
+    Node *traverse_user_link = user_link;
+
+    for (int i = 0; i < MAX_USERS; i++) {
+        struct user *this_user = user_list[i];
+        if (this_user == NULL) {
+            continue;
+        }
+        if (this_user->read_delay_time > 5 || this_user->write_delay_time > 5) {
+            exit_user(epfd, i);
+        }
     }
 }

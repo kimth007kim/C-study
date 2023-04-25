@@ -7,7 +7,7 @@
 //int nio_server_write(int host_type, int epfd, int fd, char *write_buf, int length);
 int server_write(int host_type, int epfd, int fd, char *write_buf, int length);
 
-int server_write_test(int host_type, int epfd, int fd, char *write_buf, int total_length,int current_user_offset);
+int server_write_test(int host_type, int epfd, int fd, char *write_buf, int total_length,int current_user_offset,int num);
 
 int stdin_nio_read(int host_type, int epfd, int fd, char *buf);
 

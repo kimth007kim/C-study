@@ -19,7 +19,8 @@ void client_nio_read_stdin(int epfd, int fd, char *client_buf, char *write_buf, 
     char *message = malloc(BUF_SIZE);
     memset(message, 0, BUF_SIZE);
     int read_cnt = stdin_nio_read(CLIENT, epfd, STDIN_FILENO, message);
-    if(read_cnt==0){
+    if (read_cnt == 0) {
+        safe_free((void **) &message);
         return;
     }
     printf("읽어온 read_cnt= %d\n", read_cnt);
@@ -30,7 +31,8 @@ void client_nio_read_stdin(int epfd, int fd, char *client_buf, char *write_buf, 
     } else {
         new_protocol = encode_protocol(message, read_cnt, CHAR_BROADCAST, 9999);
     }
-    free(message);
+    safe_free((void **) &message);
+
 
     int protocol_length = strlen(new_protocol);
 
@@ -40,10 +42,7 @@ void client_nio_read_stdin(int epfd, int fd, char *client_buf, char *write_buf, 
     create_modify_event(epfd, fd, EPOLLIN | EPOLLOUT);
 
 
-
-//    message_node_link = add_message_node(message_node_link, new_protocol, protocol_length);
-//    // TODO client_buf 에 복사 하기.
-//    create_modify_event(epfd, fd, EPOLLIN | EPOLLOUT);
+    safe_free((void **) &new_protocol);
 }
 
 

@@ -36,10 +36,12 @@ void enter_user(int fd) {
     new_user->fd = fd;
     new_user->name = NULL;
     new_user->read_status = REQUIRE_HEADER;
-    new_user->write_status = WRITE_COMPLETED;
+    new_user->write_delay = WRITE_COMPLETED;
     new_user->read_offset = 0;
     new_user->registration = NOT_REGISTERED;
     new_user->current_message = NULL;
+    new_user->read_delay_time = 0;
+    new_user->write_delay_time = 0;
     user_list[fd] = new_user;
 
     user_link = add_node(user_link, fd);
@@ -81,8 +83,7 @@ void exit_user(int epfd, int fd) {
     // 현재 유저 빼기
 
     //  퇴장  메시지 생성
-    char *protocol = generate_greeting_protocol(fd, 1);
-    int target_length = strlen(protocol);
+
 
 
     if (user_list[fd]->fd == fd) {
@@ -92,6 +93,8 @@ void exit_user(int epfd, int fd) {
         user_link = remove_node(user_link, fd);
         current_users -= 1;
         if (current_users > 0) {
+            char *protocol = generate_greeting_protocol(fd, 1);
+            int target_length = strlen(protocol);
             ptrnode_head = add_ptrnode(ptrnode_head, current_users, protocol, target_length);
             Node *temp_user_link = user_link;
             while (temp_user_link != NULL) {
@@ -99,11 +102,12 @@ void exit_user(int epfd, int fd) {
                 temp_user_link = temp_user_link->next;
             }
         }
+        create_delete_event(epfd, fd);
+        close(fd);
         safe_free((void **) &user_list[fd]->name);
         safe_free((void **) &user_list[fd]);
-    }
 
-    safe_free((void **) &protocol);
-    close(fd);
+    }
+//    safe_free((void **) &protocol);
     show_users();
 }

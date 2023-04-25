@@ -126,8 +126,6 @@ client_protocol_handler(int host_type, int epfd, int fd, struct protocol *new_pr
                     return 0;
                 return current_read_idx - 9;
             } else {
-                new_protocol->message = malloc(new_protocol->message_length);
-                memset(new_protocol->message, 0, new_protocol->message_length);
                 new_protocol->message = read_buf + current_read_idx;
 //                new_protocol->message = read_buf + current_read_idx;
                 current_read_idx += new_protocol->message_length;
@@ -253,6 +251,15 @@ char *generate_greeting_protocol(int fd, int flag) {
     char *time_str = generate_time();
     char *hey = "입장하셨습니다";
     char *bye = "퇴장하셨습니다";
+
+
+//    char *user_name = user_list[fd] != NULL ? user_list[fd]->name : "비회원";
+
+//    if (flag == 0) {
+//        sprintf(message, "[%s] %s 님이 %s.", time_str, user_name, hey);
+//    } else {
+//        sprintf(message, "[%s] %s 님이 %s.", time_str, user_name, bye);
+//    }
 
 
     if (flag == 0) {
